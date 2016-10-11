@@ -1,0 +1,36 @@
+fields:
+    image:
+        label: 'Image File'
+        oc.commentPosition: ''
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+    colorway:
+        label: Use for Colorway
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: description
+        span: right
+        type: partial
+        path: $/wildfire/product/controllers/products/_colorway_choices.htm
+    size:
+        label: Use for Size
+        oc.commentPosition: ''
+        descriptionFrom: description
+        span: right
+        type: partial
+        path: $/wildfire/product/controllers/products/_size_choices.htm
+    label:
+        label: Label (Optional)
+        commentBelow: 'Shown to label images when more than one is available'
+        span: right
+    rotation_images:
+        label: '360 View Image(s)'
+        span: full
+        type: fileupload
+        mode: file
+

@@ -1,0 +1,9 @@
+<?php
+$vars = 0;
+$inv = 0;
+foreach ($record->variants AS $variant){
+$vars++;
+$inv += $variant->shopify_inventory;
+}
+?>
+<span style="font-weight: bold; color: <?php echo ($inv == 0 ? '#a00' : '#0b0'); ?>"><?php echo $inv ?></span> in stock for <span style="font-weight: bold;"><?php echo $vars; ?></span> Variant<?php echo ($vars > 1 ? 's' : ''); ?>

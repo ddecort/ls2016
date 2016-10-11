@@ -1,0 +1,28 @@
+<?php if ($record->image_desktop): ?>
+    <img style="border: 1px solid #ccc;" src="<?php echo $record->image_desktop->getThumb(100,50,['mode' => 'crop', 'extension' => 'auto']); ?>" />
+<?php elseif ($record->slides()->count() > 0): ?>
+    <?php foreach ($record->slides()->get() AS $idx => $slide): ?>
+        <?php if ($idx > 2 && $record->slides()->count() >  4): ?>
+            <a style="margin-left: 5px;" class="btn btn-sm btn-default oc-icon-plus"><?php echo (count($record->slides) - 3); ?> more</a>
+            <?php break; ?>
+        <?php elseif ($slide->image_desktop): ?>
+            <img style="border: 1px solid #ccc;" src="<?php echo $slide->image_desktop->getThumb(100,50,['mode' => 'crop', 'extension' => 'auto']); ?>" />
+        <?php endif; ?>
+    <?php endforeach; ?>
+<?php elseif ($record->products()->count() > 0): ?>
+    <?php foreach ($record->products()->get() AS $idx => $product): ?>
+       <?php if ($idx > 2 && $record->products()->count(   ) > 4): ?>
+           <a style="margin-left: 5px;" class="btn btn-sm btn-default oc-icon-plus"><?php echo (count($record->products) - 3); ?> more</a>
+            <?php break; ?>
+        <?php elseif ($img = $product->previewImage): ?>
+            <img style="border: 1px solid #ccc;" src="<?php echo $img->getThumb(100,50,['mode' => 'crop', 'extension' => 'auto']); ?>" />
+        <?php endif; ?>
+    <?php endforeach; ?>
+    <?php elseif ($record->type == 'feed' && $record->feeds()->count() > 0): ?>
+    <?php foreach ($record->feedResults AS $idx => $slide): ?>
+        <?php if ($slide->image_desktop): ?>
+            <img style="display: block; border: 1px solid #ccc;" src="<?php echo $slide->image_desktop->getThumb(100,50,['mode' => 'crop', 'extension' => 'auto']); ?>" />
+        <?php endif; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
+

@@ -1,0 +1,63 @@
+<div class="dealer-sidebar">
+    <h4>Find a dealer near you:</h4>
+    <input id="geoinput" style="width: 80%" type="text" name="search" {% if nm %}value="{{ nm }}" {% endif %}placeholder="Enter your city or state" />
+
+    <div class="dealerextra">
+    <div class="dealerchunk">
+        <h4>Our Mailing Address</h4>
+        <span class="caps">
+            885 S. Automall Drive Unit C <br />
+            American Fork, UT 84003 <br />
+            USA
+        </span>
+    </div>
+
+    <div class="dealerchunk">
+        <h4>Telephone/Fax</h4>
+        <span class="caps">
+            Phone: 1-801-229-9099<br />
+            Fax: 1-801-229-9013
+        </span>
+    </div>
+
+    <div class="dealerchunk">
+        <h4>Or Send Us a Message:</h4>
+        <a class="button" href="/contact">Email Us</a>
+    </div>
+    </div>
+</div>
+
+<div id="dealers-content" class="dealers">
+     <h1>Dealers</h1>
+    {% if subcats|length > 0 %}
+        <ul class="subcategories">
+            <li><a class="{% if not sport %}selected {% endif %}first" data-catid="{{ category.id}}">All</a></li>
+            {% for cat in subcats %}
+            <li><a{% if sportcat.id == cat.id %} class="selected"{% endif %} data-catid="{{cat.id}}">{{ cat.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+   
+    <div id="map"></div>
+    <div class="lists">
+        <div id="deallist">
+            <h2>Dealers</h2>
+            <div class="toomany">Too many dealers are visible in the current view. Please zoom in to view a list of the available dealers in that area.</div>
+            <div class="notfound">Sorry, we have no dealers listed in the current view.</div>
+        </div>
+        <div id="distlist">
+            <h2>Distributors</h2>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+ var dealerMarkerArray = []; 
+ var distributorMarkerArray = []; 
+ var dealerCatId =  {% if sportcat %}{{ sportcat.id }}{% else %}{{ category.id }}{% endif %};
+ var defaultZoom =  {% if lat %}12{% else %}5{% endif %};
+ var defaultLoc =   {% if lat %} { lat: {{ lat }}, lng: {{ lng }} } {% else %} { lat: 41.487, lng: -97.148 } {% endif %};
+ var use_default =  {% if lat %}false{% else %}true{% endif %};
+ var searched_pos = {% if lat %}defaultLoc{% else %}null{% endif %};
+ var searched_name = {% if nm %}'{{ nm }}'{% else %}null{% endif %};
+ var searched_cc = {% if cc %}'{{ cc }}'{% else %}null{% endif %};
+</script>

@@ -1,0 +1,10 @@
+name: Snippet
+form: $/wildfire/snippet/models/snippet/fields.yaml
+modelClass: wildfire\Snippet\Models\Snippet
+defaultRedirect: wildfire/snippet/snippets
+create:
+    redirect: 'wildfire/snippet/snippets/update/:id'
+    redirectClose: 'wildfire/:fwd1/:fwd2/:fwd3/:fwd4'
+update:
+    redirect: wildfire/snippet/snippets
+    redirectClose: 'wildfire/:fwd1/:fwd2/:fwd3/:fwd4'

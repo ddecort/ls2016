@@ -1,0 +1,161 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table wildfire_product_product'
+    - builder_table_create_wildfire_product_product.php
+1.0.3:
+    - 'Created table wildfire_product_variant'
+    - builder_table_create_wildfire_product_variant.php
+1.0.4:
+    - 'Updated table wildfire_product_variant'
+    - builder_table_update_wildfire_product_variant.php
+1.0.5:
+    - 'Created table wildfire_product_category'
+    - builder_table_create_wildfire_product_category.php
+1.0.6:
+    - 'Created table wildfire_product_product_category'
+    - builder_table_create_wildfire_product_product_category.php
+1.0.7:
+    - 'Created table wildfire_product_color'
+    - builder_table_create_wildfire_product_color.php
+1.0.8:
+    - 'Created table wildfire_product_size'
+    - builder_table_create_wildfire_product_size.php
+1.0.9:
+    - 'Updated table wildfire_product_color'
+    - builder_table_update_wildfire_product_color.php
+1.0.10:
+    - 'Updated table wildfire_product_variant'
+    - builder_table_update_wildfire_product_variant2.php
+1.0.11:
+    - 'Updated table wildfire_product_category'
+    - builder_table_update_wildfire_product_category.php
+1.0.12:
+    - 'Updated table wildfire_product_color'
+    - builder_table_update_wildfire_product_color_2.php
+1.0.13:
+    - 'Updated table wildfire_product_size'
+    - builder_table_update_wildfire_product_size.php
+1.0.14:
+    - 'Updated table wildfire_product_size'
+    - builder_table_update_wildfire_product_size_2.php
+1.0.15:
+    - 'Updated table wildfire_product_color'
+    - builder_table_update_wildfire_product_color_3.php
+1.0.16:
+    - 'Updated table wildfire_product_color'
+    - builder_table_update_wildfire_product_color_4.php
+1.0.17:
+    - 'Updated table wildfire_product_variant'
+    - builder_table_update_wildfire_product_variant_2.php
+1.0.18:
+    - 'Updated table wildfire_product_variant'
+    - builder_table_update_wildfire_product_variant_3.php
+1.0.19:
+    - 'Updated table wildfire_product_variant'
+    - builder_table_update_wildfire_product_variant_4.php
+1.0.20:
+    - 'Updated table wildfire_product_variant'
+    - builder_table_update_wildfire_product_variant_5.php
+1.0.21:
+    - 'Updated table wildfire_product_size'
+    - builder_table_update_wildfire_product_size_3.php
+1.0.22:
+    - 'Updated table wildfire_product_color'
+    - builder_table_update_wildfire_product_color_5.php
+1.0.23:
+    - 'Updated table wildfire_product_variant'
+    - builder_table_update_wildfire_product_variant_6.php
+1.0.24:
+    - 'Updated table wildfire_product_category'
+    - builder_table_update_wildfire_product_category_2.php
+1.0.25:
+    - 'Updated table wildfire_product_category'
+    - builder_table_update_wildfire_product_category_3.php
+1.0.26:
+    - 'Updated table wildfire_product_product'
+    - builder_table_update_wildfire_product_product.php
+1.0.27:
+    - 'Updated table wildfire_product_product'
+    - builder_table_update_wildfire_product_product_2.php
+1.0.28:
+    - 'Updated table wildfire_product_product'
+    - builder_table_update_wildfire_product_product_3.php
+1.0.29:
+    - 'Updated table wildfire_product_variant'
+    - builder_table_update_wildfire_product_variant_7.php
+1.0.30:
+    - 'Updated table wildfire_product_product'
+    - builder_table_update_wildfire_product_product_4.php
+1.0.31:
+    - 'Updated table wildfire_product_variant'
+    - builder_table_update_wildfire_product_variant_8.php
+1.0.32:
+    - 'Updated table wildfire_product_variant'
+    - builder_table_update_wildfire_product_variant_9.php
+1.0.33:
+    - 'Updated table wildfire_product_variant'
+    - builder_table_update_wildfire_product_variant_10.php
+1.0.34:
+    - 'Updated table wildfire_product_product_category'
+    - builder_table_update_wildfire_product_product_category.php
+1.0.35:
+    - 'Updated table wildfire_product_category'
+    - builder_table_update_wildfire_product_category_4.php
+1.0.36:
+    - 'Updated table wildfire_product_category'
+    - builder_table_update_wildfire_product_category_5.php
+1.0.37:
+    - 'Updated table wildfire_product_product_category'
+    - builder_table_update_wildfire_product_in_category.php
+1.0.38:
+    - 'Created table wildfire_product_variant_has_color'
+    - builder_table_create_wildfire_product_variant_has_color.php
+1.0.39:
+    - 'Updated table wildfire_product_variant'
+    - builder_table_update_wildfire_product_variant_11.php
+1.0.40:
+    - 'Created table wildfire_product_colorway'
+    - builder_table_create_wildfire_product_colorway.php
+1.0.41:
+    - 'Created table wildfire_product_colorway_color'
+    - builder_table_create_wildfire_product_colorway_color.php
+1.0.42:
+    - 'Created table wildfire_product_image'
+    - builder_table_create_wildfire_product_image.php
+1.0.43:
+    - 'Created table wildfire_product_colorway_image'
+    - builder_table_create_wildfire_product_colorway_image.php
+1.0.44:
+    - 'Updated table wildfire_product_variant'
+    - builder_table_update_wildfire_product_variant_12.php
+1.0.45:
+    - 'Updated table wildfire_product_image'
+    - builder_table_update_wildfire_product_image.php
+1.0.46:
+    - 'Drop table wildfire_product_colorway_image'
+    - builder_table_delete_wildfire_product_colorway_image.php
+1.0.47:
+    - 'Updated table wildfire_product_variant'
+    - builder_table_update_wildfire_product_variant_13.php
+1.0.48:
+    - 'Updated table wildfire_product_image'
+    - builder_table_update_wildfire_product_image_2.php
+1.0.49:
+    - 'Updated table wildfire_product_size'
+    - builder_table_update_wildfire_product_size_4.php
+1.0.50:
+    - 'Updated table wildfire_product_product'
+    - builder_table_update_wildfire_product_product_5.php
+1.0.51:
+    - 'Updated table wildfire_product_category'
+    - builder_table_update_wildfire_product_category_6.php
+1.0.52:
+    - 'Updated table wildfire_product_variant'
+    - builder_table_update_wildfire_product_variant_14.php
+1.0.53:
+    - 'Updated table wildfire_product_variant'
+    - builder_table_update_wildfire_product_variant_15.php
+1.0.54:
+    - 'Updated table wildfire_product_image'
+    - builder_table_update_wildfire_product_image_3.php

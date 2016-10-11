@@ -1,0 +1,30 @@
+<div class="categoryfilter">
+<div class="filterwrap">
+    Filter By:
+    {% if snippet.filter_color and allcolors | length > 0 %}
+        <select name="fc" class="boxy color paramopt" data-origvalue="{{ fc }}" data-placeholder="Color"> 
+            <option value=""></option>
+            <option value="all">All</option>
+            {% for color in allcolors %}
+            <option {% if fc == color.id %}selected="selected" {% endif %}data-hexcode="{{ color.hex_code }}" data-thumb-small="{{ color.small_swatch.thumb(50,50) }}" value="{{ color.id }}"><span class="colorswatch" style="width: 50px; height: 50px; border: 1px solid #000;"></span>{{color.name}}</option>
+            {% endfor %}
+        </select>
+    {% endif %}
+    {% if snippet.filter_subcategory and subcategories.rest | length > 0 %}
+        {% if subcategories.root.name[-3:] == 'ies' %}
+            {% set catname = subcategories.root.name[:-3] ~ 'y' %}
+        {% elseif subcategories.root.name[-1:] == 's' %}
+            {% set catname = subcategories.root.name[:-1] %}
+        {% else %}
+            {% set catname = subcategories.root.name %}
+        {% endif %}
+        <select name="ft" class="boxy subcategory" data-origvalue="{{ category.id }}" data-placeholder="{{ catname }} Type"> 
+            <option value=""></option>
+                <option value="{{ subcategories.root.defaultUrl }}">All</option>
+            {% for cat in subcategories.rest %}
+            <option {% if cat.id == category.id %}selected="selected" {% endif %}value="{{ cat.defaultUrl }}">{{cat.name}}</option>
+            {% endfor %}
+        </select>
+    {% endif %}
+</div>
+</div>

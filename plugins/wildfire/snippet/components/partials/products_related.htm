@@ -1,0 +1,38 @@
+{% set classes = "row products" %}
+{% if split_width > 0 %}
+    {% set classes = classes ~ " split-" ~ split_width ~ split_total %}
+{% endif %}
+{% if split_offset > 0 %}
+    {% set classes = classes ~ " splitoffset-" ~ split_offset ~ split_total %}
+{% endif %}
+
+
+{% set prodcount = related['thiscat'] | length + related['othercats'] | length %}
+{% if prodcount > 0 %}
+<div class="{{ classes }}">
+    <div class="innerrow innerrow-mobile firstrow">
+        <div class="product product-4 relatedcontrol first">
+            <div class="row_custom">
+                <div class="arint">
+                    <h3>More Like This</h3>
+                    <div class="previous relatedscroll disabled"><span class="fa fa-chevron-left"></span></div>
+                    <div class="next relatedscroll disabled"><span class="fa fa-chevron-right"></span></div>
+                    <a href="{{ category.defaultUrl }}">Shop All {{category.name}}</a>
+                </div>
+            </div>
+        </div>
+        <div class="productscroller">
+            <div class="productscroller-inner">
+                {% for product in related['thiscat'] %}
+                    {% partial '@product' size=4 product=product arsize=4 %}
+                {% endfor %}
+                {% if not snippet or snippet.related_othercats %}
+                    {% for product in related['othercats'] %}
+                        {% partial '@product' size=4 product=product arsize=4 %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

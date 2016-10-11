@@ -1,0 +1,14 @@
+list: $/wildfire/snippet/models/snippet/columns.yaml
+modelClass: wildfire\Snippet\Models\Snippet
+title: Snippets
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: false
+showCheckboxes: true
+showSearch: false
+showSort: false
+defaultSort:
+    column: 'created_at'
+    direction: 'desc'
+toolbar:
+    buttons: list_toolbar
+recordUrl: 'wildfire/snippet/snippets/update/:id'

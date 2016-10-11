@@ -1,0 +1,19 @@
+snippets:
+    label: 'Snippet'
+    emptyMessage: 'No Snippets'
+    view:
+        list: $/wildfire/snippet/models/snippet/columns-relation.yaml
+        toolbarPartial: 'relation_snippet_toolbar' 
+        showSearch: false
+        showSorting: false
+        recordUrl: 'wildfire/snippet/snippets/update/:id?frm=page&fid=:pivot_page_id'
+        defaultSort: 
+            column: pivot[sort_order]
+            direction: asc
+    manage:
+        context: 
+            create: create
+            update: relationedit
+        #form: $/wildfire/snippet/models/snippet/fields-update.yaml
+        form: $/wildfire/snippet/models/snippet/fields.yaml
+

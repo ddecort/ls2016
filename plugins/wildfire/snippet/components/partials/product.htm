@@ -1,0 +1,39 @@
+{% set urlbase = product.defaultUrl %}
+<div class="product product-{{size}} {{extras}}">
+    <div class="row_custom">
+        <div class="arint">
+
+            {% if arsize == 4 %}
+                {% set sizes = '(min-width: 766px) 50vw, (min-width: 1025px) 25vw, 100vw' %}
+                {% set arthreshold = 1.55 %}
+            {% elseif arsize == 3 %}
+                {% set sizes = '(min-width: 800px) 33vw, 100vw' %}
+                {% set arthreshold = 2.5 %}
+            {% elseif arsize == 2 %}
+                {% set sizes = '(min-width: 500px) 50vw, (min-width: 800px) 33vw, 100vw' %}
+                {% set arthreshold = 1.2 %}
+            {% elseif arsize == 1 %}
+                {% set sizes = '66vw' %}
+                {% set arthreshold = 1.8 %}
+            {% endif %}
+
+            <a class="fulllink" href="{{ urlbase }}"></a>
+            <div class="interior">
+                <div class="img">
+                    {% set img = product.previewImage %}
+                    {% if img %}
+                    
+                    <img data-arsize="{{ arsize }}" data-arthresh="{{ arthreshold }}" data-ar="{{img.aspectRatio}}" class="{% if img.aspectRatio > arthreshold %}landscape{% else %}portrait{% endif %}" src="{{ img.thumb(1000,1000, {extension: 'jpg', matte: 'e1e1e1'}) }}" sizes="{{ sizes }}" />
+                    {% endif %}
+                </div>
+                 <div class="info">
+                     <h3><a href="{{ urlbase }}">{{ product.nameDisplay | raw }}</a></h3>
+                     <div class="price">{{ product.priceinfo }}</div>
+                    <a class="outline" href="{{ urlbase }}">Details&nbsp;&amp;&nbsp;Buy</a>
+                </div>           
+            </div>
+
+        </div>
+    </div>
+</div>
+

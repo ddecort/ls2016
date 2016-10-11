@@ -1,0 +1,53 @@
+snippets:
+    label: 'Snippet'
+    emptyMessage: 'No Snippets'
+    pivot:
+        form:
+            fields:
+                pivot[for_category]:
+                    label: Show in Category Index
+                    type: switch
+                    span: auto
+                pivot[for_product]:
+                    label: Show for all Products in Category
+                    type: switch
+                    span: auto
+    view:
+        list: $/wildfire/snippet/models/snippet/columns-category.yaml
+        toolbarPartial: 'relation_snippet_toolbar' 
+        showSearch: false
+        showSorting: false
+        #recordUrl: 'wildfire/snippet/snippets/update/:id'
+        defaultSort: 
+            column: pivot[sort_order]
+            direction: asc
+    manage:
+        context: 
+            create: create
+            update: relationedit
+        form: $/wildfire/snippet/models/snippet/fields.yaml
+        list: $/wildfire/snippet/models/snippet/columns-relation.yaml
+        showSearch: false
+        showSorting: false
+        defaultSort:
+            column: created_at
+            direction: asc
+
+products:
+    label: 'Product'
+    view:
+        list: $/wildfire/product/models/product/columns-relation.yaml
+        toolbarPartial: 'relation_product_toolbar'
+        showSorting: false
+        defaultSort:
+            column: pivot[sort_order]
+            direction: asc
+    manage:
+        list: $/wildfire/product/models/product/columns-select.yaml
+        showSorting: false
+        defaultSort:
+            column: name
+            direction: asc
+        showSearch: true
+    emptyMessage: 'No Products'
+    deferredBinding: false

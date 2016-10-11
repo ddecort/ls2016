@@ -1,0 +1,14 @@
+<div class="relation-widget" id="<?= $this->getId() ?>">
+<?php
+    $field->type = 'dropdown';
+    $field_options = $model->getRootList('name','id');
+    $field->options($field_options);
+?>
+<?php if (count($field_options) > 0): ?>
+    <?php $field->placeholder = '[Top Level]'; ?>
+<?php else: ?>
+    <?php $field->placeholder = 'No Other Pages!'; ?>
+    <?php $field->disabled = true; ?>
+<?php endif; ?>
+<?= $this->makePartial('~/modules/backend/widgets/form/partials/_field_dropdown.htm', ['field' => $field]) ?>
+</div>

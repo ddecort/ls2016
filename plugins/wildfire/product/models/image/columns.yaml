@@ -1,0 +1,21 @@
+columns:
+    imagepreview:
+        label: Preview
+        type: partial
+        path: $/wildfire/product/controllers/images/_imagepreview.htm
+        width: 80px
+    sort_order:
+        label: ''
+        type: partial
+        path: $/wildfire/product/controllers/images/_sort_order.htm
+    colorway:
+        label: Colorway
+        type: partial
+        path: $/wildfire/product/controllers/images/_colorway.htm
+    size:
+        label: Size
+        type: partial
+        path: $/wildfire/product/controllers/images/_size.htm
+    label:
+        label: Label
+

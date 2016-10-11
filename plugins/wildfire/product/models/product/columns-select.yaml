@@ -1,0 +1,33 @@
+columns:
+    imagepreview:
+        label: Image
+        type: partial
+        path: $/wildfire/product/controllers/products/_imagepreview.htm
+        sortable: false
+        cssClass: text-center
+        width: 80px
+    name:
+        label: ''
+        type: partial
+        path: $/wildfire/product/controllers/products/_blank.htm
+        searchable: true
+        sortable: true
+    namePlain:
+        label: Name
+        type: text
+        sortable: false
+    inventory:
+        label: Stock
+        type: partial
+        path: $/wildfire/product/controllers/products/_inventory.htm
+        sortable: false
+    active:
+        label: Active
+        type: partial
+        path: $/wildfire/product/controllers/products/_active.htm
+        sortable: false
+    categories:
+        label: Categories
+        type: partial
+        sortable: false;
+        path: $/wildfire/product/controllers/products/_categories.htm

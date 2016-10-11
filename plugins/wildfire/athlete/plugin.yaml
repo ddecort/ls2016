@@ -1,0 +1,20 @@
+plugin:
+    name: 'wildfire.athlete::lang.plugin.name'
+    description: 'wildfire.athlete::lang.plugin.description'
+    author: Wildfire
+    icon: oc-icon-users
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Athletes
+        url: wildfire/athlete/athletes
+        icon: icon-users
+        sideMenu:
+            athletes:
+                label: Athletes
+                url: wildfire/athlete/athletes
+                icon: icon-users
+            new_athletes:
+                label: 'Add Athlete'
+                url: wildfire/athlete/athletes/create
+                icon: icon-plus

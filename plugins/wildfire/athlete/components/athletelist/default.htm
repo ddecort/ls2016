@@ -1,0 +1,41 @@
+<div id="athletes-content" class="athletes">
+
+    <h1 id="athlete-title">
+        {% if category.name == 'Cycling' %}Riders{% elseif category.name == 'Sports' %}Athletes{% else %}{{ category.name }} Athletes{%endif%}</h1>
+    {% if subcategories|length > 0 %}
+        <ul class="subcategories">
+            <li><a {% if not sport %} class="selected"{% endif %}>All</a></li>
+            {% for cat in subcategories %}
+            <li><a catslug="{{cat.name|slug}}" {% if cat.slug == sport.slug %} class="selected"{% endif %}>{{ cat.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="masonrygrid">
+        <div class="gridsizer"></div>
+        <div class="guttersizer"></div>
+        {% for athlete in athletes %}
+        <div class="athlete griditem size_{{ athlete.display_size }}{% for category in athlete.categories %} category-{{category.name|slug}}{%endfor%}" {% if sport %}{% set found = false %}{% for category in athlete.categories %}{% if category.slug == sport.slug %}{% set found = true %}{% endif %}{% endfor %}{% if not found %} style="display: none;"{% endif %}{% endif %}>
+            <div class="arouter">
+                <div class="arint">
+                    <a href="{{ prefix }}/athletes/{{athlete.id}}">
+                            <div class="hovercover"></div>
+                            {% if athlete.index_image %}
+                                {% if athlete.display_size == '1' %}
+                                    <img src="{{ athlete.index_image.thumb(400,600,'crop') }}" />
+                                {% elseif athlete.display_size == '2' %}
+                                    <img src="{{ athlete.index_image.thumb(800,600,'crop') }}" />
+                                {% elseif athlete.display_size == '3' %}
+                                    <img src="{{ athlete.index_image.thumb(1200,600,'crop') }}" />
+                                {% elseif athlete.display_size == '4' %}
+                                    <img src="{{ athlete.index_image.thumb(1600,600,'crop') }}" />
+                                {% endif %}
+                            {% endif %}
+                            <div class="name{% if athlete.is_team  %} team{%endif%}{%if not athlete.index_image %} noimg{% endif %} {{ athlete.caption_align }}"><h3><span>{{ athlete.name }}</span></h3></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+

@@ -1,0 +1,12 @@
+<?php 
+    if ($record->colorway)
+    {
+        $colors = $record->colorway->colors->lists('name'); 
+        echo implode('/', $colors);
+    }
+    else if ($record->product->colorways()->count() > 0)
+    {
+        echo 'All Colorways';
+    }
+?>
+

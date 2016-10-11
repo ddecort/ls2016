@@ -1,0 +1,4 @@
+{% set more_snippets = snippet.feedResults %}
+{% for more_snippet in more_snippets %}
+    {% partial '@snippet' snippet=more_snippet %}
+{% endfor %}

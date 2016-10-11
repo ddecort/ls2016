@@ -1,0 +1,4 @@
+title: Dealers
+modelClass: wildfire\Dealer\Models\Dealer
+toolbar:
+    buttons: reorder_toolbar

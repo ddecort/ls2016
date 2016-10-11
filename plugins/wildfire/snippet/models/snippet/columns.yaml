@@ -1,0 +1,24 @@
+columns:
+    name:
+        label: 'Description'
+        sortable: false
+    type:
+        label: 'Snippet Type'
+        width: 150
+        type: partial
+        path: $/wildfire/snippet/controllers/snippets/_type.htm
+    imagepreview:
+        label: 'Image Preview'
+        type: partial
+        path: $/wildfire/snippet/controllers/snippets/_imagepreview.htm
+        sortable: false
+    pages:
+        label: 'Pages'
+        type: partial
+        path: $/wildfire/snippet/controllers/snippets/_pages.htm
+    created_at:
+        label: 'Date Added'
+        type: timesince
+        sortable: true
+
+

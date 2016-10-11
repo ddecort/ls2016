@@ -1,0 +1,99 @@
+<?php 
+    $snippets = [];
+    $outputs = [];
+    if ($record->type == "split_row")
+    {
+        echo 'Split Row:<br />';
+        foreach ($record->columns()->get() AS $snip)
+        {
+            $snippets[] = $snip;
+        }
+    }
+    else
+    {
+        $snippets[] = $record;
+    }
+
+    foreach ($snippets AS $snippet)
+    {
+        $output = '';
+        $type = $snippet->type;
+        if ($type == 'slide')
+        {
+            if ($snippet->is_video)
+            {
+                $output = '<strong>Video</strong> - "'.str_replace('<br />',' ',$snippet->heading_text).'"'; 
+            }
+            else
+            {
+                $output = '<strong>Slide</strong> - "'.str_replace('<br />',' ',$snippet->heading_text).'"'; 
+            }
+        }
+        else if ($type == 'slideshow')
+        {
+            $output =  '<strong>Slideshow</strong> - '.$snippet->slides()->count().' Slides';
+        }
+        else if ($type == 'category_list')
+        {
+            if ($snippet->category_limit > 0 )  $output = '<strong>'.$snippet->category_limit.' Category Products</strong>';
+            else $output = '<strong>All Category Products</strong>';
+        }
+        else if ($type == 'category_filter')
+        {
+            $output = '<strong>Category Filter</strong>';
+            if ($snippet->filter_color) $output .= ' [By Color]';
+            if ($snippet->filter_subcategory) $output .= ' [By Subcategory]';
+        }
+        else if ($type == 'instagram')
+        {
+            $output = '<strong>Instagram</strong>';
+            if ($snippet->instagram_user) $output .= ' @'.$snippet->instagram_user;
+            if ($snippet->instagram_hashtag) $output .= ' #'.str_replace('#','',$snippet->instagram_hashtag);
+            if ($snippet->instagram_post_id) $output .= ' shortcode='.$snippet->instagram_post_id;
+        }
+        else if ($type == 'products_info')
+        {
+            $output = '<strong>Products List</strong> - '.$snippet->products()->count().' Selected Products';
+        }
+        else if ($type == 'products_related')
+        {
+            $output = '<strong>Related Products</strong>';
+        }
+        else if ($type == 'feed')
+        {
+            $output = '<strong>Feed</strong> - Showing latest '.$snippet->feed_number.' from <span style="color: #6c6;">'.$snippet->feeds()->first()->name.'</span>';
+        }
+        else if ($type == 'company_menu')
+        {
+            $output = '<strong>Company Menu</strong>';
+        }
+        else if ($type == 'content')
+        {
+            $output = '<strong>HTML Content</strong>';
+        }
+        else if ($type == 'bestsellers')
+        {
+            $output = '<strong>Best Sellers</strong>';
+        }
+        else
+        {
+            $output = 'Unknown Type = '.$type;
+        }
+        if ($snippet->parent_snippet_id)
+        {
+            if ($snippet->split_width > 0) $output .= ' <em style="color: #6c6;">'.$snippet->split_width.'/4 wide</em>';
+            else $output .= ' <em style="color: #c66;">Unknown Width</em>';
+        }
+        $outputs[] = $output;
+    }
+
+    if (count($outputs) > 1)
+    {
+        echo '<nav style="padding-left: 4em;"><div>- '.implode('</div><div> - ',$outputs).'</div></nav>';
+    }
+    else if (count($outputs))
+    {
+       echo $outputs[0];
+    }
+?>
+

@@ -1,0 +1,11 @@
+title: Colors
+modelClass: wildfire\Product\Models\Color
+list: $/wildfire/product/models/color/columns.yaml
+recordUrl: 'wildfire/product/colors/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: false
+showCheckboxes: false
+toolbar:
+    buttons: list_toolbar
+showTree: 1
+treeExpanded: 0

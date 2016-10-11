@@ -1,0 +1,14 @@
+<?php
+    $final = array();
+    $cats = $record->categories()->get();
+    foreach ($cats AS $cat) {
+        $parents = $cat->getParents();
+        $thiscat = '';
+        for ($i = 1; $i <= count($parents) - 1; $i++)
+        {
+            $thiscat .= $parents[count($parents) - $i]->name .' > ';
+        }
+        $final[] = $thiscat . $cat->name;
+    }
+    echo implode(', ', $final);
+?>

@@ -1,0 +1,31 @@
+        <div class="slide-inner-wrap">
+            <div class="caption
+            {% if slide.heading_light %} reversed {% endif %}
+            {% if slide.heading_light_mobile %} mobile-reversed {% else %} mobile-dark{% endif %}">
+                {% if slide.heading_text %}<h3{% if not slide.mobile_show_header %} class="mobilehide"{% endif %}>{{ slide.heading_text|raw }}</h3>{% endif %}
+                {% if slide.subheading %}<p{% if not slide.mobile_show_subheader %} class="mobilehide"{% endif %}>{{ slide.subheading|raw }}</p>{% endif %}
+                {% if slide.content %}
+                    <a class="button showblogcontent" href="#">{% if slide.button_text %}{{ slide.button_text }}{% else %}Read More...{% endif %}</a>
+                {% elseif slide.button_text %}
+                    <a class="button{% if not slide.mobile_show_button %} mobilehide{% endif %}" href="{{ slide.link_url }}" >{{ slide.button_text }}</a>
+                {% endif %}
+            </div>
+            {% if slide.link_url %}
+            <a class="fulllink {% if not slide.button_text and not slide.content %} desktop-fulllink{% endif %}" href="{{ slide.link_url }}"></a>
+            {% endif %}
+            <div class="imgwrap">
+                {% if slide.image_desktop and slide.image_mobile %}
+                    <img class="desktop-img" src="{{ slide.image_desktop.thumb(2000,1250,{mode: 'auto', extension: 'jpg'}) }}" />
+                    <img class="mobile-img" src="{{ slide.image_mobile.thumb(1500,1500,{mode: 'auto', extension: 'jpg'}) }}" />
+                {% else %}
+                    <img src="{{ slide.image_desktop.thumb(2000,1250,{mode: 'auto', extension: 'jpg'}) }}" />
+                {% endif %}
+            </div>
+        </div>
+        {% if slide.content %}
+        <div class="blogcontent" style="background-color: {{ slide.normalized_content_background }}">
+            <div class="inner">
+                {{ slide.content | raw }}
+            </div>
+        </div>
+        {% endif %}

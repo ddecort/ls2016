@@ -1,0 +1,16 @@
+title: Athlete
+modelClass: wildfire\Athlete\Models\Athlete
+list: $/wildfire/athlete/models/athlete/columns.yaml
+recordUrl: 'wildfire/athlete/athletes/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: false
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+filter: config_filter.yaml
+showSorting: false
+defaultSort:
+    column: sort_order
+    direction: asc

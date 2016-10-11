@@ -1,0 +1,11 @@
+name: Categories
+modelClass: wildfire\Product\Models\Category
+form: $/wildfire/product/models/category/fields.yaml
+defaultRedirect: wildfire/product/categories
+create:
+    redirect: 'wildfire/product/categories/update/:id'
+    redirectClose: wildfire/product/categories
+update:
+    redirect: wildfire/product/categories
+    redirectClose: wildfire/product/categories
+preview: {  }

@@ -1,0 +1,4 @@
+modelClass: wildfire\Dealer\Models\Zone
+nameFrom: name
+toolbar:
+        buttons: reorder_toolbar

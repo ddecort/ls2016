@@ -1,0 +1,119 @@
+fields:
+    name:
+        label: 'Athlete Name'
+        span: auto
+        required: 1
+        type: text
+        commentAbove: 'Or Team Name if this isn''t an individual athlete'
+    team:
+        label: 'Team Name'
+        span: auto
+        type: text
+        commentAbove: 'Leave blank if you select "Is Team"'
+    active:
+        label: Active
+        span: auto
+        default: 1
+        required: 0
+        type: switch
+    is_team:
+        label: 'Is Team'
+        span: auto
+        type: switch
+    categories:
+        label: Sports
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: description
+        span: left
+        type: relation
+    display_size:
+        label: 'Index Block Width'
+        options:
+            1: '1'
+            2: '2'
+            3: '3'
+            4: '4'
+        span: right
+        type: radio
+        commentAbove: 'number of horizontal grid spots this should take up in the index'
+    caption_align:
+        label: 'Caption Position'
+        options:
+            center: Centered
+            center_bottom: 'Centered, Bottom'
+            left: Left
+            right: Right
+        span: right
+        type: radio
+        commentAbove: 'adjust where the name appears within the box in the index'                
+tabs:
+    fields:
+        nationality:
+            label: Nationality
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: Biography
+        description:
+            label: Description
+            size: small
+            oc.commentPosition: ''
+            span: full
+            type: richeditor
+            tab: Biography
+        highlights:
+            label: 'Career Highlights'
+            size: small
+            oc.commentPosition: ''
+            span: full
+            type: richeditor
+            tab: Biography
+        index_image:
+            label: 'Index Image'
+            oc.commentPosition: ''
+            mode: image
+            imageWidth: 150
+            imageHeight: 150
+            useCaption: true
+            thumbOptions:
+                mode: auto
+                extension: auto
+            span: auto
+            type: fileupload
+            tab: Images
+        slideshow:
+            label: 'Detail Image(s)'
+            oc.commentPosition: ''
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: auto
+            type: fileupload
+            tab: Images
+        facebook:
+            label: Facebook
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Social Media Accounts'
+        instagram:
+            label: Instagram
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Social Media Accounts'
+        twitter:
+            label: Twitter
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Social Media Accounts'
+        youtube:
+            label: YouTube
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Social Media Accounts'

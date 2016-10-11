@@ -1,0 +1,26 @@
+columns:
+    name:
+        label: Name
+        type: text
+        searchable: true
+    use_for_products_filter:
+        label: 'Use for Filtering & Organizing Products'
+        type: partial
+        width: 100px
+        path: $/wildfire/product/controllers/categories/_checked.htm           
+    use_for_athletes:
+        label: 'Assignable to Athlete'
+        type: partial
+        path: $/wildfire/product/controllers/categories/_checked.htm
+        width: 100px
+    use_for_athletes_filter:
+        label: 'Use for Filtering Athletes'
+        type: partial
+        path: $/wildfire/product/controllers/categories/_checked.htm
+        width: 100px
+    use_for_dealers:
+        label: 'Use for Filtering Dealers'
+        type: partial
+        path: $/wildfire/product/controllers/categories/_checked.htm
+        width: 100px
+

@@ -1,0 +1,27 @@
+<div class="row slider">
+    <div class="arint">
+        <div class="flexslider" id="slider-{{ snippet.id }}">
+            <ul class="slides">
+                {% for slide in snippet.slides %}
+                    {% set classes = 'slide' %}
+                    {% set classes = classes ~ " caption-" ~ slide.heading_position %}
+                    {% set classes = classes ~ " mobile-" ~ slide.heading_position_mobile %}
+                    <li class="{{classes}}">
+                        {% partial '@slideinner' slide=slide %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready( function(){
+        $('#slider-{{snippet.id}}').flexslider({
+            selector: '.slides > li',
+            animation: 'fade',
+            animationSpeed: {{ snippet.slideshow_transition }},
+            slideshowSpeed: {{ snippet.slideshow_delay }},
+            itemWidth: '100%'
+        });
+    });
+</script>

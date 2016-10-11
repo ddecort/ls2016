@@ -1,0 +1,10 @@
+<?php 
+    if ($record->size)
+    {
+        echo $record->size->name;
+    }
+    else if ($record->product->variants()->whereNotNull('size_id')->count() > 0)
+    {
+        echo 'All Sizes';
+    }
+?>

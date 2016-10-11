@@ -1,0 +1,46 @@
+columns:
+    imagepreview:
+        label: Image
+        type: partial
+        path: $/wildfire/product/controllers/products/_imagepreview.htm
+        sortable: false
+        cssClass: text-center
+        width: 80px
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+        type: partial
+        path: $/wildfire/product/controllers/products/_nameplain.htm
+    inventory:
+        label: Stock
+        type: partial
+        path: $/wildfire/product/controllers/products/_inventory.htm
+        sortable: false
+    active:
+        label: Active
+        type: partial
+        path: $/wildfire/product/controllers/products/_active.htm
+        sortable: false
+    nest_left:
+        label: 'Order'
+        type: relation
+        invisible: false
+        select: nest_left
+        relation: categories
+        sortable: true
+    categories:
+        label: Categories
+        type: partial
+        sortable: false
+        path: $/wildfire/product/controllers/products/_categories.htm
+    shopify_shop:
+        label: 'Shopify Site'
+        type: partial
+        path: $/wildfire/product/controllers/products/_shopifylink.htm
+        clickable: false
+        sortable: false
+        cssClass: text-center
+        width: '200px'
+

@@ -1,0 +1,39 @@
+<a class="btn btn-sm btn-primary oc-icon-file" href="/admin/wildfire/snippet/snippets/create?add_to_snippet=<?php echo $this->formGetModel()->id; ?>">Create New Snippet
+</a>
+
+<?php if ($relationViewMode == 'single'): ?>
+    <button
+        class="btn btn-sm btn-default oc-icon-trash-o"
+        data-request="onRelationButtonDelete"
+        data-request-confirm="<?= e(trans('backend::lang.relation.delete_confirm')) ?>"
+        data-stripe-load-indicator>
+        Remove &amp; Delete
+    </button>
+<?php else: ?>
+    <button
+        class="btn btn-sm btn-default oc-icon-trash-o"
+        onclick="$(this).data('request-data', {
+            checked: $('#<?= $this->relationGetId('view') ?> .control-list').listWidget('getChecked')
+        })"
+        disabled="disabled"
+        data-request="onRelationButtonDelete"
+        data-request-confirm="<?= e(trans('backend::lang.relation.delete_confirm')) ?>"
+        data-trigger-action="enable"
+        data-trigger="#<?= $this->relationGetId('view') ?> .control-list input[type=checkbox]"
+        data-trigger-condition="checked"
+        data-stripe-load-indicator>
+        Remove &amp; Delete
+    </button>
+<?php endif ?>
+
+    <button
+        id="updatePosition"
+        class="btn btn-reorder oc-icon-list-ol"
+        disabled="disabled"
+        onclick="$(this).data('request-data', {
+        checked: $(this).parents('.partial-field').find('.index_reposition').map(function(){  return $(this).val() }).get(), model_id: <?php echo $this->formGetModel()->id; ?> })"
+        data-request-success="initializeSorting();"
+        data-request="onUpdateSlidesPosition"
+        data-stripe-load-indicator>
+        Update Order
+    </button>

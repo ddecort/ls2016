@@ -1,0 +1,40 @@
+<div data=control="toolbar">
+
+    <a
+        data-control="popup"
+        data-size="huge"
+        data-handler="onRelationButtonCreate"
+        href="javascript:;"
+        class="btn btn-sm btn-primary oc-icon-file">
+        Add New Image
+    </a>
+
+
+    <button
+        class="btn btn-sm btn-default oc-icon-trash-o"
+        onclick="$(this).data('request-data', {
+            checked: $('#<?= $this->relationGetId('view') ?> .control-list').listWidget('getChecked')
+        })"
+        disabled="disabled"
+        data-request="onRelationButtonDelete"
+        data-request-confirm="<?= e(trans('backend::lang.relation.delete_confirm')) ?>"
+        data-trigger-action="enable"
+        data-trigger="#<?= $this->relationGetId('view') ?> .control-list input[type=checkbox]"
+        data-trigger-condition="checked"
+        data-stripe-load-indicator>
+        Delete Selected
+    </button>
+
+    <button
+        id="updatePosition"
+        class="btn btn-reorder oc-icon-list-ol"
+        disabled="disabled"
+        onclick="$(this).data('request-data', {
+        checked: $('.index_reposition').map(function(){  return $(this).val() }).get(), model_id: <?php echo $this->formGetModel()->id; ?> })"
+        data-request-success="initializeSorting();"
+        data-request="onUpdateImagePosition"
+        data-stripe-load-indicator>
+        Update Order
+    </button>
+
+</div>

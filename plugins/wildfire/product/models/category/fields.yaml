@@ -1,0 +1,55 @@
+fields:
+    name:
+        label: 'Category Name'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        oc.commentPosition: ''
+        span: auto
+        preset:
+            field: name
+            type: slug
+        type: text
+    use_for_products_filter:
+        label: 'Use for Filtering Products'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'Keeping this on will make this option show up in menus and allow assigning products to it. Turn off to only use for other purposes'
+    use_for_athletes:
+        label: 'Assignable to Athletes'
+        span: auto
+        type: switch
+        comment: 'Whether an athlete can be ''tagged'' with this sport or category of products they use'
+    use_for_athletes_filter:
+        label: 'Use for Filtering Athletes'
+        span: auto
+        type: switch
+        comment: 'Set to yes if you want this sport or category to show up in the athletes selection page'
+    use_for_dealers:
+        label: 'Use for Filtering Dealers'
+        span: auto
+        type: switch
+        comment: 'Set to yes if you want people to be able to filter out dealers based on this sport or category.'
+    section1:
+        label: Snippets
+        span: full
+        type: section
+    hint:
+        span: full
+        path: $/wildfire/product/controllers/categories/_snippethelp.htm
+        type: partial
+    snippets:
+        label: ''
+        span: full
+        type: partial
+    section2:
+        label: Products
+        span: full
+        type: section
+    products:
+        label: ''
+        span: full
+        type: partial

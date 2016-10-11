@@ -1,0 +1,28 @@
+fields:
+    name:
+        label: 'Page Name'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        type: text
+    slug:
+        label: Slug
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        preset:
+            field: name
+            type: slug
+        type: text            
+    parent:
+        label: 'Parent Page'
+        span: auto
+        type: partial
+        path: $/wildfire/snippet/controllers/pages/_parent_field.htm
+    page_snippets:
+        type: section
+        label: 'Page Snippets'
+    snippets:
+        label: ''
+        span: full
+        type: partial

@@ -1,0 +1,10 @@
+name: Colors
+form: $/wildfire/product/models/color/fields.yaml
+modelClass: wildfire\Product\Models\Color
+defaultRedirect: wildfire/product/colors
+create:
+    redirect: 'wildfire/product/colors/update/:id'
+    redirectClose: wildfire/product/colors
+update:
+    redirect: wildfire/product/colors
+    redirectClose: wildfire/product/colors

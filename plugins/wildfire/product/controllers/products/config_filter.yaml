@@ -1,0 +1,19 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+scopes:
+
+    category:
+
+        # Filter name
+        label: 'Filter By Category'
+
+        # Model Class name
+        modelClass: wildfire\Product\Models\Category
+
+        # Model attribute to display for the name
+        nameFrom: indented_name
+
+        # Apply query scope
+        scope: FilterCategory
+

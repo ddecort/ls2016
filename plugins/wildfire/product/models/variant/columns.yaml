@@ -1,0 +1,24 @@
+columns:
+    sku:
+        label: SKU
+        type: text
+    colors:
+        label: Colorway
+        type: partial
+        path: $/wildfire/product/controllers/variants/_colors.htm
+    size:
+        label: Size
+        type: text
+        select: name
+        relation: size
+    shopify_inventory:
+        label: Stock
+        type: number
+    sort_order:
+        label: ''
+        type: partial
+        sortable: true
+        path: $/wildfire/product/controllers/variants/_sort_order.htm
+    price:
+        label: Price
+        type: number

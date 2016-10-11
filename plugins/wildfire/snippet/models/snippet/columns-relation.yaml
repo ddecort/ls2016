@@ -1,0 +1,21 @@
+columns:
+    description:
+        label: 'Snippet Type'
+        width: 150
+        type: partial
+        path: $/wildfire/snippet/controllers/snippets/_description.htm
+        width: 150
+        searchable: false
+        sortable: false
+    imagepreview:
+        label: 'Image Preview'
+        type: partial
+        path: $/wildfire/snippet/controllers/snippets/_imagepreview.htm
+        sortable: false
+        searchable: false
+    pivot[sort_order]:
+        label: ''
+        type: partial
+        path: $/wildfire/snippet/controllers/snippets/_sort_order.htm
+        sortable: true
+        searchable: false

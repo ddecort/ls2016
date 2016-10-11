@@ -1,0 +1,66 @@
+{% set classes = "row split" %}
+{% set skiprow = false %}
+
+{% if snippet.aspect_ratio == 3.50 %}
+    {% set classes = classes ~ " row_350" %}  
+{% elseif snippet.aspect_ratio == 2.35 %}
+    {% set classes = classes ~ " row_235" %}  
+{% elseif snippet.aspect_ratio == 1.78 %}
+    {% set classes = classes ~ " row_178" %}
+{% elseif snippet.aspect_ratio == 4 %}
+    {% set classes = classes ~ " row_400" %}
+{% else %}
+    {% set classes = classes ~ " row_free" %}
+{% endif %}
+
+{% set split_total = 0%}
+{% for column in snippet.columns %}
+    {% set split_total = split_total + column.split_width %}
+    {% if column.type == 'category_list' or column.type == 'products' %}
+        {% if products | length == 0 %}
+            {% set skiprow = true %}
+        {% endif %}
+    {% endif %}
+    {% if column.type == 'category_list' or column.type == 'products_related' or column.type == 'products_info' %}
+        {% if pos != 1 %}
+            {% set classes = classes ~ " needsborder" %}
+        {% endif %}
+        {% if snippets[pos].type == 'slide' %}
+            {% set classes = classes ~ " needsborderb" %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+{% if not skiprow %}
+
+<div class="{{ classes }}">
+    <div class="arint">
+        {% set total = 0 %}
+        {% for column in snippet.columns %}
+            {% if total < 4 %}
+                {% set split_offset = total %}
+                {% set newtotal = total + column.split_width %}
+                {% if newtotal > 4 %}
+                    {% set width = newtotal - 4 %}
+                {% elseif column.split_width > 0 %}
+                    {% set width = column.split_width %}
+                {% else %}
+                    {% set width = (4 // (snippet.columns|length)) %}
+                    {% set newtotal = newtotal + width %}
+                {% endif %}
+                {% set total = newtotal %}
+
+                {% if column.type == 'category_list' and column.category_limit > 0 %}
+                    {% set myproducts = products[:column.category_limit] %}
+                    {% set products = products[column.category_limit:] %}
+                {% else %}
+                    {% set myproducts = products %}
+                {% endif %}
+                {% partial '@snippet' split_total=split_total split_width=width split_offset=split_offset split_ar=snippet.aspect_ratio snippet=column myproducts=myproducts %}
+
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endif %}

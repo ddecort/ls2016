@@ -1,0 +1,66 @@
+fields:
+    sku:
+        label: SKU
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    barcode:
+        label: Barcode
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    shopify_variant_id:
+        label: 'Shopify Variant ID'
+        oc.commentPosition: ''
+        span: auto
+        disabled: 1
+        type: text
+    shopify_product_id:
+        label: 'Shopify Product ID'
+        oc.commentPosition: ''
+        span: auto
+        disabled: 1
+        type: text
+    price:
+        label: Price
+        span: auto
+        type: number
+        comment: 'in USD'
+        required: true
+    weight:
+        label: Weight
+        span: auto
+        type: number
+        comment: 'in pounds'
+    shopify_inventory:
+        label: 'Current Inventory'
+        span: auto
+        oc.commentPosition: ''
+        type: number
+        default: 0
+    sort_order:
+        label: Sorting Order
+        span: auto
+        type: number
+        default: 1
+    temp_colorway:
+        label: 'Colorway (optional)'
+        span: left
+        type: partial
+        path: $/wildfire/product/controllers/variants/_colorway_choices.htm
+    size:
+        label: 'Size (optional)'
+        span: right
+        type: partial
+        path: $/wildfire/product/controllers/variants/_size_choices.htm
+    colors:
+        label: 'Color(s) For New Colorway'
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: description
+        span: left
+        type: relation
+        trigger:
+            action: show
+            field: temp_colorway
+            condition: value[new]

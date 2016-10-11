@@ -1,0 +1,6 @@
+<?php if ($record->shopify_shop): ?>
+Lizard Skins <?php echo ($record->shopify_shop == 'lizard-skins') ? 'Cycling' : 'Sports'; ?><br />
+    <a  class="btn btn-primary" href="https://<?php echo $record->shopify_shop; ?>.myshopify.com/admin/products/<?php echo $record->shopify_id; ?>">Edit in Shopify</a>
+<?php else: ?>
+Not Sync'd
+<?php endif; ?>

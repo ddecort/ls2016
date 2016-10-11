@@ -1,0 +1,19 @@
+<div class="relation-widget" id="<?= $this->getId() ?>">
+<?php 
+    $field->type = 'dropdown';
+    $field_options = [];
+    $opts = $this->formGetModel()->colorways()->with('colors')->get();
+    foreach ($opts as $opt)
+    {
+        $field_options[$opt->id] = $opt->colorlist;
+    }
+    $field->options($field_options);
+?>
+<?php if (count($field_options) > 0): ?>
+    <?php $field->placeholder = 'All Colorways'; ?>
+<?php else: ?>
+    <?php $field->placeholder = 'No Colorways Set Up!'; ?>
+    <?php $field->disabled = true; ?>
+<?php endif; ?>
+<?= $this->makePartial('~/modules/backend/widgets/form/partials/_field_dropdown.htm', ['field' => $field]) ?>
+</div>

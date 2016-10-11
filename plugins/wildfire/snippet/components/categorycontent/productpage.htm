@@ -1,0 +1,370 @@
+{% set colorchoices = product.colorchoices %}
+{% set sizechoices = product.sizechoices %}
+{% if gripbuilder %}{% set mattecolor = 'f0f0f0' %}{% else %}{% set mattecolor = 'e1e1e1' %}{%endif%}
+     <script type="text/javascript">
+        var showbuilder = {% if gripbuilder %}true{% else %}false{% endif %};
+        var variantinfo = [
+        {% for variant in product.variants %}
+{ myid: {{variant.id}}, sku: '{{variant.sku }}', productId: {{variant.shopify_product_id}}, store: '{{product.shopify_shop}}', id: {{ variant.shopify_variant_id }}, inventory: {{ variant.shopify_inventory }}, title: '{{ variant.variantTitle}}', productTitle: '{{ product.nameText }}', colorway_id: {% if variant.colorway_id %}{{ variant.colorway_id }}{% else %}false{% endif %}, size_id: {%if variant.size_id %}{{ variant.size_id }}{% else %}false{% endif %}, price: {{ variant.price }} }{% if not loop.last %},{% endif %}
+        {% endfor %}
+        ];
+
+        var productimages = [
+        {% for image in product.images %}
+            { 
+                colorway_id: {% if image.colorway_id %}{{ image.colorway_id }}{% else %}false{% endif %}, 
+                size_id: {%if image.size_id %}{{ image.size_id }}{% else %}false{% endif %}, 
+                src1000: '{{ image.image.thumb(1000,1000, { extension: 'jpg', matte: mattecolor}) }}', 
+                src2000: '{{ image.image.thumb(2000,2000, { extension: 'jpg', matte: mattecolor}) }}', 
+                src500: '{{ image.image.thumb(500,500, { extension: 'jpg', matte: mattecolor}) }}', 
+                {% if image.rotation_images | length > 0 %}
+                rotation: [ 
+                {% for rot in image.rotation_images %}
+                    {
+                        src500: '{{ rot.thumb(500,500, { extension: 'jpg', matte: mattecolor}) }}', 
+                        src1000: '{{ rot.thumb(1000,1000, { extension: 'jpg', matte: mattecolor}) }}', 
+                        src2000: '{{ rot.thumb(2000,2000, { extension: 'jpg', matte: mattecolor}) }}',
+                        srcfull: '{{ rot.getPath() }}'
+                    }{% if not loop.last %},{% endif %}
+                {% endfor %}
+                ],
+                {% endif %}
+                thumb: '{{ image.image.thumb(100,100, { extension: 'jpg', matte: 'dcdcdc'}) }}',
+                label: '{{ image.label }}'
+            }{% if not loop.last %},{% endif %}
+        {% endfor %}
+        ];
+
+        var sole_variant = {% if product.variants|length == 1 %}variantinfo[0]{% else %}null{% endif %};
+        var sole_colorway_id = {% if colorchoices.colorways | length == 1 %}{{ colorchoices.colorways[0].colorway.id }}{% else %}null{% endif %};
+        var sole_size_id = {% if sizechoices | length == 1 %}{{ sizechoices[0].id }}{% else %}0{% endif %};
+
+        {% if gripbuilder %}
+            {% set variant = plug_variant %}
+            var plug_variant = { myid: {{variant.id}}, sku: '{{ variant.sku }}', productId: {{variant.shopify_product_id}}, id: {{ variant.shopify_variant_id }}, title: '{{ variant.variantTitle}}', productTitle: '{{ variant.product.nameText }}', price: {{ variant.price }}, image: { src: '{{ variant.product.previewImage.thumb(200,200) }}' } };
+            {% set variant = engrave_variant %}
+            var engrave_variant = { myid: {{variant.id}}, sku: '{{ variant.sku }}', productId: {{variant.shopify_product_id}}, id: {{ variant.shopify_variant_id }}, title: '{{ variant.variantTitle}}', productTitle: '{{ variant.product.nameText }}', price: {{ variant.price }}, image: { src: '{{ variant.product.previewImage.thumb(200,200) }}' } };
+
+        {% endif %}
+    </script>
+
+    <div class="productpane{% if gripbuilder %} custom custom-on{% endif %}">
+
+        {% if gripbuilder %}
+            <div id="gripbuilder">
+                <div class="header"><div class="preheader"><div class="img"></div></div><h3>Customize Your Grips</h3><div class="icon"></div></div>
+                <div class="contents">
+                    <div id="custom_grip" class="buildoption">
+                        <div class="optionheader"><h4>Grip Color</h4><div class="colorpreview"><a><span class="color-1" style="border-color: #000; background-color: #000"></span></a></div></div>
+                        <div class="optionbody"><div class="inner">
+                            <div class="colorchoices singles choicer">
+                                <div class="indicator"></div>
+                                {% for colorway in colorchoices.colorways %}
+                                <a data-colorway-id="{{ colorway.colorway.id }}" {% if loop.first %}class="default" {% endif %}data-name="{{ colorway.colorlist }}">
+                                        {% for color in colorway.colors %}
+                                            <span class="color-{{ loop.length }}{% if loop.first %} first{% endif %}{% if loop.last %} last{% endif %}
+                                                  {% if color.small_swatch %} swatch" style="background: url({{ color.small_swatch.thumb(50,50) }}) no-repeat; background-size: cover;"
+                                                  {% elseif color.big_swatch %} swatch" style="background: url({{ color.big_swatch.thumb(50,50) }}) no-repeat; background-size: cover;"
+                                                  {% else %}" style="border-color: #{{ color.hex_code|raw }}; background-color: #{{ color.hex_code|raw }};"
+                                                  {% endif %}>
+                                            </span>
+                                        {% endfor %}
+                                   </a>
+                                {% endfor %}
+                            </div>
+                            <div class="clear"></div>
+                        </div></div>
+                    </div>
+                    <div id="custom_ring_outer" class="buildoption" data-val="">
+                        <div class="optionheader"><h4>Outer Ring Color</h4><div class="colorpreview"><a><span class="color-1" style="border-color: #000; background-color: #000"></span></a></div></div>
+                        <div class="optionbody"><div class="inner">
+                           <div class="colorchoices singles choicer">
+                                <div class="indicator"></div>
+                                <span class="nowrap">
+                                    <a data-color="Black"><span class="color-1 first" style="border-color: #000000; background-color: #000000;"></span></a>
+                                    <a data-color="Silver"><span class="color-1" style="border-color: #e0e0e0; background-color: #e0e0e0;"></span></a>
+                                    <a data-color="Yellow"><span class="color-1" style="border-color: #ffed2f; background-color: #ffed2f;"></span></a>
+                                    <a data-color="Red"><span class="color-1" style="border-color: #d61514; background-color: #d61514;"></span></a>
+                               </span>
+                               <span class="nowrap">
+                                    <a data-color="Blue"><span class="color-1" style="border-color: #143095; background-color: #143095;"></span></a>
+                                    <a data-color="Purple"><span class="color-1" style="border-color: #ad049a; background-color: #ad049a;"></span></a>
+                                    <a data-color="Orange"><span class="color-1" style="border-color: #f36e00; background-color: #f36e00;"></span></a>
+                                    <a data-color="Green"><span class="color-1 last" style="border-color: #58d040; background-color: #58d040;"></span></a>
+                                </span>
+                            </div>
+                            <div class="clear"></div>
+                            </div></div>
+                    </div>
+                    <div id="custom_ring_inner" class="buildoption" data-val="">
+                        <div class="optionheader"><h4>Inner Ring Color</h4><div class="colorpreview"><a><span class="color-1" style="border-color: #000; background-color: #000"></span></a></div></div>
+                        <div class="optionbody"><div class="inner">
+                           <div class="colorchoices singles choicer">
+                               <div class="indicator"></div>
+                               <span class="nowrap">
+                                    <a data-color="Black"><span class="color-1 first" style="border-color: #000000; background-color: #000000;"></span></a>
+                                    <a data-color="Silver"><span class="color-1" style="border-color: #e0e0e0; background-color: #e0e0e0;"></span></a>
+                                    <a data-color="Yellow"><span class="color-1" style="border-color: #ffed2f; background-color: #ffed2f;"></span></a>
+                                    <a data-color="Red"><span class="color-1" style="border-color: #c11f1e; background-color: #c11f1e;"></span></a>
+                               </span>
+                               <span class="nowrap">
+                                    <a data-color="Blue"><span class="color-1" style="border-color: #143095; background-color: #143095;"></span></a>
+                                    <a data-color="Purple"><span class="color-1" style="border-color: #ad049a; background-color: #ad049a;"></span></a>
+                                    <a data-color="Orange"><span class="color-1" style="border-color: #f36e00; background-color: #f36e00;"></span></a>
+                                    <a data-color="Green"><span class="color-1 last" style="border-color: #58d040; background-color: #58d040;"></span></a>
+                                </span>
+                            </div>              
+                            <div class="clear"></div>
+                            </div></div>
+                    </div>
+                    <div id="custom_plug" class="buildoption" data-val="Black">
+                        <div class="optionheader"><h4>Plug Color</h4><span class="extraprice" style="display: none;">(+ $2.99)</span><div class="colorpreview"><a><span class="color-1" style="border-color: #000; background-color: #000"></span></a></div></div>
+                        <div class="optionbody"><div class="inner">
+                           <div class="colorchoices singles choicer">
+                                <div class="indicator"></div>
+                                <a data-color="Black" class="default"><span class="color-1 first" style="border-color: #000000; background-color: #000000;"></span></a>
+                                <a data-color="White"><span class="color-1" style="border-color: #dddddd; background-color: #ffffff;"></span></a>
+                                <a data-color="Yellow"><span class="color-1" style="border-color: #ffff16; background-color: #ffff16;"></span></a>
+                                <a data-color="Pink"><span class="color-1 last" style="border-color: #ff8787; background-color: #ff8787;"></span></a>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="comment"><span class="nowrap">Standard black plugs included;</span> <span class="nowrap">deluxe colored plugs are $2.99 extra</span></div>
+                            </div></div>
+                    </div>
+                    <div id="custom_engrave" class="buildoption">
+                        <div class="optionheader"><h4>Engraving</h4><span class="extraprice">(+ $2.99)</span><div class="engravepreview"><span class="graphic"></span><span class="text"></span><span class="graphic"></span></div></div>
+                        <div class="optionbody"><div class="inner">
+                            <label class="first">Text To Engrave:</label>
+                            <input id="custom_engrave_text" placeholder="14 character limit" type="text" maxlength="14"><br/><span class="watch_your_profamity">Warning: Profanity will not be accepted and we reserve the right to deny any custom orders at our discretion.</span>
+                            <label>Font:</label>
+                            <select id="custom_engrave_font">
+                                <option value="Army Wide" data-typeface="ArmyWide" selected="selected">Army Wide</option>
+                                <option value="Brody" data-typeface="Brody" >Brody</option>
+                                <option value="ESP" data-typeface="Esp" >ESP</option>
+                                <option value="Olde English" data-typeface="OldeEnglish" >Olde English</option>
+                                <option value="College" data-typeface="College">College</option>
+                                <option value="Conspiracy" data-typeface="Conspiracy" >Conspiracy</option>
+                                <option value="Cream" data-typeface="Creampuff">Cream</option>
+                                <option value="Elliot" data-typeface="Elliot">Elliot</option>
+                                <option value="Alba" data-typeface="Alba">Alba</option>
+                                <option value="Alba Super" data-typeface="AlbaSuper" >Alba Super</option>
+                                <option value="Pussycat" data-typeface="Pussycat">Pussycat</option>
+                                <option value="Komika Axix" data-typeface="KomikaAxix">Komika Axix</option>
+                                <option value="Weltron 2001" data-typeface="Weltron">Weltron 2001</option>
+                                <option value="Wolf's Bane" data-typeface="Wolfsbane">Wolf's Bane</option>
+                                <option value="Agency FB" data-typeface="Agencyfb">AgencyFB</option>
+                                <option value="Anastasia Regular" data-typeface="Anastasia">Anastasia</option>
+                                <option value="Crillee" data-typeface="Crillee">Crillee</option>
+                                <option value="DKBabysitter" data-typeface="DkBabysitter">DKBabysitter</option>
+                                <option value="Eccentric" data-typeface="Eccentric">Eccentric</option>
+                                <option value="Bank Gothic" data-typeface="BankGothic">Bank Gothic</option>
+                            </select>
+                            <label>Graphic:</label>
+                            <select id="custom_engrave_graphic">
+                                <option value="None" data-graphic="None" selected="selected">None</option>
+                                <option value="Beer" data-graphic="Beer">Beer Mug</option>
+                                <option value="Iron Cross" data-graphic="IronCross">Iron Cross</option>
+                                <option value="Gear" data-graphic="Gear">Gear</option>
+                                <option value="Tribal Flame" data-graphic="TribalFlame">Tribal Flame</option>
+                                <option value="Flower" data-graphic="Flower">Flower</option>
+                                <option value="Skull" data-graphic="Skull">Skull</option>
+                                <option value="Texas Star" data-graphic="TexasStar">Texas Star</option>
+                                <option value="Wings" data-graphic="Wings">Wings</option>
+                                <option value="Butterfly" data-graphic="Butterfly">Butterfly</option>
+                            </select>
+                            </div></div>
+                    </div>
+                    <div id="custom_reset" class="buildoption">
+                        <div class="optionheader"><h4><a>Reset All</a></h4></div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+
+
+        <div class="infopane">
+            <h1>{{ product.namePlain | raw }}</h1>
+            <div id="price">{{ product.priceinfo }}</div>
+            <div class="previewpane">
+                {% if gripbuilder %}
+
+                <div id="builderpreview" style="display: none;"><div id="builderpreview-inner"><div id="builderpreview-scale">
+
+                    <div id="left-side">
+                    
+                        <div class="grip">
+                          <img src="/themes/ls2016/assets/images/blank.gif" />
+                        </div>
+                        <div class="top-ring">
+                            <div class="monograms">
+                                <span class="monogram">
+                                  <span class="monogram-graphic-l"></span>
+                                    <span class="monogram-text"></span>
+                                  <span class="monogram-graphic-r"></span>
+                                </span>
+                                <span class="monogram">
+                                  <span class="monogram-graphic-l"></span>
+                                    <span class="monogram-text"></span>
+                                  <span class="monogram-graphic-r"></span>
+                                </span>            
+                            </div>
+                            <img src="/themes/ls2016/assets/images/blank.gif" />
+                        </div>
+                        <div class="bottom-ring">
+                            <div class="monograms">
+                                <span class="monogram">
+                                  <span class="monogram-graphic-l"></span>
+                                    <span class="monogram-text"></span>
+                                  <span class="monogram-graphic-r"></span>
+                                </span>
+                                <span class="monogram">
+                                  <span class="monogram-graphic-l"></span>
+                                    <span class="monogram-text"></span>
+                                  <span class="monogram-graphic-r"></span>
+                                </span>            
+                            </div>
+                            <img src="/themes/ls2016/assets/images/blank.gif"/>
+                        </div>
+                        <div class="shadow"></div>
+                    </div>
+
+                    <div id="right-side">
+                        <div class="grip">
+                          <img src="/themes/ls2016/assets/images/blank.gif"/>
+                        </div>
+                        <div class="top-ring">
+                            <div class="monograms">
+                                <span class="monogram">
+                                  <span class="monogram-graphic-l"></span>
+                                    <span class="monogram-text"></span>
+                                  <span class="monogram-graphic-r"></span>
+                                </span>
+                                <span class="monogram">
+                                  <span class="monogram-graphic-l"></span>
+                                    <span class="monogram-text"></span>
+                                  <span class="monogram-graphic-r"></span>
+                                </span>            
+                            </div>
+                            <img src="/themes/ls2016/assets/images/blank.gif" />
+                        </div>
+                        <div class="bottom-ring">
+                            <div class="monograms">
+                                <span class="monogram">
+                                  <span class="monogram-graphic-l"></span>
+                                    <span class="monogram-text"></span>
+                                  <span class="monogram-graphic-r"></span>
+                                </span>
+                                <span class="monogram">
+                                  <span class="monogram-graphic-l"></span>
+                                    <span class="monogram-text"></span>
+                                  <span class="monogram-graphic-r"></span>
+                                </span>            
+                            </div>
+                            <img src="/themes/ls2016/assets/images/blank.gif" />
+                        </div>
+                        <div class="shadow"></div>
+                    </div>
+
+                    <div id="plugs" unselectable="on">
+                        <div class="plug" unselectable="on"><img src="/themes/ls2016/assets/images/blank.gif" /></div> 
+                        <div class="plug" unselectable="on"><img src="/themes/ls2016/assets/images/blank.gif" /></div> 
+                    </div>
+
+                    <div class="bottompart">
+                        <div class="rotate"><img src="/themes/ls2016/assets/gripbuilder/rotate.jpg" /></div>
+                    </div>
+
+                    </div></div></div>
+
+                {% endif %}
+                <div id="imagezone">
+                    <div class="spinnerbox"><div class="spinner"></div></div>
+                    <div class="rotateinfo"><h3>Loading 360 View...</h3><img src="/themes/ls2016/assets/images/rotate.png"></div>
+                    <div class="wrap"></div>
+                    <div class="thumbs"><div class="inner"></div></div>
+                </div> 
+            </div>
+
+            <div class="description-box">
+                <div class="description">{{ product.description | raw }}</div>
+                <div class="readmore"><div class="fade"></div><span class="expand">Show More Details</span><span class="collapse">Hide</span></div>
+            </div>
+            <div class="variantchoicer">
+                {% if colorchoices.colorways | length == 1 %}
+                <h3>Color: <span class="val" style="display: inline-block;">{{ colorchoices.colorways[0].colorlist }}</span></h3>
+                {% elseif colorchoices.colorways | length > 1 %}
+                    <h3><span class="selecthide">Choose A </span>Color: <span class="val">None</span></h3>
+                    <div class="choicer colorchoices{% if colorchoices.hasthumbs %} thumbs{% endif %}{% if colorchoices.hastriple %} triples{% elseif colorchoices.hasdouble %} doubles{% else %} singles{% endif %}">
+                        <div class="indicator"></div>
+                        
+                        {% if colorchoices.colorways.length <= 6 and colorchoices.hasthumbs %}<span class="nowrap">{% endif %}
+                        {% for colorway in colorchoices.colorways %}
+                            {% if loop.length <= 6 and colorchoices.hasthumbs %}
+                                     <a class="thumb yeswrap" data-colorway-id="{{ colorway.colorway.id }}" data-name="{{ colorway.colorlist }}">
+                                         <img src="{{ colorway.thumb.thumb(75,75, {extension: 'jpg', matte: 'dcdcdc' }) }}" />
+                                         <span>{{colorway.colorlist}}</span>
+                                     </a> 
+                                     {% if loop.index == 2 and loop.length == 4 %}</span>  <span class="nowrap">{% endif %}
+                                     {% if loop.index == 3 and loop.length == 6 %}</span> <span class="nowrap">{% endif %}
+                                     {% if loop.length != 4 and loop.length != 6 %}</span> <span class="nowrap">{%endif %}
+                            {% else %}
+                                {% if loop.length > 5 and loop.length < 12 %}   
+                                    {% if loop.length % 2 == 1 %}
+                                        {% if loop.index == 2 + ((loop.length)/2)|round(0,'floor') %}<div class="break"></div>{% endif %}
+                                    {% else %}
+                                        {% if loop.index == (loop.length/2) + 1 %}<div class="break"></div>{% endif %}
+                                    {% endif %}
+                                {% else %}
+                                    {% if not loop.first and loop.index % 6 == 1 %} <div class="break"></div>{% endif %}
+                                {% endif %}
+
+                                    <a data-colorway-id="{{ colorway.colorway.id }}" data-name="{{ colorway.colorlist }}">
+                                        {% for color in colorway.colors %}
+
+                                            <span class="color-{{ loop.length }}{% if loop.first %} first{% endif %}{% if loop.last %} last{% endif %}
+                                                  {% if color.small_swatch %} swatch" style="background: url({{ color.small_swatch.thumb(50,50) }}) no-repeat; background-size: cover;"
+                                                  {% elseif color.big_swatch %} swatch" style="background: url({{ color.big_swatch.thumb(50,50) }}) no-repeat; background-size: cover;"
+                                                  {% else %}" style="border-color: #{{ color.hex_code|raw }}; background-color: #{{ color.hex_code|raw }};">
+                                                  {% endif %}
+                                            </span>
+                                        {% endfor %}
+                                   </a>
+
+                            {% endif %}
+                        {% endfor %}
+                        {% if colorchoices.colorways.length < 6 and colorchoices.hasthumbs %}</span>{% endif %}
+                    </div>
+                    <div class="clear"></div>
+                {% endif %}
+            </div>
+
+            <div class="variantchoicer">
+                {% if sizechoices | length == 1 %}
+                <h3>Size: <span class="val" style="display: inline-block;">{{ sizechoices[0].name }}</span></h3>                    
+                {% elseif sizechoices | length > 1 %}
+                    <h3><span class="selecthide">Choose A </span>Size: <span class="val">None</span></h3>
+                    <div class="choicer sizechoices">
+                        <div class="indicator"></div>
+                            {% for size in sizechoices %}
+                                <a class="nowrap" data-size-id="{{ size.id }}" data-name="{{ size.name }}">
+                                    {{ size.name }}
+
+                                </a>
+                            {% endfor %}
+                    </div>
+                    <div class="clear"></div>
+                {% endif %}
+            </div>
+            <div class="cartadd">
+                <select id="quantity" name="quantity">
+                    {% for i in 1..10 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+                <button id="addtocart" class="js-prevent-cart-listener">Add To Cart</a>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>

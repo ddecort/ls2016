@@ -1,0 +1,52 @@
+{% set startpos = 0 %}
+<div class="{% if product %}productpage{% else %}categorypage{%endif%}">
+{% set breadcrumbs %}
+    {% set urlpath = '' %}
+    {% for parent in parents %}
+        {% if not loop.first %}
+            <li class="sep">/</li>
+        {% endif %}
+        <li>
+            <a href="{{ urlpath }}/{{parent.slug}}">{{ parent.name }}</a>
+        </li>
+        {% set urlpath = urlpath ~ '/' ~ parent.slug %}
+    {% endfor %}
+    {% if product %}
+        <li class="sep current">/</li><li class="current">{{ product.namePlain | raw }}</li>
+    {% else %}
+        <li class="sep current">/</li><li class="current">{{category.name}}</li>
+    {% endif %}
+{% endset %}
+
+    {% if product %}
+        {% set startpos = 1 %}
+        <nav class="breadcrumbs superimpose">
+            {{ breadcrumbs }}
+        </nav>
+        {% partial '@productpage' product=product catproducts=products parents=parents category=category %}
+        {% if snippets|length == 0 %}
+            {% partial '@products_related' category=category related=related %}
+        {% endif %}
+    {% elseif not has_list_snippet %}
+        <nav class="breadcrumbs">
+            {{ breadcrumbs }}
+        </nav>
+        <h1>{{category.name }}</h1>
+        {% if products|length > 0 %}
+            {% partial '@products' products=products parents=parents category=category %}
+        {% else %}
+            <div class="category-banner">There are no products in this category. Try back again later.</div>
+        {% endif %}
+    {% else %}
+        <h1>{{ category.name }}</h1>
+    {% endif %}
+    {% if snippets|length > 0 %}
+        {% if has_list_snippet and not product %}
+            <nav class="breadcrumbs superimpose{% if snippets[0].heading_light %} light{% endif %}">
+                {{ breadcrumbs }}
+            </nav>
+        {% endif %}
+        {% partial '@snippets' startpos=startpos snippets=snippets products=products parents=parents category=category related=related %}
+    {% endif %}
+
+</div>

@@ -1,0 +1,11 @@
+name: Zones
+modelClass: wildfire\Dealer\Models\Zone
+form: $/wildfire/dealer/models/zone/fields.yaml
+defaultRedirect: wildfire/dealer/zones
+create:
+    redirect: 'wildfire/dealer/zones/update/:id'
+    redirectClose: wildfire/dealer/zones
+update:
+    redirect: wildfire/dealer/zones
+    redirectClose: wildfire/dealer/zones
+preview: {  }

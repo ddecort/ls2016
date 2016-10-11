@@ -1,0 +1,12 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    id: ID
+    name: 'Name'
+    city: 'City'
+    categories: Categories 
+    created_at: 'Created Date' 
+    updated_at: 'Updated Date'

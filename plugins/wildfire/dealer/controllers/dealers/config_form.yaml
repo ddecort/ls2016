@@ -1,0 +1,10 @@
+name: Dealer
+form: $/wildfire/dealer/models/dealer/fields.yaml
+modelClass: wildfire\Dealer\Models\Dealer
+defaultRedirect: wildfire/dealer/dealers
+create:
+    redirect: 'wildfire/dealer/dealers/update/:id'
+    redirectClose: wildfire/dealer/dealers
+update:
+    redirect: wildfire/dealer/dealers
+    redirectClose: wildfire/dealer/dealers

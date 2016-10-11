@@ -1,0 +1,47 @@
+slides:
+    label: 'Slide'
+    view:
+        list: $/wildfire/snippet/models/snippet/columns-subslide.yaml
+        toolbarPartial: 'relation_slides_toolbar'
+        showSorting: false
+        defaultSort: 
+            column: sort_order
+            direction: asc
+    manage:
+        form: $/wildfire/snippet/models/snippet/fields-subslide.yaml
+    emptyMessage: 'No Slides'
+    deferredBinding: false
+
+columns:
+    label: 'Split-Row Snippet'
+    emptyMessage: 'No Split-Row Snippets'
+    view:
+        list: $/wildfire/snippet/models/snippet/columns-splitrow.yaml
+        toolbarPartial: 'relation_column_toolbar'
+        recordUrl: 'wildfire/snippet/snippets/update/:id?frm=snippet&fid=:parent_snippet_id'            
+        showSearch: false
+        showSorting: false
+        defaultSort:
+            column: sort_order
+            direction: asc
+    manage:
+        form: $/wildfire/snippet/models/snippet/fields.yaml
+
+products:
+    label: 'Product'
+    view:
+        list: $/wildfire/product/models/product/columns-relation.yaml
+        toolbarPartial: 'relation_product_toolbar'
+        showSorting: false
+        defaultSort:
+            column: pivot[sort_order]
+            direction: asc
+    manage:
+        list: $/wildfire/product/models/product/columns-select.yaml
+        showSorting: false
+        defaultSort:
+            column: name
+            direction: asc
+        showSearch: true
+    emptyMessage: 'No Products'
+    deferredBinding: false

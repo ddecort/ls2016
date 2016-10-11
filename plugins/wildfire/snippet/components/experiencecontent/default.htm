@@ -1,0 +1,18 @@
+<div id="athletes-content" class="athletes">
+
+    <h1 id="athlete-title">Experience</h1>
+    {% if subcategories|length > 0 %}
+        <ul class="subcategories">
+            <li><a{% if sport.slug == '' %} class="selected"{% endif %} href="/{{ section.slug }}/experience">All</a></li>
+            {% for cat in subcategories %}
+            <li><a{% if sport.slug == cat.slug %} class="selected"{% endif %} href="/{{cat.slug}}/experience">{{ cat.slug }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% if snippets|length > 0 %}
+    {% partial '@snippets' snippets=snippets %}
+{% else %}
+    <div class="category-banner">There is nothing to show here. Try back again later.</div>
+{% endif %}
+</div>

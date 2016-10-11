@@ -1,0 +1,3 @@
+<?php if ($record->image): ?>
+<img style="border: 1px solid #ccc;" src="<?php echo $record->image->getThumb(75,75,['mode' => 'crop', 'extension' => 'auto']); ?>" />
+<?php endif; ?>

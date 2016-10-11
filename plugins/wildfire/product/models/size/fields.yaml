@@ -1,0 +1,12 @@
+fields:
+    name:
+        label: 'Size Name/Label'
+        oc.commentPosition: ''
+        span: left
+        required: 1
+        type: text
+    shortname:
+        label: 'Short Name'
+        span: left
+        oc.commentPosition: ''
+        type: text

@@ -1,0 +1,13 @@
+title: Instagram
+modelClass: wildfire\Snippet\Models\InstagramPost
+showCheckboxes: true
+list: $/wildfire/snippet/models/instagram_post/columns.yaml
+noRecordsMessage: 'backend::lang.list.no_records'
+defaultSort:
+    column: date_posted
+    direction: desc
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+filter: config_filter.yaml

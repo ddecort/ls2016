@@ -1,0 +1,28 @@
+plugin:
+    name: 'wildfire.dealer::lang.plugin.name'
+    description: 'List of active dealers'
+    author: Wildfire
+    icon: oc-icon-table
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Dealers
+        url: wildfire/dealer/dealers
+        icon: icon-table
+        sideMenu:
+            dealers:
+                label: 'Dealer List'
+                url: wildfire/dealer/dealers
+                icon: icon-copy
+            new_dealer:
+                label: 'Add Dealer'
+                url: wildfire/dealer/dealers/create
+                icon: icon-plus
+            import:
+                label: 'CSV Import'
+                url: wildfire/dealer/dealers/import
+                icon: icon-upload
+            zones:
+                label: 'Geo Zones'
+                url: wildfire/dealer/zones
+                icon: icon-sitemap

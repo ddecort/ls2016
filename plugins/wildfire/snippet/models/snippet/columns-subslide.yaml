@@ -1,0 +1,18 @@
+columns:
+    heading_text:
+        label: 'Heading'
+        sortable: false
+    imagepreview:
+        label: 'Image Preview'
+        type: partial
+        path: $/wildfire/snippet/controllers/snippets/_imagepreview.htm
+        sortable: false
+    sort_order:
+        label: ''
+        path: $/wildfire/snippet/controllers/snippets/_sort_order.htm
+        type: partial
+    created_at:
+        label: 'Date Added'
+        type: timesince
+        sortable: false
+

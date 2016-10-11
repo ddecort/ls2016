@@ -1,0 +1,20 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+scopes:
+
+    category:
+
+        # Filter name
+        label: 'Filter By Sports'
+
+        # Model Class name
+        modelClass: wildfire\Product\Models\Category
+
+        # Model attribute to display for the name
+        nameFrom: indentedName
+
+        # Apply query scope
+        scope: FilterSports
+
+

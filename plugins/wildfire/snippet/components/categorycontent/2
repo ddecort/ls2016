@@ -1,0 +1,418 @@
+$(function() {
+
+    var updateChoicerSelection = function(link){
+         //for setting z-index effects
+         $(link).parents('.choicer').find('.last-selected').removeClass('last-selected');
+         $(link).parents('.choicer').find('.selected').removeClass('selected').addClass('last-selected');
+         $(link).addClass('selected');
+         $(link).parents('.choicer').find('.indicator').show().velocity({ top: ($(link).position().top - 1), left: ($(link).position().left - 1), width: $(link).outerWidth(true) + 2, height: ($(link).outerHeight(true) + 2)}, { easing: 'easeInOutCubic', duration: 400});
+         head = $(link).parent().prev('h3').addClass('selected').find('span.val').html($(link).attr('data-name'));
+    };
+
+    var resetCustomization = function(){
+        $('#gripbuilder .colorchoices a.default').click();
+
+        $('#imagezone .wrap .ndd-uberzoom-interface').hide();
+        $('#imagezone .wrap .ndd-uberzoom-content').velocity({'rotateZ': -45 }, {duration: 500, easing: 'easeInOutCubic' });
+    };
+
+    $('#gripbuilder .choicer a').click(function(el){
+        $(this).parents('.buildoption').find('.colorpreview a span').css('background-color',$(this).find('span').css('background-color'));
+
+        console.log('update attribute store?? TODO');
+
+        console.log('switch to rotation view if needed');
+        console.log('update preview -- TODO');
+    });
+
+    $('#gripbuilder #custom_reset a').click(resetCustomization);
+
+
+    //click function for color and sizes
+     $('.productpage .choicer a').click(function(el){
+         updateChoicerSelection(this);
+         if ($(this).attr('data-colorway-id')){
+             updateVariantSelection($(this).attr('data-colorway-id'), false);
+             if (showbuilder){
+                 var other = $('.productpage .choicer a[data-colorway-id="' + $(this).attr('data-colorway-id') + '"]').filter(':not(.selected)');
+                 if (other.length) updateChoicerSelection(other);
+             }
+         }
+         else if ($(this).attr('data-size-id')) updateVariantSelection(false, $(this).attr('data-size-id'));
+     });      
+    
+   
+    selected_variant = sole_variant || false;
+    var selected_colorway_id = sole_colorway_id || false;
+    var selected_size_id = sole_size_id || false;
+    var has_colorways = null;
+    var has_sizes = null;
+    var current_image_id = false;
+    var give_spin_demo = true;
+    
+    function updateVariantSelection(colorway_id, size_id)
+    {
+        if (colorway_id) selected_colorway_id = colorway_id;
+        if (size_id) selected_size_id = size_id;
+        
+        //filter images
+        updateImage(searchImage(selected_colorway_id,selected_size_id));
+        
+        //get from table
+        found = false;
+        for (i =0 ; i < variantinfo.length; i++)
+        {
+            if (variantinfo[i].colorway_id == selected_colorway_id)
+            {
+                if (variantinfo[i].size_id == selected_size_id)
+                {
+                    found = true;
+                    selected_variant = variantinfo[i];
+                    $('#price').html('$' + selected_variant.price);
+                    if (selected_variant.inventory <= 0)
+                    {
+                        $('#addtocart').html('Sold Out')
+                    }
+                }
+            }
+        }
+    }
+    
+    var addToCartAction = function (evt)
+    {
+        if (!selected_variant)
+        {
+            if (has_colorways && !selected_colorway_id) $.oc.flashMsg({ text: 'Please make a choice from the color options', class: 'error', interval: 6});
+            else if (has_sizes && !selected_size_id) $.oc.flashMsg({ text: 'Please make a choice from the size options', class: 'error', interval: 6});
+        }
+        else if (selected_variant.inventory <= 0)
+        {    
+            if (variantinfo.length > 0) $.oc.flashMsg({ text: 'Sorry, we are sold out of the product with the options you selected. Try another color/size or check back later.', class: 'error', interval: 10});
+            else $.oc.flashMsg({ text: 'Sorry, we are sold out of this product right now. Please try again later.', class: 'error', interval: 10});
+        }
+        else
+        {
+            var obj = selected_variant;
+            obj.image = { src: productimages[current_image_id].thumb };
+            
+            var props = {};
+            quantity = $('#quantity').val();
+            addOrUpdateVariant(obj, props, parseInt(quantity), evt.target);
+
+            $.request('onCartTrack', {
+                data: {variant_id: selected_variant.myid}
+            });
+        }
+    }
+    var drawImage = function(imageobj)
+    {
+
+        var image_id = imageobj.data('image_id_loading');
+        var size = imageobj.data('image_size');
+        var rotation = false;
+        imageinfo = productimages[image_id];
+        if (imageinfo.rotation && imageinfo.rotation.length > 1)
+        {
+            rotation = [];
+            for (var i=0; i < imageinfo.rotation.length; i++) {
+                rotation.push(imageinfo.rotation[i]['src'+size]);
+            }
+        }
+
+        //determine the area size
+        area = $('#imagezone .wrap');
+        area.append(imageobj);
+
+        area = $('#imagezone .wrap');
+        imageobj = area.find('img');
+        $('#imagezone .rotateinfo').css('opacity','0');
+        if (area && imageobj)
+        {
+            area.css({ width: 'auto', height: 'auto', top: 0, left: 0, margin: 0});
+
+            //modify the area to not be taller than the screen minus header area
+            real_estate = $(window).height() - area.offset().top;
+            if (real_estate < area.height() && real_estate > 200)area.height(real_estate + 'px');
+            
+            img_aspect = imageobj[0].naturalWidth/imageobj[0].naturalHeight;
+            div_aspect = area.innerWidth()/area.innerHeight();
+            if (area.width() < imageobj[0].naturalWidth || area.height() < imageobj[0].naturalHeight || rotation)
+            {
+                imageobj.css({'margin-top':0,'margin-left':0,width:'auto',height:'auto', opacity: 1});
+                imageobj.uberZoom({ startInFullscreen : false, fullscreen: ($(window).width() < 1024), navigator : true, navigatorImagePreview : true, rubberband : true, maxZoom: (rotation ? 3 : 'auto'), rotationImages: rotation }); 
+            }
+            else
+            {
+                if (img_aspect > div_aspect) imageobj.css({ width: Math.min(imageobj[0].naturalWidth, area.innerWidth())}).css({height: imageobj.width/img_aspect});
+                else imageobj.css({ width: Math.min(imageobj[0].naturalWidth, area.innerHeight()*img_aspect), height: Math.min(imageobj[0].naturalHeight,area.innerHeight()) });
+                imageobj.css({ 'margin-top': (area.innerHeight() - imageobj.height())/2, 'margin-left': (area.innerWidth() - imageobj.width())/2 })
+                imageobj.css({opacity: 1});
+            }
+            
+        }
+
+        $('.productpane .previewpane .spinnerbox').addClass('hiding');
+    }
+    
+    function productImageResize()
+    {
+        area = $('#imagezone .wrap');
+        //modify the area to not be taller than the screen minus header area
+        real_estate = $(window).height() - area.offset().top;
+        if (real_estate < area.height() && real_estate > 200)area.height(real_estate + 'px');
+    }    
+
+    var updateImage = function(image_id)
+    {
+        if (current_image_id === image_id)
+        {
+            return false;
+        }
+        else if (productimages[image_id])
+        {
+            current_image_id = image_id;
+            //make sure indicator is showing
+            $('#imagezone .wrap').empty();
+            $('.productpane .previewpane .spinnerbox').removeClass('hiding');
+
+
+            loader = new Image();
+            var imageinfo = productimages[image_id];
+            var src = '';
+            if (imageinfo.rotation && imageinfo.rotation.length > 1)
+            {
+                //determine what size image to use
+                if ($(window).width() > 1600 ) size = 2000;
+                else if ($(window).width() > 800) size = 1000;
+                else size = 500;
+                src = imageinfo.rotation[0]['src'+size];
+            } else {
+                //determine what size image to use
+                if ($(window).width() > 1023) size = 2000;
+                else size = 1000;
+                src = imageinfo['src'+size];
+            }
+            $(loader).data('image_id_loading',image_id).data('image_size', size);
+            $(loader).css('opacity',0);
+            loader.onload = function(){
+                drawImage($(this));
+                current_image_id = image_id;
+                this.onload = null;
+            };
+            loader.src = src;
+        }
+    }
+    
+    var searchImage = function(colorway_id, size_id)
+    {
+        if (productimages.length == 1) return 0;
+        
+        found = false;
+        
+        //find match for both
+        for (i = 0; i < productimages.length; i++)
+        {
+            if ((!has_colorways || productimages[i].colorway_id == colorway_id) && (!has_sizes || productimages[i].size_id == size_id))
+            {
+                found = true;
+                return i;
+            }
+        }
+        
+        //find match for one
+        for (i = 0; i < productimages.length; i++)
+        {
+            if ( ((colorway_id && productimages[i].colorway_id == colorway_id) && productimages[i].size_id === false) || (( size_id && productimages[i].size_id == size_id) && productimages[i].colorway_id === false))
+            {
+                found = true;
+                return i;
+            }
+        }                
+        
+        //give up and use first image
+        if (!found)
+        {
+            return 0;
+        }
+    
+    }
+    
+    //check for zero stock on all variants
+    has_stock = false;
+    found_color = null;
+    found_size = null;
+    for (i =0 ; i < variantinfo.length; i++)
+    {
+        if (variantinfo[i].inventory > 0){
+            has_stock = true;
+        }
+        if (variantinfo[i].colorway_id && found_color != variantinfo[i].colorway_id)
+        {
+            if (found_color != null) has_colorways = true;
+            else found_color = variantinfo[i].colorway_id;
+        }
+        if (variantinfo[i].size_id && found_size != variantinfo[i].size_id)
+        {
+            if (found_size != null) has_sizes = true;
+            else found_size = variantinfo[i].size_id;
+        }
+    }
+    if (!has_stock) $('#addtocart').addClass('disabled').text('Sold Out');
+    
+    //choose default variant
+    if (variantinfo.length == 1) selected_variant = variantinfo[0];
+    
+    //choose default image and load
+    updateImage(searchImage(false,false));
+    
+    //set up click event
+    $('#addtocart').click(addToCartAction);
+     
+     //pad sizes to full width if there's more than one row
+     var widest_amt = 0;
+     var widest_idx = null;
+     var rowlengths = [];
+     var rowitems = [];
+     var lastvert = false;
+     var rownum = -1;
+     
+     var choices = $('.productpage .sizechoices a')
+     if (choices.first().height() * 2 <= $('.productpage .sizechoices').first().height() )
+     {
+         for (var i = 0; i < choices.length; i ++)
+         {
+             var item = $(choices[i]);
+             if (item.position().top > lastvert || !lastvert)
+             {
+                 rownum++;
+                 lastvert = item.position().top;
+                 rowlengths[rownum] = item.outerWidth(true);
+                 rowitems[rownum] = [];
+             } else {
+                 rowlengths[rownum] += item.outerWidth(true);
+             }
+            rowitems[rownum].push(item);
+             if (rowlengths[rownum] > widest_amt){
+                widest_amt = rowlengths[rownum];
+                widest_idx = rownum;
+             }
+         }
+
+         if (rowlengths.length == 2)
+         {  
+             while (rowlengths[0] - rowitems[0][rowitems[0].length - 1].outerWidth() > rowlengths[1] + rowitems[0][rowitems[0].length -1].outerWidth())
+             {
+                 item = rowitems[0].pop();
+                 rowlengths[0] -= item.outerWidth();
+                 widest_amt = rowlengths[0];
+                 rowlengths[1] += item.outerWidth();
+                 rowitems[1].unshift(item);
+             }
+         }
+        
+         for (var j = 0; j < rowlengths.length; j++)
+         {
+             if (j > 0 )
+             {
+                 rowitems[j][0].before('<br />');
+             }
+             if (j != widest_idx){
+                 var amt_to_add = (widest_amt - rowlengths[j])/rowitems[j].length;
+                 for (var k = 0; k < rowitems[j].length; k++)
+                 {
+                     rowitems[j][k].outerWidth(Math.round(rowitems[j][k].outerWidth() + amt_to_add));
+                 }
+                 
+             }
+         }
+
+         
+     }
+     var maxoverall = 0;
+     for (i = 0; i < rowitems.length; i++){
+         overall = rowitems[i][rowitems[i].length - 1].position().left + rowitems[i][rowitems[i].length - 1].outerWidth(true);
+         if (overall > maxoverall) maxoverall = overall;
+     }
+     for (i = 0; i < rowitems.length; i++){
+         var diff = maxoverall - rowitems[i][rowitems[i].length - 1].position().left - rowitems[i][rowitems[i].length - 1].outerWidth(true);
+         if (diff > 1)
+         {
+             rowitems[i][rowitems[i].length - 1].outerWidth(rowitems[i][rowitems[i].length - 1].outerWidth() + diff);
+         }
+     }             
+
+    $("#quantity").select2({ 
+        minimumResultsForSearch: 20, 
+        width: '45%',
+        templateSelection: function(el){ return 'Quantity: ' + el.text; }
+    });
+
+    $(".productpage .description-box .readmore").click(function() {
+         
+      par = $(this).parent();
+
+        if (par.hasClass('active'))
+        {
+            par.removeClass('active').outerHeight(par.data('orig-collapsedheight'));
+        }
+        else
+        {
+            par.addClass('active').data('orig-collapsedheight', par.outerHeight()).outerHeight(par.data('orig-fullheight'));
+        }
+    });
+
+    //check for too-long content
+    var minOverflow = 50; // number of pixels over-height needed to force read-more box. (prevents read-more from cutting off just 1 line of text)
+    var minRemaining = 100; // minimum to keep visible.
+    if ($('.productpane').offset().top + $('.productpane').height() > ($(window).height() + minOverflow))
+    {
+        diff = $('.productpane').offset().top + $('.productpane').height() - $(window).height();
+        box = $('.productpage .description-box');
+        if (box.outerHeight() > diff + minRemaining)
+        {
+            $('.productpage .description-box .readmore').show();
+            box.data('orig-fullheight', box.outerHeight() + $('.productpage .description-box .readmore').outerHeight()).outerHeight(box.outerHeight() - diff);
+            box.data('org-collapsedheight', box.outerHeight());
+        }
+    }
+
+    if (showbuilder) {
+        resetCustomization();
+    }
+
+
+    (function($,sr){
+    
+      // debouncing function from John Hann
+      // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
+      var debounce = function (func, threshold, execAsap) {
+          var timeout;
+    
+          return function debounced () {
+              var obj = this, args = arguments;
+              function delayed () {
+                  if (!execAsap)
+                      func.apply(obj, args);
+                  timeout = null;
+              };
+    
+              if (timeout)
+                  clearTimeout(timeout);
+              else if (execAsap)
+                  func.apply(obj, args);
+    
+              timeout = setTimeout(delayed, threshold || 100);
+          };
+      }
+      // smartresize 
+      jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
+    
+    })(jQuery,'smartresize');
+    
+    
+    // usage:
+    $(window).smartresize(function(){
+      productImageResize();
+    });
+
+});

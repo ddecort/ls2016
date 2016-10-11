@@ -1,0 +1,42 @@
+title = "Contact Us"
+url = "/:sport/contact"
+layout = "default"
+is_hidden = 0
+
+[contactForm]
+injectBootstrapAssets = 0
+injectMainScript = 1
+==
+<div class="contactpage">
+    <div class="dealer-sidebar">
+        <h1>Contact Us</h1>
+        <div class="dealerchunk">
+            <h4>Our Mailing Address</h4>
+            <span class="caps">
+                885 S. Automall Drive Unit C <br />
+                American Fork, UT 84003 <br />
+                USA
+            </span>
+        </div>
+    
+        <div class="dealerchunk">
+            <h4>Telephone/Fax</h4>
+            <span class="caps">
+                Phone: 1-801-229-9099<br />
+                Fax: 1-801-229-9013
+            </span>
+        </div>
+    
+        <div class="dealerchunk">
+            <h4>Find a dealer near you:</h4>
+            <form class="quickform">
+                <input type="text" data-prefix="" class="dealersearch" name="search" placeholder="Enter your city or state" autocomplete="off">
+            </form>
+        </div>
+    </div>
+    
+    <div class="dealers">
+        <h2>Send Us an Email:</h2>
+        {% component 'contactForm' %}
+    </div>
+</div>

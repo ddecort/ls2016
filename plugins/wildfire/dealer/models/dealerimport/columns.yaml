@@ -1,0 +1,37 @@
+columns:
+    id:
+        label: id
+        type: number
+    name:
+        label: name
+        type: text
+    zone:
+        label: zone
+        type: text
+    country:
+        label: country
+        type: text
+    region:
+        label: region
+        type: text
+    city:
+        label: city
+        type: text
+    postal:
+        label: 'postal code'
+        type: text
+    street:
+        label: street
+        type: text
+    phone:
+        label: phone
+        type: text
+    website:
+        label: website
+        type: text
+    email:
+        label: email
+        type: text
+    distributor:
+        label: distributor
+        type: switch

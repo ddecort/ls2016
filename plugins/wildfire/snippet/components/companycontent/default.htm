@@ -1,0 +1,5 @@
+{% if snippets|length > 0 %}
+    {% partial '@snippets' snippets=snippets %}
+{% else %}
+    <div class="category-banner">There is nothing to show here. Try back again later.</div>
+{% endif %}

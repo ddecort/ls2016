@@ -1,0 +1,549 @@
+fields:
+    type@create:
+        label: Type
+        requred: true
+        oc.commentPosition: ''
+        placeholder: '--- Select ---'
+        span: auto
+        type: dropdown
+    type@update:
+        label: Type
+        type: text
+        span: auto
+        type: dropdown
+        disabled: true
+    split_width:
+        label: Split Row Item Width
+        commentAbove: 'Set the width of this snippet (1-3) as a fraction of a full row (4 blocks wide)'
+        type: number
+        span: auto
+        default: 2
+        trigger:
+            action: hide
+            field: parent_snippet_id
+            condition: 'value[]'
+
+tabs:
+    fields:
+        warning_typefirst:
+            span: full
+            type: partial
+            trigger:
+                action: show
+                field: type
+                condition: 'value[]'
+            tab: Snippet Settings
+        catprods_settings:
+            type: partial
+            path: $/wildfire/snippet/controllers/snippets/_warning_contextual.htm
+            span: full
+            trigger:
+                action: show
+                field: type
+                condition: 'value[category_list]'
+            tab: Snippet Settings
+        category_limit:
+            type: number
+            label: 'Limit Number of Products to Show in this Snippet'
+            commentAbove: 'You can use this to break up the product listing into parts without having to manually assign products to a product snippet. Leave blank or set to 0 for unlimited.'
+            span: auto
+            trigger:
+                action: show
+                field: type
+                condition: 'value[category_list]'
+            tab: Snippet Settings
+        related_othercats:
+            label: 'Include Products from Other Categories'
+            type: switch
+            default: 1
+            trigger:
+                action: show
+                field: type
+                condition: 'value[products_related]'
+            tab: Snippet Settings              
+        related_settings:
+            type: partial
+            path: $/wildfire/snippet/controllers/snippets/_warning_contextual.htm
+            span: full
+            trigger:
+                action: show
+                field: type
+                condition: 'value[products_related]'
+            tab: Snippet Settings
+        content:
+            label: 'HTML Content'
+            type: richeditor
+            size: huge
+            span: full
+            trigger:
+                action: show
+                field: type
+                condition: 'value[content]'
+            tab: Snippet Settings
+        content_background:
+            label: 'Background Color'
+            type: colorpicker
+            span: auto
+            default: 'ffffff'
+            trigger:
+                action: show
+                field: type
+                condition: 'value[content]'
+            tab: Snippet Settings
+        created_at: 
+            label: 'Post Date'
+            type: datepicker
+            mode: date
+            span: auto
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            commentAbove: 'Items are sorted on the Experience page by date -- order on other locations is random.'
+            tab: Blog Post Settings               
+        content_blog:
+            label: 'HTML Content'
+            type: richeditor
+            size: huge
+            span: full
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            tab: Blog Post Settings
+        content_blog_background:
+            label: 'Content Background Color'
+            type: colorpicker
+            span: auto
+            default: 'ffffff'
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            tab: Blog Post Settings               
+        company_menu_settings:
+            type: partial
+            path: $/wildfire/snippet/controllers/snippets/_warning_contextual.htm
+            span: full
+            trigger:
+                action: show
+                field: type
+                condition: 'value[company_menu]'
+            tab: Snippet Settings
+        instagram_user:
+            label: Instagram Username (optional)
+            type: dropdown
+            commentAbove: 'Only accounts set up with proper auth tokens can be used. These are your only choices:'
+            placeholder: '--- Select ---'
+            span: auto
+            trigger:
+                action: show
+                field: type
+                condition: 'value[instagram]'
+            tab: Snippet Settings
+        instagram_post_id:
+            label: Instagram Post Id (optional)
+            commentAbove: 'Enter the shortcode ID from the instagram post URL to show a specific post'
+            type: text
+            span: auto
+            trigger:
+                action: show
+                field: type
+                condition: 'value[instagram]'
+            tab: Snippet Settings
+        instagram_hashtag:
+            label: Instagram Hashtag (optional)
+            commentAbove: 'Enter a hashtag to further filter results. Use this in combination with a particular user for best results'
+            span: auto
+            type: text
+            trigger:
+                action: show
+                field: type
+                condition: 'value[instagram]'
+            tab: Snippet Settings
+        feeds:
+            type: relation
+            required: true
+            label: 'Page/Section to pull latest from'
+            commentAbove: 'Only Slides and Videos will be pulled'
+            span: left
+            trigger:
+                action: show
+                field: type
+                condition: 'value[feed]'
+            tab: Snippet Settings
+        feed_number:
+            type: number
+            label: Number of Items to Pull
+            commentAbove: '1 or 2 is probably good'
+            default: 1
+            span: left
+            trigger:
+                action: show
+                field: type
+                condition: 'value[feed]'
+            tab: Snippet Settings 
+        bestselling_settings:
+            type: partial
+            path: $/wildfire/snippet/controllers/snippets/_warning_contextual.htm
+            span: full
+            trigger:
+                action: show
+                field: type
+                condition: 'value[products_bestsellers]'
+            tab: Snippet Settings
+        filter_color:
+            label: 'Show Color Filter'
+            span: auto
+            type: switch
+            default: 1
+            trigger:
+                action: show
+                field: type
+                condition: 'value[category_filter]'
+            tab: Snippet Settings
+        filter_subcategory:
+            label: 'Show Subcategory Filter'
+            type: switch
+            span: auto
+            default: 1
+            trigger:
+                action: show
+                field: type
+                condition: 'value[category_filter]'
+            tab: Snippet Settings               
+        slide_settings:
+            label: 'Single Slide Settings'
+            span: full
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            type: section
+            tab: Snippet Settings
+        heading_text:
+            label: Heading
+            span: left
+            type: text
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            commentAbove: 'enter <br /> for a forced line break'
+            tab: Snippet Settings
+        is_video:
+            label: 'Is a Video?'
+            span: right
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            type: switch
+            tab: Snippet Settings
+        subheading:
+            label: 'Subheading Text'
+            span: auto
+            type: text
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            commentAbove: 'enter <br /> for a forced line break'
+            tab: Snippet Settings
+        aspect_ratio:
+            label: 'Slide Aspect Ratio'
+            options:
+                1: '1 (Square; avoid = 2000x2000)'
+                '1.78': '1.78 (16:9 widescreen = 2000x1123)'
+                '2.35': '2.35 (21:9 super wide = 2000x851)'
+                '3.5': '3.50 (narrow = 2000x571)'
+                '4.0': '4.00 (super narrow, good for instagram rows = 2000x500)'
+                '-1' : 'Fit to content (for HTML/long text)'
+            span: auto
+            default: '2.35'
+            type: dropdown
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            commentAbove: '(should be roughly equal to desktop image aspect ratio)'
+            tab: Snippet Settings
+        button_text:
+            label: 'Button Text'
+            span: auto
+            type: text
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            commentAbove: 'eg "Watch Video" or "View Details". If left blank, entire image will be linked.'
+            tab: Snippet Settings
+        link_url:
+            label: 'Link or Video URL'
+            span: auto
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            type: text
+            commentAbove: 'URL for the button (or slide if no button text) Or the video URL if it is a video slide'
+            tab: Snippet Settings
+        desktop_settings:
+            label: 'Desktop View Settings'
+            span: left
+            type: section
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            tab: Snippet Settings
+        mobile_settings:
+            label: 'Mobile View Settings'
+            span: right
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            type: section
+            tab: Snippet Settings
+        image_desktop:
+            label: 'Image (for desktop)'
+            imageHeight: 200
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: left
+            required: 1
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            type: fileupload
+            commentAbove: 'Main image background of the slide. Size 2000px wide (or more). Height determined by selected aspect ratio'
+            tab: Snippet Settings
+        image_mobile:
+            label: 'Image (for mobile; optional)'
+            mode: image
+            imageHeight: 200
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: right
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            type: fileupload
+            commentAbove: 'Can provide a cropped/different version since mobile aspect ratio is quite different. 768px wide is big enough, but can be bigger'
+            tab: Snippet Settings
+        heading_position:
+            label: 'Heading Position (Desktop)'
+            options:
+                left: Left
+                right: Right
+                center: Center
+            span: left
+            default: left
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            type: dropdown
+            commentAbove: 'Allows left, center, or right aligning the header on the image'
+            tab: Snippet Settings
+        heading_position_mobile:
+            label: 'Heading Position (Mobile)'
+            options:
+                top: 'Vertical Top, Centered'
+                middle: 'Vertical Middle, Centered'
+                bottom: 'Vertical Bottom, Centered'
+            span: right
+            type: dropdown
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            commentAbove: 'Top, middle, or bottom vertical alignment. Always centered horizontally.'
+            tab: Snippet Settings
+        heading_light:
+            label: 'Text Color (Desktop)'
+            oc.commentPosition: ''
+            options:
+                - 'Black (for light images)'
+                - 'White (for dark images)'
+            span: left
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            type: radio
+            tab: Snippet Settings
+        heading_light_mobile:
+            label: 'Text Color (Mobile)'
+            oc.commentPosition: ''
+            options:
+                - 'Black (for light images)'
+                - 'Light (for dark images)'
+            span: right
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            type: radio
+            tab: Snippet Settings
+        video_border:
+            label: 'Pad Video with White Border'
+            commentTop: 'Adds padding around the video so that the thumbnail shows at 16:9 and leaves whitespace for heading'
+            type: switch
+            default: 0
+            trigger:
+                action: show
+                field: is_video
+                condition: checked
+            tab: Snippet Settings
+        mobile_hide:
+            type: switch
+            default: 0
+            label: 'Hide entirely on Mobile View'
+            tab: Snippet Settings
+            span: right
+        mobile_show_header:
+            label: 'Show Header on Mobile'
+            type: switch
+            default: true
+            span: right
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            tab: Snippet Settings
+        mobile_show_subheader:
+            label: 'Show Subeader on Mobile'
+            type: switch
+            default: true
+            span: right
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            tab: Snippet Settings
+        mobile_show_button:
+            label: 'Show Button on Mobile'
+            type: switch
+            default: false
+            span: right
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slide]'
+            tab: Snippet Settings
+        slideshow_settings:
+            label: 'Slideshow Settings'
+            span: full
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slideshow]'
+            type: section
+            tab: Snippet Settings
+        slideshow_delay:
+            label: 'Slide Time'
+            span: auto
+            default: '3000'
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slideshow]'
+            type: number
+            commentAbove: 'in milliseconds (1 second = 1000 milliseconds)'
+            tab: Snippet Settings
+        slideshow_transition:
+            label: 'Transition Time'
+            span: auto
+            default: '500'
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slideshow]'
+            type: number
+            commentAbove: 'in milliseconds (1 second = 1000 milliseconds)'
+            tab: Snippet Settings
+        slides:
+            label: ''
+            type: partial
+            span: full
+            trigger:
+                action: show
+                field: type
+                condition: 'value[slideshow]'
+            tab: Snippet Settings
+        aspect_ratio_split:
+            label: 'Aspect Ratio of Overall Row'
+            options:
+                1: '1 (Square; avoid = 2000x2000)'
+                '1.78': '1.78 (16:9 widescreen = 2000x1123)'
+                '2.35': '2.35 (21:9 super wide = 2000x851)'
+                '3.5': '3.50 (narrow = 2000x571)'
+                '4.0': '4.00 (super narrow, good for instagram rows = 2000x500)'
+                '-1' : 'Fit to content (for HTML/long text)'
+            span: auto
+            default: '2.35'
+            type: dropdown
+            trigger:
+                action: show
+                field: type
+                condition: 'value[split_row]'
+            tab: Snippet Settings
+        columns@update:
+            label: ''
+            type: partial
+            span: full
+            trigger:
+                action: show
+                field: type
+                condition: 'value[split_row]'
+            tab: Snippet Settings
+        product_settings:
+            label: 'Product Link Settings'
+            span: full
+            trigger:
+                action: show
+                field: type
+                condition: 'value[products_info]'
+            type: section
+            tab: Snippet Settings
+        products:
+            label: ''
+            type: partial
+            span: full
+            trigger:
+                action: show
+                field: type
+                condition: 'value[products_info]'
+            tab: Snippet Settings
+        pages:
+            label: 'Add to Pages'
+            span: auto
+            type: relation
+            tab: 'Include on Pages'
+        categories:
+            label: 'Add to Product Category Index'
+            span: auto
+            type: relation
+            tab: 'Include on Pages'
+        athletes:
+            label: 'Add to Athlete Pages'
+            span: auto
+            type: relation
+            tab: 'Include on Pages'
+        parent_snippet_id:
+            type: number
+            commentAbove: 'Dont worry about this.'
+            disabled: true
+            span: auto
+            tab: 'Include on Pages'
+               
+                

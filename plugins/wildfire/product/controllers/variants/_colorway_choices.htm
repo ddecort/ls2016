@@ -1,0 +1,16 @@
+<div class="relation-widget" id="<?= $this->getId() ?>">
+<?php 
+    $field->type = 'dropdown';
+    $field_options = [];
+    $opts = $this->formGetModel()->colorways()->with('colors')->get();
+    foreach ($opts as $opt)
+    {
+        $field_options[$opt->id] = $opt->colorlist;
+    }
+    $field_options['new'] = 'Create a New Colorway...';
+    $field->options($field_options);
+    $field->placeholder = 'No Colorway';
+
+    echo $this->makePartial('~/modules/backend/widgets/form/partials/_field_dropdown.htm', ['field' => $field]);
+?>
+</div>

@@ -1,0 +1,82 @@
+{% set cycle_prefix = '/cycling' %}
+{% set sport_prefix = '/sports' %}
+
+{% if location == 'Header' %}
+<div class="column1">
+    <h3>Shop By Sport</h3>
+{% endif %}
+{% if location == 'Header' or location == 'Footer' %}
+    <nav>
+        {% set sportlist = '' %}
+        {% set cyclelist = '' %}
+        {% for sportitem in sports %}
+            {% set thislistitem %}
+                <li><a href="/{{ sportitem.slug }}">{{ sportitem.name }} </a>{% if sportitem.name|capitalize == sport.slug|capitalize %}
+                    <ul>
+                    {% for child in sportitem.submenu %}
+                        <li><a href="{{ child.url }}">{{ child.name }} </a></li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}</li>
+            {% endset %}
+            {% set sportlist = sportlist ~ thislistitem %}
+        {% endfor %}
+        {% for sportitem in cycling %}
+                {% set thislistitem %}
+                    <li><a href="/{{ sportitem.slug }}">{{ sportitem.name }} </a>{% if sportitem.name|capitalize == sport.slug|capitalize %}
+                        <ul>
+                        {% for child in sportitem.submenu %}
+                        <li><a href="{{ child.url }}">{{ child.name }} </a></li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}</li>
+                {% endset %}           
+                {% set cyclelist = cyclelist ~ thislistitem %}
+        {% endfor %}
+        {% if 'cycling' in section.slug %}
+            {{ cyclelist|raw }}
+            {{ sportlist|raw }}
+        {% else %}
+            {{ sportlist|raw }}
+            {{ cyclelist|raw }}
+        {% endif %}
+    </nav>
+{% endif %}
+{% if location == 'Header' %}
+
+</div>
+    {% set catlists = '' %}
+    {% for category in categories %}
+        {% set thislistitem %}
+        <div class="column2">
+            <h3{% if category.name == sportname %} class="selected"{% endif %}>{{ category.name }}</h3>
+            <nav>
+                {% set subcats = category.subcats %}
+                {% for subcat in subcats %}
+                    <li><a href="/{{ category.slug }}/{{ subcat.slug }}">{{ subcat.name }}</a></li>
+                {% endfor %}
+            </nav>
+            <br />
+        </div>
+        {% endset %}
+        {% set catlists = catlists ~ thislistitem %}
+    {% endfor %}
+    {{ catlists | raw }}
+{% endif %}
+
+{% if location == 'Site Section' %}
+    <li><a{% if section.slug == 'cycling' %} class="active"{% endif %} href="{{ cycle_prefix }}">Cycling</a></li>
+    <li><a{% if section.slug == 'sports' %} class="active"{% endif %} href="{{ sport_prefix }}">Sports</a></li>
+{% endif %}
+
+{% if location == 'Company' %}
+    <li><a href="{{ prefix }}/company">About Us</a></li>
+    <li><a href="{{ prefix }}/company/catalog">Catalog</a></li>
+    {% if section.slug == 'cycling' %}  <li><a href="{{ prefix }}/company/advocacy">Advocacy</a></li> {% endif %}
+    <li><a href="{{ prefix }}/company/environment">Environment</a></li>
+    <li><a href="{{ prefix }}/company/map-policy">MAP Policy</a></li>
+    {% if section.slug == 'cycling' %}  <li><a href="{{ prefix }}/company/sponsorship">Sponsorship</a></li> {% endif %}
+    <li><a href="{{ prefix}}/contact">Contact Us</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/terms">Terms of Use</a></li>
+{% endif %}

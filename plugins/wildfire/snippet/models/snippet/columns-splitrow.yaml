@@ -1,0 +1,17 @@
+columns:
+    type:
+        label: 'Snippet Info'
+        type: partial
+        path: $/wildfire/snippet/controllers/snippets/_description.htm
+        width: 150
+    split_width:
+        label: 'Column Width'
+        width: 100
+    imagepreview:
+        label: 'Image Preview'
+        type: partial
+        path: $/wildfire/snippet/controllers/snippets/_imagepreview.htm
+    sort_order:
+        label: ''
+        path: $/wildfire/snippet/controllers/snippets/_sort_order.htm
+        type: partial

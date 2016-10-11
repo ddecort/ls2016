@@ -1,0 +1,22 @@
+variants:
+    label: 'Product Variants'
+    view:
+        list: $/wildfire/product/models/variant/columns.yaml
+        toolbarPartial: 'relation_variants_toolbar'
+        showSorting: false
+        defaultSort:
+            column: sort_order
+            direction: asc
+    manage:
+        form: $/wildfire/product/models/variant/fields.yaml
+images:
+    label: 'Product Images'
+    view:
+        list: $/wildfire/product/models/image/columns.yaml
+        toolbarPartial: 'relation_images_toolbar'
+        showSorting: false
+        defaultSort:
+            column: sort_order
+            direction: asc
+    manage:
+        form: $/wildfire/product/models/image/fields.yaml

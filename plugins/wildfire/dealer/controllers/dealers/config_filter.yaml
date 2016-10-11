@@ -1,0 +1,57 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+scopes:
+
+    category:
+
+        # Filter name
+        label: 'Sports'
+
+        # Model Class name
+        modelClass: wildfire\Product\Models\Category
+
+        # Model attribute to display for the name
+        nameFrom: indentedName
+
+        # Apply query scope
+        scope: FilterCategories
+
+    zone:
+
+        # Filter name
+        label: 'Geo Zone'
+
+        # Model Class name
+        modelClass: wildfire\Dealer\Models\Zone
+
+        # Model attribute to display for the name
+        nameFrom: name
+
+        # Apply query scope
+        scope: FilterZones
+
+
+    published:
+
+        # Filter name
+        label: 'Show Inactive Only' 
+
+        # Filter type
+        type: checkbox
+
+        # SQL Conditions
+        conditions: active <> '1'
+
+    latitude:
+
+        # Filter name
+        label: 'Show Un-Geocoded' 
+
+        # Filter type
+        type: checkbox
+
+        # SQL Conditions
+        conditions: latitude is null
+
+

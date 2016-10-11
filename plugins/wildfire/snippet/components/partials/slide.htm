@@ -1,0 +1,42 @@
+{% set classes = "row" %}
+{% if snippet.show_instagram and not skipinstagram %}
+
+    {% partial '@instaslide' snippet=snippet instacount=instacount %}
+
+{% else %}
+
+    {% if split_width > 0 %}
+        {% set classes = classes ~ " split-" ~ split_width ~ split_total %}
+    {% endif %}
+    {% if split_offset > 0 %}
+        {% set classes = classes ~ " splitoffset-" ~ split_offset ~ split_total %}
+    {% endif %}
+   
+
+    {% if snippet.aspect_ratio == 3.50 %}
+        {% set classes = classes ~ " row_350" %}  
+    {% elseif snippet.aspect_ratio == 2.35 %}
+        {% set classes = classes ~ " row_235" %}  
+    {% elseif snippet.aspect_ratio == 1.78 %}
+        {% set classes = classes ~ " row_178" %}
+    {% elseif snippet.aspect_ratio == 4 %}
+        {% set classes = classes ~ " row_400" %}
+    {% endif %}
+    {% set classes = classes ~ " caption-" ~ snippet.heading_position %}
+    {% set classes = classes ~ " mobile-" ~ snippet.heading_position_mobile %}
+
+    {% if snippet.content %}
+        {% set classes = classes ~ " blogpost" %}
+    {% endif %}
+
+    <div class="{{ classes }}">
+        <div class="arint">
+            {% if snippet.is_video %}
+                {% partial '@slidevideo' slide=snippet %}
+            {% else %}
+                {% partial '@slideinner' slide=snippet %}
+            {% endif %}
+        </div>
+    </div>
+{% endif %}
+

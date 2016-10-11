@@ -1,0 +1,5 @@
+title: Pages
+modelClass: wildfire\Snippet\Models\Page
+nameFrom: name
+toolbar:
+    buttons: reorder_toolbar

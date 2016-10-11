@@ -1,0 +1,11 @@
+name: Product
+modelClass: wildfire\Product\Models\Product
+form: $/wildfire/product/models/product/fields.yaml
+defaultRedirect: wildfire/product/products
+create:
+    redirect: 'wildfire/product/products/update/:id'
+    redirectClose: 'wildfire/:fwd1/:fwd2/:fwd3/:fwd4'
+update:
+    redirect: wildfire/product/products/whatnow
+    redirectClose: 'wildfire/:fwd1/:fwd2/:fwd3/:fwd4'
+preview: {  }

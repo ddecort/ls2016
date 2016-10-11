@@ -1,0 +1,28 @@
+plugin:
+    name: 'wildfire.product::lang.plugin.name'
+    description: 'Products for Sale'
+    author: Wildfire
+    icon: oc-icon-adjust
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Products
+        url: wildfire/product/products
+        icon: icon-shopping-cart
+        sideMenu:
+            side-menu-item:
+                label: 'Product List'
+                url: wildfire/product/products
+                icon: icon-shopping-cart
+            categories:
+                label: Categories
+                url: wildfire/product/categories
+                icon: icon-sitemap
+            colors:
+                label: 'Color List'
+                url: wildfire/product/colors
+                icon: icon-paint-brush
+            sizes:
+                label: 'Size List'
+                url: wildfire/product/sizes
+                icon: icon-superscript

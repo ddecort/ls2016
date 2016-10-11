@@ -1,0 +1,44 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table wildfire_athletes_main'
+    - builder_table_create_wildfire_athlete_athlete.php
+1.0.3:
+    - 'Updated table wildfire_athlete_athlete'
+    - builder_table_update_wildfire_athlete_athlete.php
+1.0.4:
+    - 'Created table wildfire_athlete_sport'
+    - builder_table_create_wildfire_athlete_sport.php
+1.0.5:
+    - 'Created table wildfire_athlete_athlete_sport'
+    - builder_table_create_wildfire_athlete_athlete_sport.php
+1.0.6:
+    - 'Updated table wildfire_athlete_athlete'
+    - builder_table_update_wildfire_athlete_athlete2.php
+1.0.7:
+    - 'Updated table wildfire_athlete_sport'
+    - builder_table_update_wildfire_athlete_sport.php
+1.0.10:
+    - 'Updated table wildfire_athlete_athlete'
+    - builder_table_update_wildfire_athlete_athlete3.php
+1.0.11:
+    - 'Updated table wildfire_athlete_sport'
+    - builder_table_update_wildfire_athlete_sport_2.php
+1.0.13:
+    - 'update again'
+    - builder_table_update_wildfire_athlete_sport3.php
+1.0.14:
+    - 'Created table wildfire_athlete_in_category'
+    - builder_table_create_wildfire_athlete_in_category.php
+1.0.15:
+    - 'Updated table wildfire_athlete_in_category'
+    - builder_table_update_wildfire_athlete_in_category.php
+1.0.16:
+    - 'Drop table wildfire_athlete_sport'
+    - builder_table_delete_wildfire_athlete_sport.php
+1.0.17:
+    - 'Drop table wildfire_athlete_athlete_sport'
+    - builder_table_delete_wildfire_athlete_athlete_sport.php
+1.0.18:
+    - 'Updated table wildfire_athlete_athlete'
+    - builder_table_update_wildfire_athlete_athlete5.php

@@ -1,0 +1,10 @@
+name: Sizes
+form: $/wildfire/product/models/size/fields.yaml
+modelClass: wildfire\Product\Models\Size
+defaultRedirect: wildfire/product/sizes
+create:
+    redirect: 'wildfire/product/sizes/update/:id'
+    redirectClose: wildfire/product/sizes
+update:
+    redirect: wildfire/product/sizes
+    redirectClose: wildfire/product/sizes

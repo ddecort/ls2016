@@ -1,0 +1,35 @@
+# ===================================
+#  Import/Export Behavior Config
+# ===================================
+
+import:
+    # Page title
+    title: Import Dealers
+
+    # Import List Column configuration
+    list: $/wildfire/dealer/models/dealerimport/columns.yaml
+
+    # Import Form Field configuration
+    form: $/wildfire/dealer/models/dealerimport/fields.yaml
+
+    # Import Model class
+    modelClass: wildfire\Dealer\Models\DealerImport
+
+    # Redirect when finished
+    redirect: wildfire/dealer/dealers
+
+export:
+    # Page title
+    title: Export Dealers
+
+    # Output file name
+    fileName: posts.csv
+
+    # Export List Column configuration
+    list: $/wildfire/dealer/models/dealerexport/columns.yaml
+
+    # Export Model class
+    modelClass: wildfire\Dealer\Models\DealerExport
+
+    # Redirect when finished
+    redirect: wildfire/dealer/dealers

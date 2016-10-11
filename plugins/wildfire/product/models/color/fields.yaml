@@ -1,0 +1,49 @@
+fields:
+    name:
+        label: 'Color Name'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        type: text
+    slug:
+        label: Slug
+        oc.commentPosition: ''
+        span: auto
+        disabled: 0
+        preset:
+            field: name
+            type: slug
+        type: text
+    hex_code:
+        label: 'Solid Color Hex Code'
+        span: auto
+        type: text
+        comment: '6-charachters, eg ''ff0099'''
+    parent:
+        type: relation
+        label: 'Parent Color'
+        span: auto
+    images:
+        label: 'Swatch Images'
+        span: full
+        type: section
+    small_swatch:
+        label: 'Small Swatch Image'
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+        commentAbove: 'About 30px long side'
+    big_swatch:
+        label: 'Big Swatch Image'
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+        commentAbove: 'About 150px long side'

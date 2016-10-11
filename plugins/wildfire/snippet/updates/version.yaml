@@ -1,0 +1,170 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table wildfire_snippet_snippet'
+    - builder_table_create_wildfire_snippet_snippet.php
+1.0.3:
+    - 'Created table wildfire_snippet_feed'
+    - builder_table_create_wildfire_snippet_feed.php
+1.0.4:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet.php
+1.0.5:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet_2.php
+1.0.6:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_slide.php
+1.0.7:
+    - 'Created table wildfire_snippet_snippet'
+    - builder_table_create_wildfire_snippet_snippet_2.php
+1.0.8:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet3.php
+1.0.9:
+    - 'Created table wildfire_snippet_snippet_slide'
+    - builder_table_create_wildfire_snippet_snippet_slide.php
+1.0.10:
+    - 'Created table wildfire_snippet_snippet_product'
+    - builder_table_create_wildfire_snippet_snippet_product.php
+1.0.11:
+    - 'Updated table wildfire_snippet_feed'
+    - builder_table_update_wildfire_snippet_feed.php
+1.0.12:
+    - 'Updated table wildfire_snippet_feed'
+    - builder_table_update_wildfire_snippet_page.php
+1.0.13:
+    - 'Created table wildfire_snippet_snippet_page'
+    - builder_table_create_wildfire_snippet_snippet_page.php
+1.0.14:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet4.php
+1.0.15:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet5.php
+1.0.16:
+    - 'Updated table wildfire_snippet_snippet_page'
+    - builder_table_update_wildfire_snippet_snippet_page.php
+1.0.17:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet_3.php
+1.0.18:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet_4.php
+1.0.19:
+    - 'Created table wildfire_snippet_snippet_category'
+    - builder_table_create_wildfire_snippet_snippet_category.php
+1.0.20:
+    - 'Created table wildfire_snippet_snippet_athlete'
+    - builder_table_create_wildfire_snippet_snippet_athlete.php
+1.0.21:
+    - 'Updated table wildfire_snippet_snippet_athlete'
+    - builder_table_update_wildfire_snippet_snippet_athlete.php
+1.0.22:
+    - 'Updated table wildfire_snippet_snippet_category'
+    - builder_table_update_wildfire_snippet_snippet_category.php
+1.0.23:
+    - 'Updated table wildfire_snippet_snippet_slide'
+    - builder_table_update_wildfire_snippet_snippet_slide.php
+1.0.24:
+    - 'Updated table wildfire_snippet_slide'
+    - builder_table_update_wildfire_snippet_slide_2.php
+1.0.25:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet_5.php
+1.0.26:
+    - 'Updated table wildfire_snippet_slide'
+    - builder_table_update_wildfire_snippet_slide_3.php
+1.0.27:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet_6.php
+1.0.28:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet_7.php
+1.0.29:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet_8.php
+1.0.30:
+    - 'Drop table wildfire_snippet_snippet_slide'
+    - builder_table_delete_wildfire_snippet_snippet_slide.php
+1.0.31:
+    - 'Drop table wildfire_snippet_slide'
+    - builder_table_delete_wildfire_snippet_slide.php
+1.0.32:
+    - 'Updated table wildfire_snippet_snippet_product'
+    - builder_table_update_wildfire_snippet_snippet_product.php
+1.0.33:
+    - 'Updated table wildfire_snippet_snippet_page'
+    - builder_table_update_wildfire_snippet_snippet_page_2.php
+1.0.34:
+    - 'Updated table wildfire_snippet_snippet_category'
+    - builder_table_update_wildfire_snippet_snippet_category_2.php
+1.0.35:
+    - 'Updated table wildfire_snippet_snippet_athlete'
+    - builder_table_update_wildfire_snippet_snippet_athlete_2.php
+1.0.36:
+    - 'Updated table wildfire_snippet_snippet_page'
+    - builder_table_update_wildfire_snippet_snippet_page_3.php
+1.0.37:
+    - 'Updated table wildfire_snippet_snippet_athlete'
+    - builder_table_update_wildfire_snippet_snippet_athlete_3.php
+1.0.38:
+    - 'Updated table wildfire_snippet_snippet_product'
+    - builder_table_update_wildfire_snippet_snippet_product_2.php
+1.0.39:
+    - 'Updated table wildfire_snippet_snippet_category'
+    - builder_table_update_wildfire_snippet_snippet_category_3.php
+1.0.40:
+    - 'Updated table wildfire_snippet_snippet_category'
+    - builder_table_update_wildfire_snippet_snippet_category_4.php
+1.0.41:
+    - 'Updated table wildfire_snippet_page'
+    - builder_table_update_wildfire_snippet_page_2.php
+1.0.42:
+    - 'Updated table wildfire_snippet_page'
+    - builder_table_update_wildfire_snippet_page_3.php
+1.0.43:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet_9.php
+1.0.44:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet_10.php
+1.0.45:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet_11.php
+1.0.46:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet12.php
+1.0.47:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet13.php
+1.0.48:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet14.php
+1.0.49:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet_12.php
+1.0.50:
+    - 'Created table wildfire_snippet_instagram'
+    - builder_table_create_wildfire_snippet_instagram.php
+1.0.51:
+    - 'Updated table wildfire_snippet_instagram'
+    - builder_table_update_wildfire_snippet_instagram.php
+1.0.52:
+    - 'Updated table wildfire_snippet_instagram'
+    - builder_table_update_wildfire_snippet_instagram_2.php
+1.0.53:
+    - 'Updated table wildfire_snippet_instagram'
+    - builder_table_update_wildfire_snippet_instagram_3.php
+1.0.54:
+    - 'Updated table wildfire_snippet_instagram'
+    - builder_table_update_wildfire_snippet_instagram_4.php
+1.0.55:
+    - 'Updated table wildfire_snippet_instagram'
+    - builder_table_update_wildfire_snippet_instagram_5.php
+1.0.56:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet_13.php
+1.0.57:
+    - 'Updated table wildfire_snippet_snippet'
+    - builder_table_update_wildfire_snippet_snippet_14.php

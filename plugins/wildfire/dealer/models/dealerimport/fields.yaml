@@ -1,0 +1,13 @@
+fields:
+    update_existing:
+        label: 'Update existing dealers'
+        default: false
+        span: left
+        type: checkbox
+        comment: 'If a duplicate (existing) dealer is found, check this box to force the update of the contact/info details. Otherwise it will be left untouched. Duplicates should not be imported usually.'
+    dealer_categories:
+        label: Categories
+        commentAbove: 'Select the sports that imported dealers will carry products for (optional).'
+        type: checkboxlist
+        span: right
+        cssClass: field-indent

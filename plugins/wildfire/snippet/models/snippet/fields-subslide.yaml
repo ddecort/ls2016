@@ -1,0 +1,121 @@
+fields:
+    heading_text:
+        label: Heading
+        span: auto
+        type: text
+        commentAbove: 'enter <br /> for a forced line break'
+    subheading:
+        label: 'Subheading Text'
+        span: auto
+        type: text
+        commentAbove: 'enter <br /> for a forced line break'
+    button_text:
+        label: 'Button Text'
+        span: auto
+        type: text
+        commentAbove: 'Optional. Leave blank  for defaults used for video post ("Watch Video") and content post ("View Details")'
+    link_url:
+        label: 'Link URL'
+        span: auto
+        type: text
+        commentAbove: 'URL for the button when clicked (if button text specified), or the link for the entire item (if no button text)'
+    aspect_ratio:
+        label: 'Slide Aspect Ratio'
+        options:
+            1: '1 (Square; avoid = 2000x2000)'
+            '1.78': '1.78 (16:9 widescreen = 2000x1123)'
+            '2.35': '2.35 (21:9 super wide = 2000x851)'
+            '3.5': '3.50 (narrow = 2000x571)'
+            '4.0': '4.00 (supernarrow, good for instagram rows = 2000x500)'
+        span: auto
+        default: '2.35'
+        type: dropdown
+        commentAbove: '(should be roughly equal to desktop image aspect ratio)'
+    desktop_settings:
+        label: 'Desktop View Settings'
+        span: left
+        type: section
+    mobile_settings:
+        label: 'Mobile View Settings'
+        span: right
+        type: section
+    image_desktop:
+        label: 'Image (for desktop)'
+        imageHeight: 200
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: left
+        required: 1
+        type: fileupload
+        commentAbove: 'Main image background of the slide. Size 2000px wide (or more). Height determined by selected aspect ratio'
+    image_mobile:
+        label: 'Image (for mobile; optional)'
+        mode: image
+        imageHeight: 200
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: right
+        type: fileupload
+        commentAbove: 'Can provide a cropped/different version since mobile aspect ratio is quite different. 768px wide is big enough, but can be bigger'
+    heading_position:
+        label: 'Heading Position (Desktop)'
+        options:
+            left: Left
+            right: Right
+            center: Center
+        span: left
+        default: left
+        type: dropdown
+        commentAbove: 'Allows left, center, or right aligning the header on the image'
+    heading_position_mobile:
+        label: 'Heading Position (Mobile)'
+        options:
+            top: 'Vertical Top, Centered'
+            middle: 'Vertical Middle, Centered'
+            bottom: 'Vertical Bottom, Centered'
+        span: right
+        type: dropdown
+        commentAbove: 'Top, middle, or bottom vertical alignment. Always centered horizontally.'
+    heading_light:
+        label: 'Text Color (Desktop)'
+        oc.commentPosition: ''
+        options:
+            - 'Black (for light images)'
+            - 'White (for dark images)'
+        span: left
+        type: radio
+    heading_light_mobile:
+        label: 'Text Color (Mobile)'
+        oc.commentPosition: ''
+        options:
+            - 'Black (for light images)'
+            - 'Light (for dark images)'
+        span: right
+        type: radio
+    mobile_show_header:
+        label: 'Show Header on Mobile'
+        type: switch
+        default: true
+        span: right
+    mobile_show_subheader:
+        label: 'Show Subeader on Mobile'
+        type: switch
+        default: true
+        span: right
+    mobile_show_button:
+        label: 'Show Button on Mobile'
+        type: switch
+        default: false
+        span: right
+
+    type:
+        label: Type
+        hidden: true
+        default: slide
+        type: text
+        span: auto

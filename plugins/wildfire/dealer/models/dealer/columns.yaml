@@ -1,0 +1,29 @@
+columns:
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    city:
+        label: City
+        type: partial
+    country:
+        label: Country
+        type: relation
+        sortable: true
+        select: name
+        relation: country
+    zone:
+        label: Zone
+        type: select
+        select: name
+        relation: zone
+    categories:
+        label: Sports
+        type: select
+        select: name
+        relation: categories
+    distributor:
+        label: Distributor
+        type: switch
+        sortable: true

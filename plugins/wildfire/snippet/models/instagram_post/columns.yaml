@@ -1,0 +1,21 @@
+columns:
+    acct:
+        label: Account
+        type: text
+    date_posted:
+        label: Posted
+        type: timesince
+        sortable: true
+    image:
+        label: Preview
+        type: partial
+    blacklisted:
+        label: 'Blacklisted?'
+        type: switch
+    tags:
+        label: Tags
+        type: text
+        searchable: true
+    type:
+        label: Type
+        type: text

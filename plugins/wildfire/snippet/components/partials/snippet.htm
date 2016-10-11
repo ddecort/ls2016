@@ -1,0 +1,34 @@
+{% if snippet.mobile_hide %}
+    <div class="mobile-hide">
+{% endif %}
+
+{% if snippet.type == 'slideshow' %}
+    {% partial '@slideshow' %}
+{% elseif snippet.type == 'slide' %}
+    {% partial '@slide' instacount=instacount %}
+{% elseif snippet.type == 'products_info' and snippet.products|length > 0 %}
+    {% partial '@products' products=snippet.products %}
+{% elseif snippet.type == 'content' %}
+    {% partial '@content' %}
+{% elseif snippet.type == 'category_list' %}
+    {% partial '@products' products=myproducts category=category %}
+{% elseif snippet.type == 'products_related' %}
+    {% partial '@products_related' related=related product=product category=category %}
+{% elseif snippet.type == 'instagram' %}
+    {% partial '@instagram' instacount=instacount %}
+{% elseif snippet.type == 'split_row' %}
+    {% partial '@split_row' products=myproducts %} 
+{% elseif snippet.type == 'feed' %}
+    {% partial '@feed' %} 
+{% elseif snippet.type == 'category_filter' %}
+    {% partial '@category_filter' %} 
+{% elseif snippet.type == 'bestsellers' %}
+    {% partial '@bestsellers' %}
+{% elseif snippet.type == 'company_menu' %}
+    {% partial '@company_menu' %}
+{% endif %}
+
+{% if snippet.mobile_hide %}
+    </div>
+{% endif %}
+

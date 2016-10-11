@@ -1,0 +1,16 @@
+<div class="relation-widget" id="<?= $this->getId() ?>">
+<?php 
+    $field_options = [];
+    $opts = Db::table('wildfire_product_size')->orderBy('sort_order','asc')->get();
+    foreach ($opts as $opt)
+    {
+        $field_options[$opt->id] = $opt->name;
+    }
+    $field->options($field_options);
+    $field->type = 'dropdown';
+
+    $field->placeholder = 'No Size';
+    
+    echo $this->makePartial('~/modules/backend/widgets/form/partials/_field_dropdown.htm', ['field' => $field]); 
+?>
+</div>

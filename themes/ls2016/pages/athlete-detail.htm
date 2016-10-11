@@ -1,0 +1,14 @@
+title = "Athlete Detail"
+url = "/:section/athletes/:id"
+layout = "default"
+is_hidden = 0
+
+[athleteshow]
+id = "{{ :id }}"
+
+[athletecontent]
+==
+<div class="fullpage">
+    {% component 'athleteshow' %}
+    {% component 'athletecontent' %}
+</div>

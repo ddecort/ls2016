@@ -1,0 +1,112 @@
+fields:
+    name:
+        label: 'Dealer Name'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        type: text
+    active:
+        label: Active
+        span: auto
+        default: 0
+        type: switch
+    zone:
+        label: Zone
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        type: relation
+    categories:
+        label: 'Sports Carried'
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        type: relation
+    distributor:
+        label: Dealer/Distributor
+        oc.commentPosition: ''
+        options:
+            - Dealer
+            - Distributor
+        span: auto
+        type: radio
+    section1:
+        label: Address
+        span: full
+        type: section 
+    full_address:
+        label: Full Address
+        commentBelow: 'NOTE: paste or type address in here to auto-populate the rest of the fields'
+        type: addressfinder
+        fieldMap:
+            latitude: latitude
+            longitude: longitude
+            city: city
+            zip: postal
+            country: country_code
+            state: state_code
+        city:
+            label: City
+        zip:
+            label: Zip
+        country_code:
+            label: Country
+        state_code:
+            label: State
+        latitude:
+            label: Latitude
+        longitude:
+            label: Longitude        
+           
+    street:
+        label: 'Street Address'
+        oc.commentPosition: ''
+        span: left
+        type: text
+    city:
+        label: City
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    postal:
+        label: 'Postal Code/ZIP'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    state_code:
+        label: State (short code)
+        type: text
+        span: auto
+    country_code:
+        label: Country (short code)
+        type: text
+        span: auto
+    latitude:
+        label: Latitude
+        span: auto
+        type: text
+    longitude:
+        label: Longitude
+        span: auto
+        type: text
+    section2:
+        label: Contact
+        span: full
+        type: section
+    website:
+        label: Website
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    email:
+        label: Email
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    phone:
+        label: Phone
+        oc.commentPosition: ''
+        span: auto
+        type: text           

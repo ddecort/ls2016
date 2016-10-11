@@ -1,0 +1,16 @@
+list: $/wildfire/dealer/models/dealer/columns.yaml
+modelClass: wildfire\Dealer\Models\Dealer
+title: Dealers
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 250
+showSetup: false
+defaultSort: 
+    column: name
+    direction: asc
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'wildfire/dealer/dealers/update/:id'
+filter: config_filter.yaml

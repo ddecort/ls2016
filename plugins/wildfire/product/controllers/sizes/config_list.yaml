@@ -1,0 +1,13 @@
+list: $/wildfire/product/models/size/columns.yaml
+modelClass: wildfire\Product\Models\Size
+title: Sizes
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: false
+showCheckboxes: false
+toolbar:
+    buttons: list_toolbar
+recordUrl: 'wildfire/product/sizes/update/:id'
+defaultSort:
+    column: sort_order
+    direction: asc
+showSorting: false

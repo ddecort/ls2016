@@ -1,0 +1,5 @@
+<?php if ($model->id): ?>
+    <?= $this->relationRender('snippets') ?>
+<?php else: ?>
+    <strong>Save first before adding products.</strong>
+<?php endif; ?>

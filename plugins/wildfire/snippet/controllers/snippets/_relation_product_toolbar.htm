@@ -1,0 +1,30 @@
+    <a
+        data-control="popup"
+        data-size="huge"
+        data-handler="onRelationButtonLink"
+        href="javascript:;"
+        class="btn btn-sm btn-primary oc-icon-link">
+        Link a Product
+    </a>
+
+    <a
+        href="javascript:;"
+        class="btn btn-sm btn-default oc-icon-unlink"
+        data-request="onRelationButtonUnlink"
+        data-request-confirm="<?= e(trans('backend::lang.relation.unlink_confirm')) ?>"
+        data-stripe-load-indicator>
+        Unlink Selected Product(s)
+    </a>
+
+    <button
+        id="updatePosition"
+        class="btn btn-reorder oc-icon-list-ol"
+        disabled="disabled"
+        onclick="$(this).data('request-data', {
+        checked: $('.index_reposition').map(function(){  return $(this).val() }).get(), model_id: <?php echo $this->formGetModel()->id; ?> })"
+        data-request-success="initializeSorting();"
+        data-request="onUpdateProductPosition"
+        data-stripe-load-indicator>
+        Update Order
+    </button>
+

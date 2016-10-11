@@ -1,0 +1,12 @@
+title: Zones
+modelClass: wildfire\Dealer\Models\Zone
+list: $/wildfire/dealer/models/zone/columns.yaml
+recordUrl: 'wildfire/dealer/zones/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: false
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+showSorting: false;

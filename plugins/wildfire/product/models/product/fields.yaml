@@ -1,0 +1,74 @@
+fields:
+    name:
+        label: 'Product Name'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        oc.commentPosition: ''
+        span: auto
+        preset:
+            field: name
+            type: slug
+        type: text
+    shopify_shop:
+        label: 'Shopify Shop Name'
+        oc.commentPosition: ''
+        options:
+            lizard-sports: 'Sports (lizard-sports.myshopify.com)'
+            lizard-skins: 'Cycling (lizard-skins.myshopify.com)'
+        span: auto
+        disabled: 1
+        type: dropdown
+    shopify_id:
+        label: 'Shopify Product ID'
+        oc.commentPosition: ''
+        span: auto
+        disabled: 1
+        type: number
+    active:
+        label: Active/Viewable
+        span: auto
+        default: 1
+        type: switch
+    description:
+        label: Description
+        size: huge
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    variants_section:
+        label: 'Variants'
+        type: section
+        span: auto
+    photos_section:
+        label: 'Photos'
+        type: section
+        span: auto
+    variants:
+        span: left
+        path: ~/plugins/wildfire/product/controllers/products/_variants.htm
+        type: partial
+    images:
+        span: right
+        type: partial
+        path: ~/plugins/wildfire/product/controllers/products/_images.htm
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        type: fileupload
+    categories_section:
+        label: 'Categories'
+        type: section
+        span: auto
+    categories:
+        label: 'Product Categories'
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: description
+        span: left
+        type: relation
+

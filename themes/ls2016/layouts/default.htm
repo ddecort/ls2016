@@ -1,0 +1,233 @@
+description = "Main Layout"
+==
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>{{ this.page.title }}</title>
+        {% styles %}
+        <link rel="stylesheet" href="{{ ['assets/less/app.less'] | theme }}" />
+        <style>
+             @font-face {
+                font-family: 'apex_newbold';
+                src: url('{{ '/assets/fonts/apex_new_bold-webfont.eot' | theme }}');
+                src: url('{{ '/assets/fonts/apex_new_bold-webfont.eot?#iefix' | theme }}') format('embedded-opentype'),
+                     url('{{ '/assets/fonts/apex_new_bold-webfont.woff2' | theme }}') format('woff2'),
+                     url('{{ '/assets/fonts/apex_new_bold-webfont.woff' | theme }}') format('woff'),
+                     url('{{ '/assets/fonts/apex_new_bold-webfont.ttf' | theme }}') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+        </style>
+
+        <script type="text/javascript">
+            (function(){"use strict";var c=[],f={},a,e,d,b;if(!window.jQuery){a=function(g){c.push(g)};f.ready=function(g){a(g)};e=window.jQuery=window.$=function(g){if(typeof g=="function"){a(g)}return f};window.checkJQ=function(){if(!d()){b=setTimeout(checkJQ,100)}};b=setTimeout(checkJQ,100);d=function(){if(window.jQuery!==e){clearTimeout(b);var g=c.shift();while(g){jQuery(g);g=c.shift()}b=f=a=e=d=window.checkJQ=null;return true}return false}}})();
+        </script>        
+    </head>
+    <body>
+        <div class="container">
+            <header class="desktop">
+                <div class="topnav">
+                    <nav class="sport">
+                        {% partial 'header_sectionlink' %}
+                    </nav>
+                    <nav class="extras">
+                        <li>{% partial 'header_dealerlink' %}</li>
+                        <li><a href="/contact">Contact <span class="lengthened"> Us</span></a></li>
+                        <li><a class="btn--cart-tab js-prevent-cart-listener" href="#">Cart(<span class="btn__counter">?</span>)</a></li>
+                    </nav>
+                    <div class="clear"></div>
+                </div>
+                <div class="mainnav">
+                    <div class="logo"><a href="/"><img src="{{ 'assets/images/logo.png' | theme }}" /></a></div>
+                    <nav class="main">
+                        <li><a class="js-prevent-listener" id="shopmenulink">Shop</a></li>
+                        <li>{% partial 'header_athleteslink' %}</li>
+                        <li>{% partial 'header_experiencelink' %}</li>
+                    </nav>
+                </div>
+    
+                <div id="shopmenu-content" class="main-sub">
+                    <div class="row">
+                        {% partial 'header_shop_menu' %}
+                    </div>
+                </div>
+            </header>
+            
+            <header class="mobile">
+                <div class="hamburger"><a class="js-prevent-listener"><span class="closed fa fa-bars"></span><span class="open fa fa-chevron-left"></span></a></div>
+                <div class="bigcart"><a class="fa fa-shopping-cart js-prevent-cart-listener"></a></div>
+                <a href="/"><img class="logo" src="{{ 'assets/images/logo_mobile.png' | theme }}" /></a>
+            </header>
+
+            <div class="shiftcontainer">
+            
+                {% page %}
+    
+    
+                <div class="socialfoot">
+                    {% partial 'footer_instagram' %}
+
+                    <div class="signupwrap">
+                        <div class="signup">
+                            <h3>Sign-Up For<br/>News &amp; Offers</h3>
+                            {% partial 'subscribeform' %}
+                            <h3>Follow Us:</h3>
+                            {% partial 'footer_social' %}
+                        </div>
+                    </div>
+                </div>
+    
+                <footer class="desktop">
+                    <div class="footcol logo">
+                        <img class="footlogo" src="{{ 'assets/images/logostacked.png' | theme }}" />
+                        <span class="copy">&copy; Lizard Skins. All Rights Reserved.</span>
+                    </div>
+                    <div class="footcol">
+                        <h3>Shop By Sport</h3>
+                        {% partial 'footer_shop_menu' %}
+                    </div>
+                    <div class="footcol">
+                        <h3>Company</h3>
+                        <nav>
+                            {% partial 'footer_companymenu' %}
+                        </nav>
+                    </div>                
+                    <div class="footcol dealer">
+                        <h3>Find a Dealer</h3>
+                            {% partial 'dealer_search' %}
+                    </div>
+                </footer>
+                
+                <footer class="mobile">
+                    <h3>Find A Dealer</h3>
+                        {% partial 'dealer_search' %}
+                    <div class="col">
+                        <h3>Shop By Sport:</h3>
+                        {% partial 'footer_shop_menu' %}
+                    </div>
+                    <div class="col">
+                        <h3>Company</h3>
+                        <nav>
+                            {% partial 'footer_companymenu' %}
+                        </nav>        
+                    </div>
+                    <div class="copy">
+                        &copy; 2016 Lizard Skins. All Rights Reserved.
+                    </div>                
+                </footer>
+            </div>
+            
+            <div id="mobile-menu">
+                {% partial 'footer_shop_menu' %}
+                <div class="forms">
+                    <h3>Find a Dealer</h3>
+                        {% partial 'dealer_search' %}
+                    <h3>Sign up for News & Offers</h3>
+                    {% partial 'subscribeform' %}
+                </div>
+            </div>                
+        </div>
+        
+        <div id="cart">
+        
+          <div class="cart-section cart-section--top">
+            <h2 class="cart-title">Your cart</h2>
+            <button class="btn--close">
+              <span aria-role="hidden">×</span>
+              <span class="visuallyhidden">Close</span>
+            </button>
+          </div>
+        
+          <div class="cart-form">
+            <div class="cart-item-container cart-section">
+                <div class="empty">There are no items in your cart.</div>
+            </div>
+        
+            <div class="cart-bottom">
+              <div class="shipping">Free USPS Standard Shipping on Orders over $<span class="minval">75</span>. Offer only valid for shipments within the US.</div>
+              <div class="cart-info clearfix cart-section">
+                <div class="type--caps cart-info__total cart-info__small">Total</div>
+                <div class="cart-info__pricing">
+                  <span class="cart-info__small cart-info__total">USD</span>
+                  <span class="pricing pricing--no-padding">$0.00</span>
+                </div>
+              </div>
+              <div class="cart-actions-container cart-section type--center">
+                <div class="cart-discount-notice cart-info__small">Shipping and discount codes are added at checkout.</div>
+                <input type="submit" class="btn btn--cart-checkout" id="checkout" name="checkout" value="Checkout" />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div id="CartItemTemplate" style="display: none;">
+            <div class="cart-item">
+              <div class="cart-item__img"></div>
+              <div class="cart-item__content">
+                <div class="cart-item__content-row">
+                  <div class="cart-item__variant-title"></div>
+                  <span class="cart-item__title"></span>
+                </div>
+                <div class="cart-item__content-row">
+                  <div class="cart-item__props"></div>
+                  <div class="cart-item__quantity-container">
+                    <button class="btn--seamless quantity-decrement" type="button"><span>-</span><span class="visuallyhidden">Decrement</span></button>
+                    <input class="cart-item__quantity" type="number" min="0" aria-label="Quantity">
+                    <button class="btn--seamless quantity-increment" type="button"><span>+</span><span class="visuallyhidden">Increment</span></button>
+                  </div>
+                  <span class="cart-item__price"></span>
+                </div>
+              </div>
+            </div>        
+        </div>
+        
+    <script src="https://sdks.shopifycdn.com/js-buy-sdk/latest/shopify-buy.polyfilled.globals.min.js"></script>        
+    {% partial 'cartsetup' %}
+    <script type="text/javascript">
+        var addOrUpdateVariant;
+        var initGeo = function(){};
+        var give_spin_demo = true;
+        
+        WebFontConfig = {
+            google: { families: ['Open Sans:400,600,800'] }
+        };
+        
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+    <script src="{{ [
+            'assets/js/jquery.js',
+            'assets/js/velocity.min.js',
+            'assets/js/smoove.js',
+            'assets/js/shop.js',
+            'assets/js/app.js',
+            '@framework'
+            ]|theme }}"></script>
+        
+    {% scripts %}
+    {% flash %}
+    <script>
+        // only execute once the DOM is loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            $.oc.flashMsg({text: '{{ message }}', 'class': '{{ type }}', 'interval': 10})
+        }, false);
+    </script>
+    {% endflash %}    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoMY6MQBwI3syMg947-QPrUYBZ_zPhBVs&libraries=places&callback=initGeo"
+    async defer></script>
+    {% if 'Catalog' in  this.page.title %}
+        <script type="text/javascript" src="//e.issuu.com/embed.js" async="true"></script>
+    {% endif %}
+    </body>
+</html>

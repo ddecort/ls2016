@@ -1,0 +1,10 @@
+name: Pages
+form: $/wildfire/snippet/models/page/fields.yaml
+modelClass: wildfire\Snippet\Models\Page
+defaultRedirect: wildfire/snippet/pages
+create:
+    redirect: 'wildfire/snippet/pages/update/:id'
+    redirectClose: wildfire/snippet/pages
+update:
+    redirect: wildfire/snippet/pages
+    redirectClose: wildfire/snippet/pages

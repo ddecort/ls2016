@@ -1,0 +1,15 @@
+title: Products
+modelClass: wildfire\Product\Models\Product
+list: $/wildfire/product/models/product/columns.yaml
+recordUrl: 'wildfire/product/products/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+filter: config_filter.yaml
+showCheckboxes: true
+defaultSort:
+    column: nest_left
+    direction: desc
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

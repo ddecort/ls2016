@@ -1,0 +1,24 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+scopes:
+
+    acct:
+
+        # Filter name
+        label: 'Filter By User'
+
+        # Model Class name
+        modelClass: wildfire\Snippet\Models\InstagramPost
+
+        # Model attribute to display for the name
+        nameFrom: acct
+
+        # Apply query scope
+        conditions: acct in (:filtered)
+
+        options:
+            lizardskinscycling:  lizardskinscycling
+            lizardskinsbaseball: lizardskinsbaseball
+            lizardskinslacrosse: lizardskinslacrosse
+

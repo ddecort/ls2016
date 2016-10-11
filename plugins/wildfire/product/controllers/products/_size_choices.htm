@@ -1,0 +1,20 @@
+<div class="relation-widget" id="<?= $this->getId() ?>">
+<?php 
+    $field_options = [];
+    $sizes = $this->formGetModel()->variants()->whereNotNull('size_id')->lists('size_id');
+    $opts = Db::table('wildfire_product_size')->whereIn('id', $sizes)->orderBy('sort_order','asc')->get();
+    foreach ($opts as $opt)
+    {
+        $field_options[$opt->id] = $opt->name;
+    }
+    $field->options($field_options);
+    $field->type = 'dropdown';
+?>
+<?php if (count($field_options) > 0): ?>
+    <?php $field->placeholder = 'All Sizes'; ?>
+<?php else: ?>
+    <?php $field->placeholder = 'No Sizes Set Up!'; ?>
+    <?php $field->disabled = true; ?>
+<?php endif; ?>
+<?= $this->makePartial('~/modules/backend/widgets/form/partials/_field_dropdown.htm', ['field' => $field]) ?>
+</div>

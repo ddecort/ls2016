@@ -1,0 +1,13 @@
+title: Categories
+modelClass: wildfire\Product\Models\Category
+list: $/wildfire/product/models/category/columns.yaml
+recordUrl: 'wildfire/product/categories/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: false
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+showTree: 1
+treeExpanded: 1

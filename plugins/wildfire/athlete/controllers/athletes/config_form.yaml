@@ -1,0 +1,11 @@
+name: Athlete
+modelClass: wildfire\Athlete\Models\Athlete
+form: $/wildfire/athlete/models/athlete/fields.yaml
+defaultRedirect: wildfire/athlete/athletes
+create:
+    redirect: 'wildfire/athlete/athletes/update/:id'
+    redirectClose: wildfire/athlete/athletes
+update:
+    redirect: wildfire/athlete/athletes
+    redirectClose: wildfire/athlete/athletes
+preview: {  }

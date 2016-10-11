@@ -1,0 +1,36 @@
+<div class="snippets">
+{% set prodtrim = 0 %}
+{% for snippet in snippets %}
+    {% set myproducts = [] %}
+    {% if snippet.type == 'category_list' %}
+        {% if snippet.category_limit > 0 %}
+            {% set trim = snippet.category_limit %}
+        {% else %}
+            {% set trim = products | length %}
+        {% endif %}
+
+        {% set myproducts = products[:trim] %}  
+        {% set products = products[trim:] %}
+    {% elseif snippet.type == 'split_row' %}
+        {% for snip in snippet.columns %}
+            {% if snip.type == 'category_list' %}
+                {% if snip.category_limit > 0 %}
+                  {% set prodtrim = prodtrim + snip.category_limit %}
+                {% else %}
+                   {% set prodtrim = prodtrim + 4 %}
+                   {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% set myproducts = products %}
+    {% else %}
+        {% set myproducts = products %}
+    {% endif %}
+    {% set thispos = loop.index + startpos %}
+    {% partial '@snippet' myproducts=myproducts snippet=snippet pos=thispos %}
+
+    {% if prodtrim > 0 %}
+        {% set products = products[prodtrim:] %}
+        {% set prodtrim = 0 %}
+    {% endif %}
+{% endfor %}
+</div>

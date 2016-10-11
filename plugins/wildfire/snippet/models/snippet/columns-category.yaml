@@ -1,0 +1,27 @@
+columns:
+    type:
+        label: 'Snippet Info'
+        type: partial
+        path: $/wildfire/snippet/controllers/snippets/_description.htm
+        width: 150
+    imagepreview:
+        label: 'Image Preview'
+        type: partial
+        path: $/wildfire/snippet/controllers/snippets/_imagepreview.htm
+    pivot[sort_order]:
+        label: ''
+        type: partial
+        path: $/wildfire/snippet/controllers/snippets/_sort_order.htm
+    pivot[for_category]:
+        label: Show In Category Page
+        type: partial
+        path: $/wildfire/product/controllers/categories/_checked.htm
+    pivot[for_product]:
+        label: Show For Product Pages
+        type: partial
+        path: $/wildfire/product/controllers/categories/_checked.htm
+    edit:
+        label: Edit
+        type: partial
+        clickable: false
+        path: $/wildfire/product/controllers/categories/_snippet_editlink.htm

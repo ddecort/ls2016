@@ -1,0 +1,28 @@
+columns:
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: false
+    photos:
+        label: Photos
+        type: partial
+        sortable: false
+    team:
+        label: Team
+        type: text
+        searchable: true
+        sortable: false
+    sports:
+        label: Sports
+        type: select
+        select: name
+        relation: categories
+        sortable: false
+    social:
+        label: Social
+        type: partial
+    sort_order:
+        label: ''
+        type: partial
+        sortable: true

@@ -1,0 +1,24 @@
+plugin:
+    name: 'wildfire.snippet::lang.plugin.name'
+    description: 'Bits of content that can be used on the homepage, blog, and other pages.'
+    author: Wildfire
+    icon: oc-icon-cut
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: 'Pages & Snippets'
+        url: wildfire/snippet/pages
+        icon: icon-file-text-o
+        sideMenu:
+            pages:
+                label: Pages
+                url: wildfire/snippet/pages
+                icon: icon-file-text-o
+            snippets:
+                label: 'View All Snippets'
+                url: wildfire/snippet/snippets
+                icon: icon-cut
+            instagrams:
+                label: 'Instagram Posts'
+                url: wildfire/snippet/instagram
+                icon: icon-instagram

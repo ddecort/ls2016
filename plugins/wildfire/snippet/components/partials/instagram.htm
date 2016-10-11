@@ -1,0 +1,48 @@
+{% set classes = "row" %}
+{% if split_width > 0 %}
+    {% set classes = classes ~ " split-" ~ split_width ~ split_total  %}
+{% endif %}
+{% if split_offset > 0 %}
+    {% set classes = classes ~ " splitoffset-" ~ split_offset ~ split_total %}
+{% endif %}
+
+{% if snippet.aspect_ratio == 3.50 %}
+    {% set classes = classes ~ " row_350" %}  
+{% elseif snippet.aspect_ratio == 2.35 %}
+    {% set classes = classes ~ " row_235" %}  
+{% elseif snippet.aspect_ratio == 1.78 %}
+    {% set classes = classes ~ " row_178" %}
+{% elseif snippet.aspect_ratio == 4 %}
+    {% set classes = classes ~ " row_400" %}
+{% endif %}
+
+<div class="{{ classes }}">
+    <div class="arint">
+        {% set post = snippet.instagramDetails %}
+        {% if post %}
+                <div class="ig-box">
+                    <div class="ig-logo"><span class="fa fa-instagram"></span></div>
+                    <div class="ig-bar-top">
+                        <a class="button" href="{{ post.link }}" target="_blank">View on Instagram</a>
+                    </div>
+                  {% if post.type == 'image' %}
+                  <img class="content" src="{{ post.image.thumb(640,640,{ type: 'crop' }) }}" srcset="{{ post.image.thumb(150,150)}} 150w, {{post.image.thumb(320,320) }} 320w, {{post.image.thumb(640,640) }} 640w" sizes="(min-width: 766px) 33vw,100vw" >
+                  {% elseif post.type == 'video' %}
+                    <video class="content" controls>
+                      <source src="{{ post.data.videos.standard_resolution.url }}"
+                      type="video/mp4"/>
+                    </video>
+                  {% endif %}
+                     <div class="ig-bar-bottom">
+                          <div class="ig-caption">{{ post.data.caption.text }}</div>
+                          <div class="ig-details">
+                              <a class="profile" href="{{ post.link }}" target="_blank"><img src="https://scontent-sea1-1.cdninstagram.com/t51.2885-19/11373645_437489963090296_421918797_a.jpg"></a><a class="profiletext" href="https://instagram.com/{{ iguser.user }}">{{ post.user }}</a>
+                          </div>
+                    </div>
+                </div>
+        {% else %}
+            nothing found
+        {% endif %}
+    </div>
+</div>
+

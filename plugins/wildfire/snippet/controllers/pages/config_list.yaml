@@ -1,0 +1,9 @@
+title: Pages
+modelClass: wildfire\Snippet\Models\Page
+list: $/wildfire/snippet/models/page/columns.yaml
+recordUrl: 'wildfire/snippet/pages/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+toolbar:
+    buttons: list_toolbar
+showTree: 1
+treeExpanded: 1

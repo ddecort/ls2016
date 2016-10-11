@@ -1,0 +1,50 @@
+<div class="athletedetails">
+    <h1>{{ athlete.name }}</h1>
+    <div class="athleteinfos">
+        {% if sports %}<div class="athleteinfo">Sport: <span>{{ sports }}</span></div>{% endif %}
+        {% if athlete.team and not athlete.is_team %}<div class="athleteinfo">Team: <span>{{ athlete.team }}</span></div>{% endif %}
+        {% if athlete.nationality %}<div class="athleteinfo">Nationality: <span>{{ athlete.nationality }}</span></div>{% endif %}
+        {% if athlete.facebook or athlete.youtube or athlete.twitter or athlete.instagram %}
+            <div class="athleteinfo">Social: <span>
+                    {% if athlete.facebook %}<a href="{{ athlete.facebook }}" target="_blank" class="fa fa-facebook"></a>{% endif %}
+                    {% if athlete.instagram %}<a href="{{ athlete.instagram }}" target="_blank" class="fa fa-instagram"></a>{% endif %}
+                    {% if athlete.twitter %}<a href="{{ athlete.twitter }}" target="_blank" class="fa fa-twitter"></a>{% endif %}
+                    {% if athlete.youtube %}<a href="{{ athlete.youtube }}" target="_blank" class="fa fa-youtube"></a>{% endif %}
+            </span></div>
+        {% endif %}
+    </div>
+    <div class="athletebanner row row_160">
+        <div class="arint">
+            <div class="flexslider" id="slider-a{{ athlete.id }}">
+                <ul class="slides">
+                    {% for slide in athlete.slideshow %}
+                    <li class="slide"><img src="{{ slide.thumb(2000,1250,'crop') }}" /></li>
+                    {% endfor %}
+                </ul>
+           </div>
+        </div>
+    </div>
+
+    {% if athlete.description %}
+    <div class="description">
+        <div class="limitwidth">{{ athlete.description|raw }}</div>
+    </div>
+    {% endif %}
+
+    {% if athlete.highlights %}
+    <div class="highlights">
+        <h3>Career Highlights:</h3>
+        <div class="limitwidth">{{ athlete.highlights|raw }}</div>
+    </div>
+    {% endif %}
+</div>
+
+<script type="text/javascript">
+    $(document).ready( function(){
+        $('#slider-a{{athlete.id}}').flexslider({
+            selector: '.slides > li',
+            animation: 'fade',
+            itemWidth: '100%'
+        });
+    });
+</script>

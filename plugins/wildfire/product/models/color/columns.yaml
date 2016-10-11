@@ -1,0 +1,10 @@
+columns:
+    hex_code:
+        label: Preview
+        type: partial
+        width: 75px
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: false

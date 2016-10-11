@@ -1,0 +1,4 @@
+<?php if ($record->image): ?>
+    <img src="<?php echo $record->image->getThumb(75,40, ['mode' => 'portrait', 'extension' => 'auto']); ?>" />
+<?php endif; ?>
+
