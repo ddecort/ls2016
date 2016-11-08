@@ -1,4 +1,5 @@
 <script type="text/javascript">
+if (typeof ShopifyBuy != 'undefined'){
 {% if section.slug == 'sports' %}
     var cartidx = 'sportscartid';
     var cartshippingmin = '50';
@@ -16,5 +17,6 @@
           appId: '6'
     });
 {% endif %}
+}
 </script>
 

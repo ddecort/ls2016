@@ -107,10 +107,6 @@ class Categorycontent extends ComponentBase
                             {
                                 $gripbuilder = true;
                             }
-                            if (strpos(strtolower($product->name),'skill') !== false)
-                            {
-                                $gripbuilder = false;
-                            }
                         }
 
                         $this->category_arr = $interim_cat;

@@ -46,6 +46,9 @@
             var engrave_variant = { myid: {{variant.id}}, sku: '{{ variant.sku }}', productId: {{variant.shopify_product_id}}, id: {{ variant.shopify_variant_id }}, title: '{{ variant.variantTitle}}', productTitle: '{{ variant.product.nameText }}', price: {{ variant.price }}, image: { src: '{{ variant.product.previewImage.thumb(200,200) }}' } };
 
         {% endif %}
+
+
+        var hide_outer_ring = {% if 'macaskill' in product.nameText|lower %}true{% else %}false{% endif %};
     </script>
 
     <div class="productpane{% if gripbuilder %} custom custom-on{% endif %}">
@@ -75,6 +78,9 @@
                             <div class="clear"></div>
                         </div></div>
                     </div>
+                    {% if 'macaskill' in product.nameText|lower %}
+                    <div id="custom_ring_inner" data-val="" style="display: none;"></div>
+                    {% else %}
                     <div id="custom_ring_outer" class="buildoption" data-val="">
                         <div class="optionheader"><h4>Outer Ring Color</h4><div class="colorpreview"><a><span class="color-1" style="border-color: #000; background-color: #000"></span></a></div></div>
                         <div class="optionbody"><div class="inner">
@@ -96,6 +102,7 @@
                             <div class="clear"></div>
                             </div></div>
                     </div>
+                    {% endif %}
                     <div id="custom_ring_inner" class="buildoption" data-val="">
                         <div class="optionheader"><h4>Inner Ring Color</h4><div class="colorpreview"><a><span class="color-1" style="border-color: #000; background-color: #000"></span></a></div></div>
                         <div class="optionbody"><div class="inner">
@@ -298,16 +305,17 @@
                     <div class="choicer colorchoices{% if colorchoices.hasthumbs %} thumbs{% endif %}{% if colorchoices.hastriple %} triples{% elseif colorchoices.hasdouble %} doubles{% else %} singles{% endif %}">
                         <div class="indicator"></div>
                         
-                        {% if colorchoices.colorways.length <= 6 and colorchoices.hasthumbs %}<span class="nowrap">{% endif %}
+                        {% if colorchoices.colorways.length <= 8 and colorchoices.hasthumbs %}<span class="nowrap">{% endif %}
                         {% for colorway in colorchoices.colorways %}
-                            {% if loop.length <= 6 and colorchoices.hasthumbs %}
+                            {% if loop.length <= 8 and colorchoices.hasthumbs %}
                                      <a class="thumb yeswrap" data-colorway-id="{{ colorway.colorway.id }}" data-name="{{ colorway.colorlist }}">
                                          <img src="{{ colorway.thumb.thumb(75,75, {extension: 'jpg', matte: 'dcdcdc' }) }}" />
                                          <span>{{colorway.colorlist}}</span>
                                      </a> 
                                      {% if loop.index == 2 and loop.length == 4 %}</span>  <span class="nowrap">{% endif %}
                                      {% if loop.index == 3 and loop.length == 6 %}</span> <span class="nowrap">{% endif %}
-                                     {% if loop.length != 4 and loop.length != 6 %}</span> <span class="nowrap">{%endif %}
+                                     {% if loop.index == 4 and loop.length == 8 %}</span> <span class="nowrap">{% endif %}
+                                     {% if loop.length != 4 and loop.length != 8 %}</span> <span class="nowrap">{%endif %}
                             {% else %}
                                 {% if loop.length > 5 and loop.length < 12 %}   
                                     {% if loop.length % 2 == 1 %}
@@ -333,7 +341,7 @@
 
                             {% endif %}
                         {% endfor %}
-                        {% if colorchoices.colorways.length < 6 and colorchoices.hasthumbs %}</span>{% endif %}
+                        {% if colorchoices.colorways.length <= 8 and colorchoices.hasthumbs %}</span>{% endif %}
                     </div>
                     <div class="clear"></div>
                 {% endif %}

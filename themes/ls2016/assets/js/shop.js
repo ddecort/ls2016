@@ -16,28 +16,30 @@ $(function() {
 
   var cart;
   var cartLineItemCount;
-  if(localStorage.getItem(cartidx)) {
-    client.fetchCart(localStorage.getItem(cartidx)).then(function(remoteCart) {
-      cart = remoteCart;
-      
-      var q = getUrlVars();
-      if (q.cc && q.cc == 1){
-        cart.clearLineItems();
+  if (client){
+      if(localStorage.getItem(cartidx)) {
+        client.fetchCart(localStorage.getItem(cartidx)).then(function(remoteCart) {
+          cart = remoteCart;
+          
+          var q = getUrlVars();
+          if (q.cc && q.cc == 1){
+            cart.clearLineItems();
+          }
+          
+          cartLineItemCount = cart.lineItems.length;
+          renderCartItems();
+          updateCartTabButton();
+        });
+      } else {
+        client.createCart().then(function (newCart) {
+          cart = newCart;
+          localStorage.setItem(cartidx, cart.id);
+          cartLineItemCount = 0;
+          updateCartTabButton();
+        });
       }
-      
-      cartLineItemCount = cart.lineItems.length;
-      renderCartItems();
-      updateCartTabButton();
-    });
-  } else {
-    client.createCart().then(function (newCart) {
-      cart = newCart;
-      localStorage.setItem(cartidx, cart.id);
-      cartLineItemCount = 0;
-      updateCartTabButton();
-    });
   }
-
+  
   $('#cart .shipping .minval').html(cartshippingmin);
 
   bindEventListeners();

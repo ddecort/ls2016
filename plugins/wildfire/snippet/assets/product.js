@@ -225,9 +225,15 @@ $(function() {
             }
         }
         //outer ring color
-        $('#builderpreview .top-ring img').css('background-image','url("/themes/ls2016/assets/gripbuilder/rings-rotating-top-' + $('#custom_ring_outer').data('val').toLowerCase() +'.png")');
+        if (hide_outer_ring){
+            $('#builderpreview .top-ring').css('opacity',0);
+        } else {
+            var outcol = $('#custom_ring_outer').data('val') == '' ? 'black' : $('#custom_ring_outer').data('val').toLowerCase();
+            $('#builderpreview .top-ring img').css('background-image','url("/themes/ls2016/assets/gripbuilder/rings-rotating-top-' + outcol +'.png")');
+        }
         //inner ring color
-        $('#builderpreview .bottom-ring img').css('background-image','url("/themes/ls2016/assets/gripbuilder/rings-rotating-bottom-' + $('#custom_ring_inner').data('val').toLowerCase() +'.png")');
+        var incol = $('#custom_ring_inner').data('val') == '' ? 'black' : $('#custom_ring_inner').data('val').toLowerCase();
+        $('#builderpreview .bottom-ring img').css('background-image','url("/themes/ls2016/assets/gripbuilder/rings-rotating-bottom-' + incol +'.png")');
         //plug color
         $('#builderpreview #plugs').removeClass().addClass($('#custom_plug').data('val').toLowerCase());
         //text
@@ -250,6 +256,8 @@ $(function() {
         $('#custom_engrave .engravepreview .graphic').removeClass().addClass('engrave_graphic_optioninner graphic');
         if (text.length > 0){
             $('#custom_engrave .engravepreview .graphic').addClass(graphic.find(':selected').data('graphic'));
+            if ($('#custom_ring_inner').data('val') == '') $('#custom_ring_inner .choicer a:first').click();
+            if ($('#custom_ring_outer').data('val') == '' && !hide_outer_ring) $('#custom_ring_outer .choicer a:first').click();
         } else {
             $('#custom_engrave .engravepreview .graphic').removeClass();
         }
@@ -333,17 +341,17 @@ $(function() {
 
     //click function for color and sizes
     $('.productpage .choicer a').click(function(el){
-         updateChoicerSelection(this);
          if ($(this).attr('data-colorway-id')){
              updateVariantSelection($(this).attr('data-colorway-id'), false);
              if (showbuilder){
-                 var other = $('.productpage .choicer a[data-colorway-id="' + $(this).attr('data-colorway-id') + '"]').filter(':not(.selected)');
+                 var other = $('.productpage .choicer a[data-colorway-id="' + $(this).attr('data-colorway-id') + '"]').filter(':not(.selected)').not(this);
                  if (other.length) updateChoicerSelection(other);
              }
          }
          else if ($(this).attr('data-size-id')) {
              updateVariantSelection(false, $(this).attr('data-size-id'));
         }
+        updateChoicerSelection(this);
      });      
     
    
@@ -377,8 +385,8 @@ $(function() {
 
     function updateVariantSelection(colorway_id, size_id)
     {
-        if (colorway_id) selected_colorway_id = colorway_id;
-        if (size_id) selected_size_id = size_id;
+        var selected_colorway_id = (colorway_id ? colorway_id : false);
+        var selected_size_id = (size_id ? size_id : false);
         
         //filter images
         updateImage(searchImage(selected_colorway_id,selected_size_id));
@@ -441,10 +449,12 @@ $(function() {
                 var inner = $('#custom_ring_inner').data('val');
                 var plug = $('#custom_plug').data('val');
                 var engrave_text = $('#custom_engrave_text').val();
+                var props = {};
 
                 //add inner ring
                 if (engrave_text || inner !== '' || outer !== ''){
-                    props = { 'Custom Inner Ring Color': inner, 'Custom Outer Ring Color': outer };
+                    if (engrave_text || inner) props['Custom Inner Ring Color'] = inner;
+                    if (engrave_text || outer) props['Custom Outer Ring Color'] = hide_outer_ring ? 'N/A' : outer;
                 }
                 addOrUpdateVariant(obj, props, parseInt(quantity), evt.target);
     
@@ -721,7 +731,9 @@ $(function() {
     if (variantinfo.length == 1) selected_variant = variantinfo[0];
     
     //choose default image and load
-    updateImage(searchImage(false,false));
+    if (!showbuilder) {
+        updateImage(searchImage(false,false));
+    }
     
     //set up click event
     $('#addtocart').click(addToCartAction);
