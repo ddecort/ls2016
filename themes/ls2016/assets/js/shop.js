@@ -40,8 +40,6 @@ $(function() {
       }
   }
   
-  $('#cart .shipping .minval').html(cartshippingmin);
-
   bindEventListeners();
 
 

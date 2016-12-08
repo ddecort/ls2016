@@ -26,17 +26,16 @@
                         <a class="button" href="{{ post.link }}" target="_blank">View on Instagram</a>
                     </div>
                   {% if post.type == 'image' %}
-                  <img class="content" src="{{ post.image.thumb(640,640,{ type: 'crop' }) }}" srcset="{{ post.image.thumb(150,150)}} 150w, {{post.image.thumb(320,320) }} 320w, {{post.image.thumb(640,640) }} 640w" sizes="(min-width: 766px) 33vw,100vw" >
+                  <img class="content" src="{{ post.image.thumb(640,640,{ type: 'crop' }) }}" srcset="{{ post.image.thumb(150,150)}} 150w, {{post.image.thumb(320,320) }} 320w, {{post.image.thumb(640,640) }} 640w" sizes="(min-width: 766px) 33vw,100vw" alt="{{ post.data.caption.text }}" />
                   {% elseif post.type == 'video' %}
                     <video class="content" controls>
-                      <source src="{{ post.data.videos.standard_resolution.url }}"
-                      type="video/mp4"/>
+                      <source src="{{ post.data.videos.standard_resolution.url }}" type="video/mp4" />
                     </video>
                   {% endif %}
                      <div class="ig-bar-bottom">
                           <div class="ig-caption">{{ post.data.caption.text }}</div>
                           <div class="ig-details">
-                              <a class="profile" href="{{ post.link }}" target="_blank"><img src="https://scontent-sea1-1.cdninstagram.com/t51.2885-19/11373645_437489963090296_421918797_a.jpg"></a><a class="profiletext" href="https://instagram.com/{{ iguser.user }}">{{ post.user }}</a>
+                              <a class="profile" href="{{ post.link }}" target="_blank"><img src="https://scontent-sea1-1.cdninstagram.com/t51.2885-19/11373645_437489963090296_421918797_a.jpg" alt="Lizard Skins Instagram" /></a><a class="profiletext" href="https://instagram.com/{{ iguser.user }}">{{ post.user }}</a>
                           </div>
                     </div>
                 </div>

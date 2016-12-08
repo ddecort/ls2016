@@ -20,17 +20,17 @@
 
     {% if product %}
         {% set startpos = 1 %}
-        <nav class="breadcrumbs superimpose">
+        <ul class="nav breadcrumbs superimpose">
             {{ breadcrumbs }}
-        </nav>
+        </ul>
         {% partial '@productpage' product=product catproducts=products parents=parents category=category %}
         {% if snippets|length == 0 %}
             {% partial '@products_related' category=category related=related %}
         {% endif %}
     {% elseif not has_list_snippet %}
-        <nav class="breadcrumbs">
+        <ul class="nav breadcrumbs">
             {{ breadcrumbs }}
-        </nav>
+        </ul>
         <h1>{{category.name }}</h1>
         {% if products|length > 0 %}
             {% partial '@products' products=products parents=parents category=category %}
@@ -42,9 +42,9 @@
     {% endif %}
     {% if snippets|length > 0 %}
         {% if has_list_snippet and not product %}
-            <nav class="breadcrumbs superimpose{% if snippets[0].heading_light %} light{% endif %}">
+            <ul class="nav breadcrumbs superimpose{% if snippets[0].heading_light %} light{% endif %}">
                 {{ breadcrumbs }}
-            </nav>
+            </ul>
         {% endif %}
         {% partial '@snippets' startpos=startpos snippets=snippets products=products parents=parents category=category related=related %}
     {% endif %}

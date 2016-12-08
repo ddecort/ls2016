@@ -22,15 +22,15 @@ h1, h2, h3, h4, button, a.button, input[type="submit"] {
 a {
     text-decoration: none;
 }
-ul, nav {
+ul, ul.nav {
     margin: 0;
     padding: 0;
 }
-nav li {
+ul.nav li {
     list-style: none;
     text-transform: uppercase;
 }
-nav li a {
+ul.nav li a {
     color: #000;
 }
 a {
@@ -44,6 +44,9 @@ img {
     clear:both;
     margin:0;
     padding:0;
+}
+.unselectable {
+    user-select: none;
 }
 .container {
     min-height: 100%;
@@ -66,10 +69,10 @@ header.desktop {
     width: 100%;
     z-index: 50;
 }
-header.desktop nav li {
+header.desktop ul.nav li {
     display: inline-block;
 }
-header.desktop nav li a {
+header.desktop ul.nav li a {
     display: inline-block;
 }
 header.desktop .topnav {
@@ -89,33 +92,33 @@ header.desktop .mainnav {
     border-bottom: 1px solid #515151;
 }
 
-header.desktop nav.sport {
+header.desktop ul.nav.sport {
     float: left;
     margin-left: 3vw;
     border-left: 1px solid #f3f3f3;
 }
-header.desktop nav.sport a {
+header.desktop ul.nav.sport a {
     padding: 1em 1.5em;
     border-right: 1px solid #f3f3f3;
 }
-header.desktop nav.sport a.active {
+header.desktop ul.nav.sport a.active {
     font-family: 'Open Sans', Helvetica, Arial;
     font-weight: 800;
 }
-    header.desktop nav.extras {float: right;
+    header.desktop ul.nav.extras {float: right;
     margin-right: 3vw;
 }
-header.desktop nav.extras a {
+header.desktop ul.nav.extras a {
     color: #a9a9a9;
 }
-header.desktop nav.main {
+header.desktop ul.nav.main {
     display: block;
     box-sizing: border-box;
     text-align: center;
     height: 100%;
     z-index: 100;
 }
-header.desktop nav.main a {
+header.desktop ul.nav.main a {
     color: #fff;
     padding: 25px 1vw;
     height: 100%;
@@ -123,7 +126,7 @@ header.desktop nav.main a {
     font-weight: 600;
     font-size: 18px;
 }
-    header.desktop nav.main a.active {background: url(/themes/ls2016/assets/images/menuon.png) no-repeat bottom center;
+    header.desktop ul.nav.main a.active {background: url(/themes/ls2016/assets/images/menuon.png) no-repeat bottom center;
 }
 header.desktop .logo {
     display: block;
@@ -172,17 +175,17 @@ header.desktop .main-sub h3 {
 header.desktop .main-sub h3.selected {
     color: #e11b22;
 }
-header.desktop .main-sub nav {
+header.desktop .main-sub ul.nav {
     text-align: left;
 }
-    header.desktop .main-sub nav li {display: block;
+    header.desktop .main-sub ul.nav li {display: block;
     padding: 0.3em 0;
 }
-header.desktop .main-sub nav li a {
+header.desktop .main-sub ul.nav li a {
     color: #000;
     font-size: 1vw;
 }
-header.desktop .main-sub nav li a:hover {
+header.desktop .main-sub ul.nav li a:hover {
     color: #e11b22;
 }
 
@@ -254,11 +257,11 @@ header.mobile .bigcart a.active, header.mobile .hamburger a.active {
     overflow-y: auto;
     text-align: left;
 }
-#mobile-menu nav {
+#mobile-menu ul.nav {
     border-top: 1px solid #e5e5e5;
     padding-bottom: 2em;
 }
-#mobile-menu nav li a, #mobile-menu h3 {
+#mobile-menu ul.nav li a, #mobile-menu h3 {
     display: block;
     font-size: 14px;
     font-family: 'apex_newbold', Helvetica, Arial;
@@ -267,7 +270,7 @@ header.mobile .bigcart a.active, header.mobile .hamburger a.active {
     padding: 1em;
     line-height: 1em;
 }
-#mobile-menu nav li {
+#mobile-menu ul.nav li {
     border-bottom: 1px solid #e5e5e5;
 }
 #mobile-menu .forms {
@@ -280,13 +283,13 @@ header.mobile .bigcart a.active, header.mobile .hamburger a.active {
 #mobile-menu input.dealersearch {
     width: 95%;
 }
-#mobile-menu nav li ul {
+#mobile-menu ul.nav li ul {
     margin-left: 25px;
 }
-#mobile-menu nav li ul li {
+#mobile-menu ul.nav li ul li {
     border-bottom: none;
 }
-    #mobile-menu nav li ul li a {font-family: 'Open Sans', Helvetica, Arial;
+    #mobile-menu ul.nav li ul li a {font-family: 'Open Sans', Helvetica, Arial;
     font-weight: 600;
 }
 
@@ -520,7 +523,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     line-height: 30px;
 }
 
-header nav.extras a.btn--cart-tab.js-active {
+header ul.nav.extras a.btn--cart-tab.js-active {
     font-weight: 600;
     color: #e11b22;
 }
@@ -704,7 +707,7 @@ header nav.extras a.btn--cart-tab.js-active {
 .company-menu h1 {
     font-size: 4vw;
 }
-.company-menu nav {
+.company-menu ul.nav {
     margin-bottom: 2em;
 }
 
@@ -1283,17 +1286,17 @@ footer.desktop h3 {
     font-size: 14px;
     margin-bottom: 0.8vh;
 }
-footer.desktop nav {
+footer.desktop ul.nav {
     text-align: left;
 }
-    footer.desktop nav li {display: block;
+    footer.desktop ul.nav li {display: block;
     padding: 0.15em 0;
 }
-footer.desktop nav li a {
+footer.desktop ul.nav li a {
     color: #b2b2b2;
     font-size: 12px;
 }
-footer.desktop nav li a:hover {
+footer.desktop ul.nav li a:hover {
     color: #e11b22;
 }
 footer.desktop .copy {
@@ -1318,7 +1321,7 @@ footer.mobile .col {
     box-sizing: border-box;
     vertical-align: top;
 }
-footer.mobile nav li {
+footer.mobile ul.nav li {
     display: block;
 }
 footer.mobile h3 {
@@ -1328,14 +1331,14 @@ footer.mobile h3 {
     padding: 0;
     margin-bottom: 0.5em;
 }
-footer.mobile nav li a {
+footer.mobile ul.nav li a {
     font-size: 12px;
     font-weight: 400;
     font-family: 'Open Sans', Helvetica, Arial;
     line-height: 28px;
     color: #cbcbcc;
 }
-footer.mobile h3, footer.mobile nav li a {
+footer.mobile h3, footer.mobile ul.nav li a {
     color: #fff;
 }
 footer.mobile .copy {
@@ -1346,10 +1349,10 @@ footer.mobile .copy {
     text-align: left;
 }
 
-footer nav li ul {
+footer ul.nav li ul {
     display: none;
 }
-header nav li ul {
+header ul.nav li ul {
     display: none;
 }
 
@@ -2903,10 +2906,10 @@ span.engrave_graphic_option {
     header.desktop .main-sub .column2 {
         margin-right: 3vw;
     }
-    header.desktop .main-sub nav li a {
+    header.desktop .main-sub ul.nav li a {
         font-size: 1.2vw;
     }
-    header.desktop nav.main a {
+    header.desktop ul.nav.main a {
         padding: 15px 1vw;
     }
     .shiftcontainer {
@@ -2958,7 +2961,7 @@ span.engrave_graphic_option {
     footer h3 {
         font-size: 1.2vw;
     }
-        footer nav li a {font-size: 1.4vw;
+        footer ul.nav li a {font-size: 1.4vw;
     }
         footer.mobile .footcol {margin-right: 4vw;
     }
@@ -3212,7 +3215,7 @@ span.engrave_graphic_option {
     .company-menu h1 {
         font-size: 3.8vw;
     }
-    .company-menu nav li a {
+    .company-menu ul.nav li a {
         font-size: 11px;
     }
     
@@ -3668,20 +3671,20 @@ span.engrave_graphic_option {
         text-align: center;
         margin: 0;
     }
-    .company-menu nav {
+    .company-menu ul.nav {
         font-size: 0;
     }
-    .company-menu nav li, .company-menu nav li.selected {
+    .company-menu ul.nav li, .company-menu ul.nav li.selected {
         display: inline-block;
     }
-    .company-menu nav li a {
+    .company-menu ul.nav li a {
         margin-right: 1px;
         width: auto;
         padding: 0 0.5em;
         font-size: 14px;
         line-height: 2.5em;
     }
-    .company-menu nav li.selected a {
+    .company-menu ul.nav li.selected a {
         background-color: #000;
     }
 
@@ -3736,18 +3739,18 @@ span.engrave_graphic_option {
 }
 
 @media (max-width: 765px) and (orientation: landscape) {
-    nav.main a {
+    ul.nav.main a {
         font-size: 14px;
         padding: 5px;
     }
-    nav.main {
+    ul.nav.main {
         text-align: right;
         padding-right: 10%;
     }
-    nav.sport a {
+    ul.nav.sport a {
         padding: 1em 1em;
     }
-    nav.extras a {
+    ul.nav.extras a {
         padding: 1em 0.7em;
     }
 
@@ -3831,7 +3834,7 @@ span.engrave_graphic_option {
     footer.desktop h3{
          font-size: 1vw;
     }
-    footer.desktop nav li a {
+    footer.desktop ul.nav li a {
         color: #b2b2b2;
         font-size: 0.85vw;
     }

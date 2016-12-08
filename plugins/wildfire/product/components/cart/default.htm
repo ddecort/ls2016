@@ -2,7 +2,6 @@
 if (typeof ShopifyBuy != 'undefined'){
 {% if section.slug == 'sports' %}
     var cartidx = 'sportscartid';
-    var cartshippingmin = '50';
     var client = ShopifyBuy.buildClient({
           apiKey: 'd16b9bece5424a19899fdf005b66492a',
           domain: 'lizard-sports.myshopify.com',
@@ -10,7 +9,6 @@ if (typeof ShopifyBuy != 'undefined'){
     });
 {% else %}
     var cartidx = 'cyclingcartid';
-    var cartshippingmin = '75';
     var client = ShopifyBuy.buildClient({
           apiKey: '94a881e8e4fe3d9ee51fdce5d1b90896',
           domain: 'lizard-skins.myshopify.com',

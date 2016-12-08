@@ -7,13 +7,13 @@
                 <div class="ig-logo"><span class="fa fa-instagram"></span></div>
                 <div class="ig-bar-top">
                     <a class="button" href="{{ igpost.link }}" target="_blank">View on Instagram</a>
-                    <a class="profile" href="https://instagram.com/{{ igpost.user }}"><img src="https://scontent-sea1-1.cdninstagram.com/t51.2885-19/11373645_437489963090296_421918797_a.jpg"></a>
+                    <a class="profile" href="{{ igpost.link }}"><img src="https://scontent-sea1-1.cdninstagram.com/t51.2885-19/11373645_437489963090296_421918797_a.jpg" alt="Lizard Skins Instagram"></a>
                 </div>
               {% if igpost.type == 'image' %}
-                 <img class="content" src="{{ igpost.image.thumb(640,640) }}" srcset="{{ igpost.image.thumb(150,150)}} 150w, {{igpost.image.thumb(320,320) }} 320w, {{igpost.image.thumb(640,640) }} 640w" sizes="(min-width: 766px) 33vw,100vw" >
+              <img class="content" src="{{ igpost.image.thumb(640,640) }}" srcset="{{ igpost.image.thumb(150,150)}} 150w, {{igpost.image.thumb(320,320) }} 320w, {{igpost.image.thumb(640,640) }} 640w" sizes="(min-width: 766px) 33vw,100vw" alt="{{ igpost.data.caption.text }}" >
               {% elseif igpost.type == 'video' %}
                 <video class="content" controls>
-                  <source src="{{ igpost.data.videos.standard_resolution.url }}" type="video/mp4"/>
+                  <source src="{{ igpost.data.videos.standard_resolution.url }}" type="video/mp4">
                 </video>
               {% endif %}
                 <div class="ig-bar-bottom">

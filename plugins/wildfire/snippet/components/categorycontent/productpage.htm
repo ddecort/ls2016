@@ -79,7 +79,7 @@
                         </div></div>
                     </div>
                     {% if 'macaskill' in product.nameText|lower %}
-                    <div id="custom_ring_inner" data-val="" style="display: none;"></div>
+                    <div id="custom_ring_outer" data-val="" style="display: none;"></div>
                     {% else %}
                     <div id="custom_ring_outer" class="buildoption" data-val="">
                         <div class="optionheader"><h4>Outer Ring Color</h4><div class="colorpreview"><a><span class="color-1" style="border-color: #000; background-color: #000"></span></a></div></div>
@@ -110,15 +110,19 @@
                                <div class="indicator"></div>
                                <span class="nowrap">
                                     <a data-color="Black"><span class="color-1 first" style="border-color: #000000; background-color: #000000;"></span></a>
+                                    {% if 'macaskill' not in product.nameText|lower %}
                                     <a data-color="Silver"><span class="color-1" style="border-color: #e0e0e0; background-color: #e0e0e0;"></span></a>
                                     <a data-color="Yellow"><span class="color-1" style="border-color: #ffed2f; background-color: #ffed2f;"></span></a>
+                                    {% endif %}
                                     <a data-color="Red"><span class="color-1" style="border-color: #c11f1e; background-color: #c11f1e;"></span></a>
                                </span>
                                <span class="nowrap">
                                     <a data-color="Blue"><span class="color-1" style="border-color: #143095; background-color: #143095;"></span></a>
+                                    {% if 'macaskill' not in product.nameText|lower %}
                                     <a data-color="Purple"><span class="color-1" style="border-color: #ad049a; background-color: #ad049a;"></span></a>
                                     <a data-color="Orange"><span class="color-1" style="border-color: #f36e00; background-color: #f36e00;"></span></a>
                                     <a data-color="Green"><span class="color-1 last" style="border-color: #58d040; background-color: #58d040;"></span></a>
+                                    {% endif %}
                                 </span>
                             </div>              
                             <div class="clear"></div>
@@ -201,7 +205,7 @@
                     <div id="left-side">
                     
                         <div class="grip">
-                          <img src="/themes/ls2016/assets/images/blank.gif" />
+                          <img src="/themes/ls2016/assets/images/blank.gif" alt="grip" />
                         </div>
                         <div class="top-ring">
                             <div class="monograms">
@@ -216,7 +220,7 @@
                                   <span class="monogram-graphic-r"></span>
                                 </span>            
                             </div>
-                            <img src="/themes/ls2016/assets/images/blank.gif" />
+                            <img src="/themes/ls2016/assets/images/blank.gif" alt="top ring" />
                         </div>
                         <div class="bottom-ring">
                             <div class="monograms">
@@ -231,14 +235,14 @@
                                   <span class="monogram-graphic-r"></span>
                                 </span>            
                             </div>
-                            <img src="/themes/ls2016/assets/images/blank.gif"/>
+                            <img src="/themes/ls2016/assets/images/blank.gif" alt="bottom ring" />
                         </div>
                         <div class="shadow"></div>
                     </div>
 
                     <div id="right-side">
                         <div class="grip">
-                          <img src="/themes/ls2016/assets/images/blank.gif"/>
+                          <img src="/themes/ls2016/assets/images/blank.gif" alt="grip" />
                         </div>
                         <div class="top-ring">
                             <div class="monograms">
@@ -253,7 +257,7 @@
                                   <span class="monogram-graphic-r"></span>
                                 </span>            
                             </div>
-                            <img src="/themes/ls2016/assets/images/blank.gif" />
+                            <img src="/themes/ls2016/assets/images/blank.gif" alt="top ring" />
                         </div>
                         <div class="bottom-ring">
                             <div class="monograms">
@@ -268,18 +272,18 @@
                                   <span class="monogram-graphic-r"></span>
                                 </span>            
                             </div>
-                            <img src="/themes/ls2016/assets/images/blank.gif" />
+                            <img src="/themes/ls2016/assets/images/blank.gif" alt="bottom ring" />
                         </div>
                         <div class="shadow"></div>
                     </div>
 
-                    <div id="plugs" unselectable="on">
-                        <div class="plug" unselectable="on"><img src="/themes/ls2016/assets/images/blank.gif" /></div> 
-                        <div class="plug" unselectable="on"><img src="/themes/ls2016/assets/images/blank.gif" /></div> 
+                    <div id="plugs" class="unselectable">
+                        <div class="plug unselectable"><img src="/themes/ls2016/assets/images/blank.gif" alt="plug" /></div> 
+                        <div class="plug unselectable"><img src="/themes/ls2016/assets/images/blank.gif" alt="plug" /></div> 
                     </div>
 
                     <div class="bottompart">
-                        <div class="rotate"><img src="/themes/ls2016/assets/gripbuilder/rotate.jpg" /></div>
+                        <div class="rotate"><img src="/themes/ls2016/assets/gripbuilder/rotate.jpg" alt="rotate" /></div>
                     </div>
 
                     </div></div></div>
@@ -287,7 +291,7 @@
                 {% endif %}
                 <div id="imagezone">
                     <div class="spinnerbox"><div class="spinner"></div></div>
-                    <div class="rotateinfo"><h3>Loading 360 View...</h3><img src="/themes/ls2016/assets/images/rotate.png"></div>
+                    <div class="rotateinfo"><h3>Loading 360 View...</h3><img src="/themes/ls2016/assets/images/rotate.png" alt="rotate"></div>
                     <div class="wrap"></div>
                     <div class="thumbs"><div class="inner"></div></div>
                 </div> 
@@ -309,7 +313,7 @@
                         {% for colorway in colorchoices.colorways %}
                             {% if loop.length <= 8 and colorchoices.hasthumbs %}
                                      <a class="thumb yeswrap" data-colorway-id="{{ colorway.colorway.id }}" data-name="{{ colorway.colorlist }}">
-                                         <img src="{{ colorway.thumb.thumb(75,75, {extension: 'jpg', matte: 'dcdcdc' }) }}" />
+                                         <img src="{{ colorway.thumb.thumb(75,75, {extension: 'jpg', matte: 'dcdcdc' }) }}" alt="{{ colorway.colorlist }}"/>
                                          <span>{{colorway.colorlist}}</span>
                                      </a> 
                                      {% if loop.index == 2 and loop.length == 4 %}</span>  <span class="nowrap">{% endif %}

@@ -385,8 +385,8 @@ $(function() {
 
     function updateVariantSelection(colorway_id, size_id)
     {
-        var selected_colorway_id = (colorway_id ? colorway_id : false);
-        var selected_size_id = (size_id ? size_id : false);
+        selected_colorway_id = (colorway_id ? colorway_id : selected_colorway_id);
+        selected_size_id = (size_id ? size_id : selected_size_id);
         
         //filter images
         updateImage(searchImage(selected_colorway_id,selected_size_id));
@@ -397,7 +397,7 @@ $(function() {
         {
             if (variantinfo[i].colorway_id == selected_colorway_id)
             {
-                if (variantinfo[i].size_id == selected_size_id)
+                if (variantinfo[i].size_id == selected_size_id || variantinfo[i].size_id == false)
                 {
                     found = true;
                     selected_variant = variantinfo[i];

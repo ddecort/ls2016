@@ -1,7 +1,7 @@
 description = "Main Layout"
 ==
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,23 +30,23 @@ description = "Main Layout"
         <div class="container">
             <header class="desktop">
                 <div class="topnav">
-                    <nav class="sport">
+                    <ul class="nav sport">
                         {% partial 'header_sectionlink' %}
-                    </nav>
-                    <nav class="extras">
+                    </ul>
+                    <ul class="nav extras">
                         <li>{% partial 'header_dealerlink' %}</li>
                         <li><a href="/contact">Contact <span class="lengthened"> Us</span></a></li>
                         <li><a class="btn--cart-tab js-prevent-cart-listener" href="#">Cart(<span class="btn__counter">?</span>)</a></li>
-                    </nav>
+                    </ul>
                     <div class="clear"></div>
                 </div>
                 <div class="mainnav">
-                    <div class="logo"><a href="/"><img src="{{ 'assets/images/logo16.png' | theme }}" /></a></div>
-                    <nav class="main">
+                    <div class="logo"><a href="/"><img src="{{ 'assets/images/logo16.png' | theme }}" alt="Lizard Skins" /></a></div>
+                    <ul class="nav main">
                         <li><a class="js-prevent-listener" id="shopmenulink">Shop</a></li>
                         <li>{% partial 'header_athleteslink' %}</li>
                         <li>{% partial 'header_experiencelink' %}</li>
-                    </nav>
+                    </ul>
                 </div>
     
                 <div id="shopmenu-content" class="main-sub">
@@ -59,7 +59,7 @@ description = "Main Layout"
             <header class="mobile">
                 <div class="hamburger"><a class="js-prevent-listener"><span class="closed fa fa-bars"></span><span class="open fa fa-chevron-left"></span></a></div>
                 <div class="bigcart"><a class="fa fa-shopping-cart js-prevent-cart-listener"></a></div>
-                <a href="/"><img class="logo" src="{{ 'assets/images/logo_mobile.png' | theme }}" /></a>
+                <a href="/"><img class="logo" src="{{ 'assets/images/logo_mobile.png' | theme }}" alt="Lizard Skins" /></a>
             </header>
 
             <div class="shiftcontainer">
@@ -82,7 +82,7 @@ description = "Main Layout"
     
                 <footer class="desktop">
                     <div class="footcol logo">
-                        <img class="footlogo" src="{{ 'assets/images/logostacked.png' | theme }}" />
+                        <img class="footlogo" src="{{ 'assets/images/logostacked.png' | theme }}" alt="Lizard Skins Logo" />
                         <span class="copy">&copy; Lizard Skins. All Rights Reserved.</span>
                     </div>
                     <div class="footcol">
@@ -91,9 +91,9 @@ description = "Main Layout"
                     </div>
                     <div class="footcol">
                         <h3>Company</h3>
-                        <nav>
+                        <ul class="nav">
                             {% partial 'footer_companymenu' %}
-                        </nav>
+                        </ul>
                     </div>                
                     <div class="footcol dealer">
                         <h3>Find a Dealer</h3>
@@ -110,9 +110,9 @@ description = "Main Layout"
                     </div>
                     <div class="col">
                         <h3>Company</h3>
-                        <nav>
+                        <ul class="nav">
                             {% partial 'footer_companymenu' %}
-                        </nav>        
+                        </ul>
                     </div>
                     <div class="copy">
                         &copy; 2016 Lizard Skins. All Rights Reserved.
@@ -136,7 +136,7 @@ description = "Main Layout"
           <div class="cart-section cart-section--top">
             <h2 class="cart-title">Your cart</h2>
             <button class="btn--close">
-              <span aria-role="hidden">×</span>
+              <span aria-hidden="true">×</span>
               <span class="visuallyhidden">Close</span>
             </button>
           </div>
@@ -147,7 +147,7 @@ description = "Main Layout"
             </div>
         
             <div class="cart-bottom">
-              <div class="shipping">Free USPS Standard Shipping on Orders over $<span class="minval">75</span>. Offer only valid for shipments within the US.</div>
+              <div class="shipping">Free USPS Standard Shipping on Orders over $<span class="minval">20</span>. Offer only valid for shipments within the US.</div>
               <div class="cart-info clearfix cart-section">
                 <div class="type--caps cart-info__total cart-info__small">Total</div>
                 <div class="cart-info__pricing">

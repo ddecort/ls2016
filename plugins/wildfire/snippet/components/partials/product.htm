@@ -23,7 +23,7 @@
                     {% set img = product.previewImage %}
                     {% if img %}
                     
-                    <img data-arsize="{{ arsize }}" data-arthresh="{{ arthreshold }}" data-ar="{{img.aspectRatio}}" class="{% if img.aspectRatio > arthreshold %}landscape{% else %}portrait{% endif %}" src="{{ img.thumb(1000,1000, {extension: 'jpg', matte: 'e1e1e1'}) }}" sizes="{{ sizes }}" />
+                    <img data-arsize="{{ arsize }}" data-arthresh="{{ arthreshold }}" data-ar="{{img.aspectRatio}}" class="{% if img.aspectRatio > arthreshold %}landscape{% else %}portrait{% endif %}" src="{{ img.thumb(1000,1000, {extension: 'jpg', matte: 'e1e1e1'}) }}" sizes="{{ sizes }}" alt="{{ product.nameDisplay }}" />
                     {% endif %}
                 </div>
                  <div class="info">

@@ -6,7 +6,7 @@
     <h3>Shop By Sport</h3>
 {% endif %}
 {% if location == 'Header' or location == 'Footer' %}
-    <nav>
+    <ul class="nav">
         {% set sportlist = '' %}
         {% set cyclelist = '' %}
         {% for sportitem in sports %}
@@ -40,7 +40,7 @@
             {{ sportlist|raw }}
             {{ cyclelist|raw }}
         {% endif %}
-    </nav>
+    </ul>
 {% endif %}
 {% if location == 'Header' %}
 
@@ -50,12 +50,12 @@
         {% set thislistitem %}
         <div class="column2">
             <h3{% if category.name == sportname %} class="selected"{% endif %}>{{ category.name }}</h3>
-            <nav>
+            <ul class="nav">
                 {% set subcats = category.subcats %}
                 {% for subcat in subcats %}
                     <li><a href="/{{ category.slug }}/{{ subcat.slug }}">{{ subcat.name }}</a></li>
                 {% endfor %}
-            </nav>
+            </ul>
             <br />
         </div>
         {% endset %}

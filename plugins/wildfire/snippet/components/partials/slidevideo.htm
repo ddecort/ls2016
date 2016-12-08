@@ -14,10 +14,10 @@
             <div class="videoplayer" data-iframe-html='{{ slide.videoiframeUrl|raw }}'></div>
             <div class="playoverlay{% if not slide.heading_light_mobile %} mobile-dark{% endif %}{% if not slide.heading_light %} dark{% endif %}"><span class="fa fa-play-circle"></span></div>
             {% if slide.image_desktop and slide.image_mobile %}
-                <img class="desktop-img" src="{{ slide.image_desktop.thumb(2000,1250,{mode: 'auto', extension: 'jpg'}) }}" />
-                <img class="mobile-img" src="{{ slide.image_mobile.thumb(1500,1500,{mode: 'auto', extension: 'jpg'}) }}" />
+                <img class="desktop-img" src="{{ slide.image_desktop.thumb(2000,1250,{mode: 'auto', extension: 'jpg'}) }}" alt="{{ slide.heading_text }}" />
+                <img class="mobile-img" src="{{ slide.image_mobile.thumb(1500,1500,{mode: 'auto', extension: 'jpg'}) }}" alt="{{ slide.heading_text }}" />
             {% else %}
-                <img src="{{ slide.image_desktop.thumb(2000,1250,{mode: 'auto', extension: 'jpg'}) }}" />
+                <img src="{{ slide.image_desktop.thumb(2000,1250,{mode: 'auto', extension: 'jpg'}) }}" alt="{{ slide.heading_text }}" />
             {% endif %}
         </div>
     </div>
